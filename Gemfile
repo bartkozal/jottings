@@ -11,6 +11,8 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
+gem 'clearance'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-hocus-pocus', '0.3.2'
 end

@@ -40,8 +40,13 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.2)
+    bcrypt (3.1.11)
     builder (3.2.2)
     byebug (9.0.6)
+    clearance (1.15.1)
+      bcrypt
+      email_validator (~> 1.4)
+      rails (>= 3.1)
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -55,6 +60,8 @@ GEM
     em-websocket (0.5.1)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.6.0)
+    email_validator (1.6.0)
+      activemodel
     erubis (2.7.0)
     eventmachine (1.2.0.1)
     execjs (2.7.0)
@@ -193,6 +200,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  clearance
   coffee-rails (~> 4.2)
   guard-livereload
   jbuilder (~> 2.5)
