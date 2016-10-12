@@ -1,0 +1,10 @@
+.navbar {
+  margin-top: $spacing-unit;
+  margin-bottom: $spacing-unit;
+}
+
+.navbar-list {
+  li + li {
+    margin-left: $spacing-unit / 2;
+  }
+}
