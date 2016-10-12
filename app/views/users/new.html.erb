@@ -1,15 +1,13 @@
-<div id="clearance" class="sign-up">
-  <h2><%= t(".title") %></h2>
+<h2>Sign up</h2>
 
-  <%= form_for @user do |form| %>
-    <%= render partial: '/users/form', object: form %>
+<%= form_for @user, html: { class: "form-stacked" } do |form| %>
+  <%= form.label :email %>
+  <%= form.text_field :email, type: 'email', class: "1/1" %>
 
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
+  <%= form.label :password %>
+  <%= form.password_field :password, class: "1/1" %>
 
-    <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
-    </div>
-  <% end %>
-</div>
+  <div>
+    <%= form.submit "Sign up" %>
+  </div>
+<% end %>

@@ -1,18 +1,14 @@
-<div id="clearance" class="password-reset">
-  <h2><%= t(".title") %></h2>
+<h2>
+  Change your password
+</h2>
 
-  <p><%= t(".description") %></p>
+<p>
+  Your password has been reset. Choose a new password below.
+</p>
 
-  <%= form_for :password_reset,
-        url: user_password_path(@user, token: @user.confirmation_token),
-        html: { method: :put } do |form| %>
-    <div class="password-field">
-      <%= form.label :password %>
-      <%= form.password_field :password %>
-    </div>
+<%= form_for :password_reset, url: user_password_path(@user, token: @user.confirmation_token), html: { method: :put, class: "form-inline" } do |form| %>
+  <%= form.label :password, "Choose password:" %>
+  <%= form.password_field :password %>
 
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
-  <% end %>
-</div>
+  <%= form.submit "Save this password" %>
+<% end %>

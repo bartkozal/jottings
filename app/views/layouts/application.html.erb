@@ -21,22 +21,25 @@
           </div>
 
           <div class="grid-item 3/4">
-            <ul class="list-inline navbar-list">
+            <ul class="list-inline navbar-list margin-1/2-bottom">
               <li><%= link_to "Pricing", "#" %></li>
               <li><%= link_to "Support", "#" %></li>
               <% if signed_in? %>
-                <li>Signed in as: <%= current_user.email %></li>
+                <li><%= current_user.email %></li>
                 <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
               <% else %>
-                <li><%= link_to "Sign in", sign_in_path %></li>
-                <li><%= link_to "Try now", sign_up_path, class: "btn btn-brand" %></li>
+                <li><%= link_to "Try now for free", sign_up_path, class: "btn btn-brand" %></li>
               <% end %>
             </ul>
+
+            <% unless signed_in? %>
+              <%= link_to "Have an account? Sign in.", sign_in_path, class: "text-small text-muted" %>
+            <% end %>
           </div>
         </div>
       </div>
 
-      <%= yield %>
+      <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
   </body>
 </html>

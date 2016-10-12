@@ -1,16 +1,14 @@
-<div id="clearance" class="password-reset">
-  <h2><%= t(".title") %></h2>
+<h2>
+  Reset your password
+</h2>
 
-  <p><%= t(".description") %></p>
+<p>
+  To be emailed a link to reset your password, please enter your email address.
+</p>
 
-  <%= form_for :password, url: passwords_path do |form| %>
-    <div class="text-field">
-      <%= form.label :email %>
-      <%= form.text_field :email, type: 'email' %>
-    </div>
+<%= form_for :password, url: passwords_path, html: { class: "form-inline" } do |form| %>
+  <%= form.label :email, "Email address:" %>
+  <%= form.text_field :email, type: "email" %>
 
-    <div class="submit-field">
-      <%= form.submit %>
-    </div>
-  <% end %>
-</div>
+  <%= form.submit "Reset password" %>
+<% end %>
