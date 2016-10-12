@@ -1,24 +1,21 @@
-# README
+# Jottings
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Dependencies
 
-Things you may want to cover:
+- Ruby: `2.3.x`
+- PostgresQL: `9.5.x`
 
-* Ruby version
+## Setup
 
-* System dependencies
+1. Clone the repository
+2. Run `bundle install`
+3. Run `rails db:setup`
 
-* Configuration
+## Development
 
-* Database creation
+1. Run `rails s`
+2. Run `bundle exec guard`
 
-* Database initialization
+## Deployment
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+..
