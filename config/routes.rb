@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   constraints Clearance::Constraints::SignedIn.new do
-    root to: "editor/notes#new"
+    root to: "editor/documents#new"
 
     namespace :editor do
-      resources :notes, except: :index
+      resources :documents, except: :index
     end
   end
 

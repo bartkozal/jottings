@@ -1,6 +1,6 @@
-class CreateNotes < ActiveRecord::Migration[5.0]
+class CreateDocuments < ActiveRecord::Migration[5.0]
   def change
-    create_table :notes do |t|
+    create_table :documents do |t|
       t.belongs_to :user, foreign_key: true
       t.text :body
       t.string :title
