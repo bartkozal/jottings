@@ -15,7 +15,8 @@ gem 'clearance'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-hocus-pocus', '0.3.2'
-  gem 'rails-assets-vue', '2.0.2'
+  gem 'rails-assets-vue', '2.0.3'
+  gem 'rails-assets-ionicons', '2.0.1'
 end
 
 group :development, :test do

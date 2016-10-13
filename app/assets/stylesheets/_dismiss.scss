@@ -1,0 +1,16 @@
+.has-dismiss {
+  position: relative;
+  padding-right: $spacing-unit;
+}
+
+.dismiss {
+  position: absolute;
+  top: $spacing-unit / 4;
+  right: $spacing-unit / 4;
+  line-height: $font-size-base;
+  cursor: pointer;
+
+  > i {
+    font-size: $font-size-base;
+  }
+}

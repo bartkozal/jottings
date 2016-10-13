@@ -9,10 +9,18 @@
   </head>
 
   <body>
-    <% flash.each do |key, value| %>
-      <div class="box"><%= value %></div>
-    <% end %>
+    <div id="v-app">
+      <% if flash.present? %>
+        <div class="has-flash">
+          <% flash.each do |key, value| %>
+            <div class="flash flash-<%= key %>" is="dismissable">
+              <%= value %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
 
-    <%= content_for?(:application) ? yield(:application) : yield %>
+      <%= content_for?(:application) ? yield(:application) : yield %>
+    </div>
   </body>
 </html>

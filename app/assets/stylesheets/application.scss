@@ -1,4 +1,5 @@
 // require hocus-pocus
+// require ionicons
 // require_self
 
 $font-weight-headings: 100;
@@ -10,9 +11,14 @@ $color-ui: #e8e2e2;
 
 $color-btn: $color-primary;
 $color-link: $color-primary;
+$color-informative: $color-primary;
 
 $color-editor-sidebar: $color-primary;
 
-@import 'hocus-pocus/hocus-pocus';
-@import 'navbar';
-@import 'editor';
+@import 'hocus-pocus/hocus-pocus',
+        'ionicons/ionicons',
+        'navbar',
+        'editor',
+        'flash',
+        'dismiss',
+        'transition';

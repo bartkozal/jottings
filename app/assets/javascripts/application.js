@@ -1,12 +1,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require vue
-//= require_tree .
+//= require vue/vue
+//= require_tree ./components
+//= require cable
 //= require_self
 
-$(document).on("turbolinks:load", function() {
+$(document).on("turbolinks:load", () => {
   new Vue({
-    el: "html"
+    el: "#v-app"
   });
 });
