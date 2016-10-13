@@ -5,11 +5,15 @@
 
 .editor-sidebar,
 .editor-content {
-  padding: $spacing-unit ($spacing-unit * 2);
+  padding: $spacing-unit;
 }
 
 .editor-sidebar {
   background-color: $color-editor-sidebar;
+
+  a {
+    color: $color-white;
+  }
 }
 
 .editor-footer {

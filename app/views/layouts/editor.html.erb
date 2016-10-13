@@ -2,7 +2,11 @@
   <div class="sticky-footer">
     <div class="grid editor">
       <div class="grid-item 1/5 editor-sidebar">
-        <!-- sidebar -->
+        <ul class="list-reset">
+          <% current_user.notes.each do |note| %>
+            <li><%= link_to note.title, editor_note_path(note) %></li>
+          <% end %>
+        </ul>
       </div>
 
       <div class="grid-item 4/5 editor-content">
