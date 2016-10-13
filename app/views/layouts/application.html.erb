@@ -9,37 +9,10 @@
   </head>
 
   <body>
-    <div class="container">
-      <% flash.each do |key, value| %>
-        <div class="box"><%= value %></div>
-      <% end %>
+    <% flash.each do |key, value| %>
+      <div class="box"><%= value %></div>
+    <% end %>
 
-      <div class="navbar">
-        <div class="grid grid-pair grid-middle">
-          <div class="grid-item 1/4">
-            <%= link_to "Jottings.co", root_path %>
-          </div>
-
-          <div class="grid-item 3/4">
-            <ul class="list-inline navbar-list">
-              <li><%= link_to "Pricing", "#" %></li>
-              <li><%= link_to "Support", "#" %></li>
-              <% if signed_in? %>
-                <li><%= image_tag current_user.gravatar, alt: current_user.email, class: "img-circle" %></li>
-                <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
-              <% else %>
-                <li><%= link_to "Try now for free", sign_up_path, class: "btn btn-brand" %></li>
-              <% end %>
-            </ul>
-
-            <% unless signed_in? %>
-              <%= link_to "Have an account? Sign in.", sign_in_path, class: "text-small text-muted" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <%= content_for?(:content) ? yield(:content) : yield %>
-    </div>
+    <%= content_for?(:application) ? yield(:application) : yield %>
   </body>
 </html>

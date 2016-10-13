@@ -1,0 +1,23 @@
+<% content_for :application do %>
+  <div class="sticky-footer">
+    <div class="grid editor">
+      <div class="grid-item 1/5 editor-sidebar">
+        <!-- sidebar -->
+      </div>
+
+      <div class="grid-item 4/5 editor-content">
+        <div class="text-right">
+            <%= render "navbar_menu" %>
+        </div>
+
+        <%= yield %>
+      </div>
+    </div>
+
+    <div class="editor-footer">
+      © 2016 Bartłomiej Kozal &amp; Maciej Kozal
+    </div>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

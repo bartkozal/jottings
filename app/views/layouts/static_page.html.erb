@@ -1,0 +1,23 @@
+<% content_for :application do %>
+  <div class="container">
+    <div class="navbar">
+      <div class="grid grid-pair grid-middle">
+        <div class="grid-item 1/4">
+          <%= link_to "Jottings.co", root_path %>
+        </div>
+
+        <div class="grid-item 3/4">
+          <%= render "navbar_menu" %>
+
+          <% unless signed_in? %>
+            <%= link_to "Have an account? Sign in.", sign_in_path, class: "text-small text-muted" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <%= content_for?(:content) ? yield(:content) : yield %>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

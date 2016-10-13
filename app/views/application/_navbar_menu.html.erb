@@ -1,0 +1,10 @@
+<ul class="list-inline navbar-menu">
+  <li><%= link_to "Pricing", "#" %></li>
+  <li><%= link_to "Support", "#" %></li>
+  <% if signed_in? %>
+    <li><%= image_tag current_user.gravatar, alt: current_user.email, class: "img-circle" %></li>
+    <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
+  <% else %>
+    <li><%= link_to "Try now for free", sign_up_path, class: "btn btn-positive" %></li>
+  <% end %>
+</ul>

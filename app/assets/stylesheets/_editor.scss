@@ -1,0 +1,24 @@
+.editor {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.editor-sidebar,
+.editor-content {
+  padding: $spacing-unit ($spacing-unit * 2);
+}
+
+.editor-sidebar {
+  background-color: $color-editor-sidebar;
+}
+
+.editor-content {
+  border-bottom: 1px solid $color-ui;
+}
+
+.editor-footer {
+  padding: $spacing-unit / 2;
+  color: $color-muted;
+  font-size: $font-size-small;
+  text-align: center;
+}
