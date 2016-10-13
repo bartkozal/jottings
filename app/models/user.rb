@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   has_many :notes
 
-  def gravatar(size: 45)
+  def gravatar(size: 90)
     hash = Digest::MD5.hexdigest(email.downcase)
     "https://www.gravatar.com/avatar/#{hash}?s=#{size}"
   end

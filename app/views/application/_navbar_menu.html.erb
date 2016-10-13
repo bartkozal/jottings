@@ -2,8 +2,19 @@
   <li><%= link_to "Pricing", "#" %></li>
   <li><%= link_to "Support", "#" %></li>
   <% if signed_in? %>
-    <li><%= image_tag current_user.gravatar, alt: current_user.email, class: "img-circle" %></li>
-    <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
+    <li>
+      <dropdown>
+        <a is="dropdown-toggle">
+          <%= image_tag current_user.gravatar, alt: current_user.email, class: "gravatar" %>
+          <i class="ion-arrow-down-b"></i>
+        </a>
+
+        <ul is="dropdown-menu" width="150">
+          <li><%= link_to "Profile", "#" %></li>
+          <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
+        </ul>
+      </dropdown>
+    </li>
   <% else %>
     <li><%= link_to "Try now for free", sign_up_path, class: "btn btn-positive" %></li>
   <% end %>

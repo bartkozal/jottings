@@ -6,8 +6,10 @@
 //= require cable
 //= require_self
 
-$(document).on("turbolinks:load", () => {
+const onLoad = () => {
   new Vue({
     el: "#v-app"
   });
-});
+};
+
+document.addEventListener("turbolinks:load", onLoad);

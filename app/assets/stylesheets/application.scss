@@ -9,6 +9,7 @@ $color-secondary: #f35b25;
 $color-body: #fdfcfc;
 $color-ui: #e8e2e2;
 
+$color-brand: $color-primary;
 $color-btn: $color-primary;
 $color-link: $color-primary;
 $color-informative: $color-primary;
@@ -17,10 +18,14 @@ $color-editor-sidebar: $color-primary;
 
 $link-underline: false;
 
+$z-index-dropdown: 1;
+
 @import 'hocus-pocus/hocus-pocus',
         'ionicons/ionicons',
         'navbar',
         'editor',
         'flash',
         'dismiss',
-        'transition';
+        'transition',
+        'dropdown',
+        'gravatar';

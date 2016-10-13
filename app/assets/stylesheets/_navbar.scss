@@ -4,7 +4,7 @@
 }
 
 .navbar-menu {
-  li + li {
+  > li + li {
     margin-left: $spacing-unit / 2;
   }
 }

@@ -1,0 +1,31 @@
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  cursor: pointer;
+}
+
+.dropdown-menu {
+  @extend %list-reset;
+  position: absolute;
+  right: $spacing-unit / -4;
+  border: 1px solid $color-ui;
+  text-align: left;
+  z-index: $z-index-dropdown;
+
+  li + li {
+    border-top: 1px solid $color-ui;
+  }
+
+  a {
+    display: block;
+    padding: ($spacing-unit / 4) ($spacing-unit / 2);
+    background-color: $color-white;
+
+    &:hover {
+      background-color: $color-brand;
+      color: $color-white;
+    }
+  }
+}
