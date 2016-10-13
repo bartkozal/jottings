@@ -12,13 +12,10 @@
   background-color: $color-editor-sidebar;
 }
 
-.editor-content {
-  border-bottom: 1px solid $color-ui;
-}
-
 .editor-footer {
   padding: $spacing-unit / 2;
-  color: $color-muted;
+  background-color: darken($color-editor-sidebar, 10%);
+  color: $color-white;
   font-size: $font-size-small;
   text-align: center;
 }
