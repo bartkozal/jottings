@@ -4,8 +4,26 @@
       <div class="grid-item 1/5 editor-sidebar">
         <ul class="list-reset">
           <% current_user.notes.each do |note| %>
-            <li><%= link_to note.title, editor_note_path(note) %></li>
+            <li>
+              <%= link_to editor_note_path(note) do %>
+                <div class="media media-middle media-1/3">
+                  <i class="ion-document-text h3"></i>
+                  <div class="media-body"><%= note.title %></div>
+                </div>
+              <% end %>
+            </li>
           <% end %>
+        </ul>
+
+        <ul class="list-reset">
+          <li>
+            <%= link_to new_editor_note_path do %>
+              <div class="media media-middle media-1/3">
+                <i class="ion-document h3"></i>
+                <div class="media-body">New document</div>
+              </div>
+            <% end %>
+          </li>
         </ul>
       </div>
 
