@@ -23,7 +23,7 @@
     padding: ($spacing-unit / 4) ($spacing-unit / 2);
     background-color: $color-white;
 
-    :hover {
+    &:hover {
       background-color: $color-brand;
       color: $color-white;
     }
