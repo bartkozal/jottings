@@ -28,5 +28,5 @@
 }
 
 @include flash("alert", $color-negative);
-@include flash("notice", $color-informative);
+@include flash("notice", $color-yellow);
 @include flash("success", $color-positive);

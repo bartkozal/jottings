@@ -28,7 +28,8 @@ class Editor::DocumentsController < EditorController
   def destroy
     @document = find_document
     @document.destroy
-    redirect_to new_editor_document_path
+    redirect_to new_editor_document_path,
+      notice: "Document \"#{@document.title}\" has been removed"
   end
 
   private
