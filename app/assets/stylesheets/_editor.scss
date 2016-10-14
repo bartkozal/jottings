@@ -12,7 +12,19 @@
   background-color: $color-editor-sidebar;
 
   a {
+    display: inline-block;
     color: $color-white;
+  }
+}
+
+.editor-sidebar-item {
+  .ion-trash-a {
+    display: none;
+    opacity: .75;
+  }
+
+  :hover .ion-trash-a {
+    display: inline;
   }
 }
 

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     root to: "editor/documents#new"
 
     namespace :editor do
-      resources :documents, except: :index
+      resources :documents, except: [:index, :show]
     end
   end
 
