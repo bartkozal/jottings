@@ -12,8 +12,10 @@
         </div>
 
         <div class="grid-item 2/9">
-          <%= link_to editor_document_path(document), method: :delete do %>
-            <i class="ion-trash-a h3"></i>
+          <% if document.owner?(current_user) %>
+            <%= link_to editor_document_path(document), method: :delete do %>
+              <i class="ion-trash-a h3"></i>
+            <% end %>
           <% end %>
         </div>
       </div>

@@ -8,6 +8,10 @@ class Document < ApplicationRecord
     self.collaborators << user
   end
 
+  def owner?(user)
+    user == owner
+  end
+
   def title
     body.lines.first.strip
   end
