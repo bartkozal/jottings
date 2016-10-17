@@ -1,4 +1,10 @@
 class Editor::DocumentsController < EditorController
+  before_action :find_document, only: [:show, :update, :destroy]
+  before_action :require_ownership , only: :destroy
+
+  def show
+  end
+
   def new
     @document = Document.new
   end
@@ -8,37 +14,27 @@ class Editor::DocumentsController < EditorController
     @document.assign_to(current_user)
 
     if @document.save
-      redirect_to edit_editor_document_path(@document)
+      redirect_to editor_document_path(@document)
     else
       render "new"
     end
   end
 
-  def edit
-    @document = find_document
-  end
-
   def update
-    @document = find_document
     if @document.update(document_params)
-      redirect_to edit_editor_document_path(@document)
+      redirect_to editor_document_path(@document)
     else
       render "edit"
     end
   end
 
   def destroy
-    @document = find_document
     @document.destroy
     redirect_to new_editor_document_path,
       notice: "Document \"#{@document.title}\" has been removed"
   end
 
   private
-
-  def find_document
-    current_user.documents.find(params[:id])
-  end
 
   def document_params
     params.require(:document).permit(:title, :body)

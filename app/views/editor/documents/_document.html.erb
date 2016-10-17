@@ -1,8 +1,22 @@
 <div class="grid">
   <div class="grid-item 3/4">
+    <div class="grid grid-bottom grid-pair margin-bottom">
+      <div class="grid-item 1/2">
+        <% if @document.owner?(current_user) %>
+          <%= link_to "Share", editor_document_share_path(document), class: "btn" %>
+        <% end %>
+      </div>
+      <div class="grid-item 1/2">
+        <ul class="collaborators">
+          <% @document.collaborators.each do |collaborator| %>
+            <li><%= gravatar(collaborator.email) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
     <%= form_for [:editor, document], method: form_method, html: { class: 'form-stacked' } do |form| %>
       <%= form.text_area :body, class: "1/1 margin-bottom", is: "editor", ref: "editor" %>
-
       <div>
         <%= form.submit "Save" %>
       </div>

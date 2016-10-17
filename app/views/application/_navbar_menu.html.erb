@@ -5,8 +5,8 @@
     <li>
       <dropdown>
         <a is="dropdown-toggle">
-          <%= image_tag current_user.gravatar, alt: current_user.email, class: "gravatar" %>
-          <i class="ion-arrow-down-b"></i>
+          <%= gravatar current_user.email %>
+          <%= icon_tag "arrow-down-b" %>
         </a>
 
         <ul is="dropdown-menu" width="150">

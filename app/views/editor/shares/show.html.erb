@@ -1,0 +1,42 @@
+<div class="grid">
+  <div class="grid-item 1/2">
+    <div class="margin-bottom">
+      <%= link_to editor_document_path(@document) do %>
+        <%= icon_tag "chevron-left", "margin-1/4-right" %>
+        <%= @document.title %>
+      <% end %>
+    </div>
+
+    <ul class="list-reset">
+      <% @document.collaborators.each do |collaborator| %>
+        <li class="margin-bottom">
+          <div class="grid grid-middle grid-pair">
+            <div class="grid-item 3/4">
+              <div class="media media-middle media-1/2">
+                <%= gravatar collaborator.email, size: 40 %>
+                <div class="media-body">
+                  <%= collaborator.email %>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-item 1/4">
+              <% unless @document.owner?(collaborator) %>
+                <%= link_to (icon_tag "close", "h4"),
+                  editor_document_share_path(@document, email: collaborator.email),
+                  method: :delete,
+                  class: "text-negative" %>
+              <% end %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+      <li class="padding-2/1-left">
+        <%= form_tag [:editor, @document, :share] do %>
+          <%= text_field_tag :email, nil, class: "1/2" %>
+          <%= submit_tag "Invite" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
