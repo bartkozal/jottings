@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
+  namespace :editor do
+    resources :documents, except: [:index, :show]
+  end
+
   constraints Clearance::Constraints::SignedIn.new do
     root to: "editor/documents#new"
-
-    namespace :editor do
-      resources :documents, except: [:index, :show]
-    end
   end
 
   constraints Clearance::Constraints::SignedOut.new do
