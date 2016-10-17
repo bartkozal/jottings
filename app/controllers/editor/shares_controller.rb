@@ -11,7 +11,7 @@ class Editor::SharesController < EditorController
 
     if collaboration.save
       redirect_to editor_document_share_path(@document),
-        success: "#{params[:email]} has been added to the document"
+        flash: { success: "#{params[:email]} has been added to the document" }
     else
       redirect_to editor_document_share_path(@document),
         alert: "#{params[:email]} doesn't have an account"
