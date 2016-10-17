@@ -29,8 +29,4 @@ class Editor::SharesController < EditorController
   def find_user
     @user = User.find_by(email: params[:email])
   end
-
-  def share_params
-    params.require(:email, :document_id)
-  end
 end

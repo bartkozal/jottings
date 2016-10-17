@@ -3,7 +3,7 @@
     <div class="grid grid-bottom grid-pair margin-bottom">
       <div class="grid-item 1/2">
         <% if @document.owner?(current_user) %>
-          <%= link_to "Share", editor_document_share_path(document), class: "btn" %>
+          <%= link_to "Share", editor_document_share_path(document) %>
         <% end %>
       </div>
       <div class="grid-item 1/2">
