@@ -21,7 +21,12 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
-  gem 'byebug', platform: :mri
+  gem 'byebug'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'faker'
+  gem 'launchy'
+  gem 'poltergeist'
 end
 
 group :development do
