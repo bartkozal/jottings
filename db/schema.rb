@@ -10,17 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017131809) do
+ActiveRecord::Schema.define(version: 20161017141352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "documents", force: :cascade do |t|
+  create_table "collaborations", force: :cascade do |t|
     t.integer  "user_id"
+    t.integer  "document_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["document_id"], name: "index_collaborations_on_document_id", using: :btree
+    t.index ["user_id"], name: "index_collaborations_on_user_id", using: :btree
+  end
+
+  create_table "documents", force: :cascade do |t|
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_documents_on_user_id", using: :btree
+    t.integer  "owner_id"
+    t.index ["owner_id"], name: "index_documents_on_owner_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,5 +43,6 @@ ActiveRecord::Schema.define(version: 20161017131809) do
     t.index ["remember_token"], name: "index_users_on_remember_token", using: :btree
   end
 
-  add_foreign_key "documents", "users"
+  add_foreign_key "collaborations", "documents"
+  add_foreign_key "collaborations", "users"
 end

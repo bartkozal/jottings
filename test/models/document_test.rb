@@ -7,4 +7,14 @@ class DocumentTest < ActiveSupport::TestCase
 
     assert_equal "First Line", document.title
   end
+
+  test "#assign_to" do
+    user = User.new
+    document = Document.new
+
+    document.assign_to(user)
+
+    assert_equal document.owner, user
+    assert_includes document.collaborators, user
+  end
 end

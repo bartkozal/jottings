@@ -4,7 +4,9 @@ class Editor::DocumentsController < EditorController
   end
 
   def create
-    @document = current_user.documents.new(document_params)
+    @document = Document.new(document_params)
+    @document.assign_to(current_user)
+
     if @document.save
       redirect_to edit_editor_document_path(@document)
     else
