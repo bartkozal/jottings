@@ -1,8 +1,11 @@
 <div class="grid">
   <div class="grid-item 3/4">
     <%= form_for [:editor, document], method: form_method, html: { class: 'form-stacked' } do |form| %>
-      <%= form.text_field :title, class: "1/1 margin-bottom", placeholder: "# Title" %>
-      <%= form.text_area :body, class: "1/1 margin-bottom" %>
+      <%= form.text_field :title, class: "1/1 margin-bottom", placeholder: "Title" %>
+      <%= form.text_area :body, class: "1/1 margin-bottom",
+                                placeholder: "Body",
+                                is: "editor",
+                                ref: "editor" %>
 
       <div>
         <%= form.submit "Save" %>

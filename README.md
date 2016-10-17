@@ -3,7 +3,7 @@
 ## Dependencies
 
 - Ruby: `2.3.x`
-- PostgresQL: `9.5.x`
+- PostgreSQL: `9.5.x`
 
 ## Setup
 
