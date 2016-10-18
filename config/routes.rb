@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :editor do
     resources :documents, except: [:index, :edit] do
-      resource :share, only: [:show, :create, :destroy]
+      resource :share, controller: "collaborations", only: [:show, :create, :destroy]
     end
   end
 
