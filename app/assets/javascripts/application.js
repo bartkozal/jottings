@@ -3,13 +3,15 @@
 //= require turbolinks
 //= require vue/vue
 //= require_tree ./components
+//= require action_cable
 //= require_self
-//= require cable
 
-this.App = {};
+this.App = {
+  cable: ActionCable.createConsumer()
+};
 
 const onLoad = () => {
-  App.vue = new Vue({
+  new Vue({
     el: "#v-app"
   });
 };

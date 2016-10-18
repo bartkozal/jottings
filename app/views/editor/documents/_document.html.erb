@@ -16,7 +16,9 @@
     </div>
 
     <%= form_for [:editor, document], method: form_method, html: { class: 'form-stacked' } do |form| %>
-      <%= form.text_area :body, class: "1/1 margin-bottom", is: "editor", ref: "editor" %>
+      <%= form.text_area :body, class: "1/1 margin-bottom",
+                                is: "editor",
+                                "document": document.id %>
       <div>
         <%= form.submit "Save" %>
       </div>

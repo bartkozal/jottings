@@ -1,14 +1,15 @@
 # Be sure to restart your server when you modify this file. Action Cable runs in a loop that does not support auto reloading.
 class DocumentChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "document"
+    @document = current_user.documents.find(params[:id])
+    stream_for @document
   end
 
   def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
+    stop_all_streams
   end
 
   def update(data)
-    ActionCable.server.broadcast 'document', body: data["body"]
+    DocumentChannel.broadcast_to @document, body: data["body"]
   end
 end
