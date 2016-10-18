@@ -4,7 +4,7 @@ FactoryGirl.define do
       has_document false
     end
 
-    email Faker::Internet.email
+    sequence(:email) { |n| Faker::Internet.email(n) }
     password Faker::Internet.password
 
     after(:create) do |user, evaluator|

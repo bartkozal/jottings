@@ -6,9 +6,9 @@ require 'capybara/rails'
 require 'capybara/poltergeist'
 
 class ActiveSupport::TestCase
-  self.use_transactional_tests = false
-
   include FactoryGirl::Syntax::Methods
+
+  self.use_transactional_tests = false
 end
 
 class ActionDispatch::IntegrationTest
