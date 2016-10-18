@@ -10,6 +10,6 @@ class DocumentChannel < ApplicationCable::Channel
   end
 
   def update(data)
-    DocumentChannel.broadcast_to @document, body: data["body"]
+    self.class.broadcast_to @document, body: data["body"]
   end
 end

@@ -4,7 +4,7 @@
       <div class="grid grid-pair">
         <div class="grid-item 7/9">
           <%= link_to editor_document_path(document) do %>
-            <div class="media media-middle media-1/3">
+            <div class="media media-middle media-1/2">
               <%= icon_tag "document-text", "h3" %>
               <div class="media-body"><%= document.title %></div>
             </div>
@@ -23,13 +23,13 @@
   <% end %>
 </ul>
 
-<ul class="list-reset">
-  <li>
-    <%= link_to new_editor_document_path do %>
-      <div class="media media-middle media-1/3">
-        <%= icon_tag "document", "h3" %>
-        <div class="media-body">New document</div>
-      </div>
-    <% end %>
-  </li>
-</ul>
+
+<%= form_for [:editor, Document.new] do |f| %>
+  <div class="media media-middle media-1/3 text-white">
+    <%= icon_tag "document", "h3" %>
+    <div class="media-body">
+      <%= f.hidden_field :body, value: "Untitled" %>
+      <%= f.submit "New document", class: "btn-reset" %>
+    </div>
+  </div>
+<% end %>

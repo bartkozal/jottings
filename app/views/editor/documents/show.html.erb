@@ -1,1 +1,31 @@
-<%= render "document", document: @document, form_method: :put %>
+<div class="grid">
+  <div class="grid-item 3/4">
+    <div class="grid grid-bottom grid-pair margin-bottom">
+      <div class="grid-item 1/2">
+        <% if @document.owner?(current_user) %>
+          <%= link_to "Share", editor_document_share_path(@document) %>
+        <% end %>
+      </div>
+      <div class="grid-item 1/2">
+        <ul class="collaborators">
+          <% @document.collaborators.each do |collaborator| %>
+            <li><%= gravatar_tag collaborator.email %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+
+    <%= form_for [:editor, @document], method: :put, html: { class: 'form-stacked' } do |form| %>
+      <%= form.text_area :body, class: "1/1 margin-bottom",
+                                is: "editor",
+                                "document": @document.id %>
+      <div>
+        <%= form.submit "Save" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="grid-item 1/4">
+    <!-- track edits -->
+  </div>
+</div>

@@ -6,7 +6,6 @@ class Editor::DocumentsController < EditorController
   end
 
   def new
-    @document = Document.new
   end
 
   def create
@@ -37,6 +36,6 @@ class Editor::DocumentsController < EditorController
   private
 
   def document_params
-    params.require(:document).permit(:title, :body)
+    params.require(:document).permit(:body)
   end
 end
