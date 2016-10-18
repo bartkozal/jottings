@@ -9,7 +9,7 @@
       <div class="grid-item 1/2">
         <ul class="collaborators">
           <% @document.collaborators.each do |collaborator| %>
-            <li><%= gravatar(collaborator.email) %></li>
+            <li><%= gravatar_tag collaborator.email %></li>
           <% end %>
         </ul>
       </div>
