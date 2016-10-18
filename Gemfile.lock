@@ -102,6 +102,7 @@ GEM
       guard (~> 2.8)
       guard-compat (~> 1.0)
       multi_json (~> 1.8)
+    hashids (1.0.2)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
     jbuilder (2.6.0)
@@ -235,6 +236,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   guard-livereload
+  hashids
   jbuilder (~> 2.5)
   jquery-rails
   launchy

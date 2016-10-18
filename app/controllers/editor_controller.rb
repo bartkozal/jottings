@@ -5,7 +5,7 @@ class EditorController < ApplicationController
   protected
 
   def find_document(arg = params[:id])
-    @document = current_user.documents.includes(:collaborators).find(arg)
+    @document = current_user.documents.includes(:collaborators).find(MaskedId.decode(arg))
   end
 
   def require_ownership

@@ -13,6 +13,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 gem 'clearance'
+gem 'hashids'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-hocus-pocus', '0.3.2'

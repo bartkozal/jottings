@@ -15,4 +15,8 @@ class Document < ApplicationRecord
   def title
     body.lines.first.strip
   end
+
+  def to_param
+    MaskedId.encode(id)
+  end
 end
