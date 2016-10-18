@@ -6,9 +6,11 @@
   To be emailed a link to reset your password, please enter your email address.
 </p>
 
-<%= form_for :password, url: passwords_path, html: { class: "form-inline" } do |form| %>
+<%= form_for :password, url: passwords_path, html: { class: "form-stacked" } do |form| %>
   <%= form.label :email, "Email address:" %>
-  <%= form.text_field :email, type: "email" %>
+  <%= form.text_field :email, type: "email", class: "1/1" %>
 
-  <%= form.submit "Reset password" %>
+  <div>
+    <%= form.submit "Reset password" %>
+  </div>
 <% end %>
