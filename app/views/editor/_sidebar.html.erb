@@ -5,7 +5,11 @@
         <div class="grid-item 7/9">
           <%= link_to editor_document_path(document) do %>
             <div class="media media-middle media-1/2">
-              <%= icon_tag "document-text", "h3" %>
+              <% if document.owner?(current_user) %>
+                <%= icon_tag "document-text", "h3" %>
+              <% else %>
+                <%= icon_tag "person-stalker", "h3" %>
+              <% end %>
               <div class="media-body"><%= document.title %></div>
             </div>
           <% end %>
