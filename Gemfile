@@ -6,13 +6,11 @@ gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
-gem 'autoprefixer-rails'
-gem 'codemirror-rails'
-
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-
+gem 'autoprefixer-rails'
+gem 'codemirror-rails'
 gem 'clearance'
 gem 'hashids'
 
@@ -29,6 +27,7 @@ group :development, :test do
   gem 'faker'
   gem 'launchy'
   gem 'poltergeist'
+  gem 'database_rewinder'
 end
 
 group :development do

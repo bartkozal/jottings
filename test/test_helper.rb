@@ -22,5 +22,6 @@ class ActionDispatch::IntegrationTest
   def teardown
     Capybara.reset_sessions!
     Capybara.use_default_driver
+    DatabaseRewinder.clean
   end
 end
