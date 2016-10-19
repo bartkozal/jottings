@@ -13,7 +13,7 @@ class Document < ApplicationRecord
   end
 
   def title
-    body.lines.first.strip
+    body.lines.first.strip.remove(/\A\W+\s+/)
   end
 
   def to_param
