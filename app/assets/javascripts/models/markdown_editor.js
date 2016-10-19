@@ -5,8 +5,14 @@
 
 class MarkdownEditor {
   constructor(el) {
-    CodeMirror.fromTextArea(el, {
+    App.editor = CodeMirror.fromTextArea(el, {
       mode: "gfm"
+    });
+
+    App.editor.on("change", (editor, change) => {
+      if (change.origin != "setValue") {
+          App.document.update(editor.getValue());
+      }
     });
   }
 }

@@ -1,15 +1,11 @@
 Vue.component('editor', {
   props: ['document'],
-  methods: {
-    update() {
-      App.document.update(this.$el.value);
-    }
-  },
   mounted() {
-    new DocumentChannel(this.document, this.$el);
     new MarkdownEditor(this.$el);
+    new DocumentChannel(this.document);
+
   },
-  template: '<textarea @keyup="update">' +
-              '<slot></slot>'            +
+  template: '<textarea>'      +
+              '<slot></slot>' +
             '</textarea>'
 });
