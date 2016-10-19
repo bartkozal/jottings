@@ -6,19 +6,8 @@ Vue.component('editor', {
     }
   },
   mounted() {
-    let self = this;
-    App.document = App.cable.subscriptions.create({
-      channel: "DocumentChannel",
-      id: self.document
-    },{
-      received(data) {
-        self.$el.value = data.body;
-      },
-
-      update(body) {
-        this.perform('update', { body: body });
-      }
-    });
+    new DocumentChannel(this.document, this.$el);
+    new MarkdownEditor(this.$el);
   },
   template: '<textarea @keyup="update">' +
               '<slot></slot>'            +

@@ -1,9 +1,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require vue/vue
-//= require_tree ./components
 //= require action_cable
+//= require vue/vue
+//= require_tree ./channels
+//= require_tree ./models
+//= require_tree ./components
 //= require_self
 
 this.App = {
