@@ -1,7 +1,7 @@
 <div class="grid">
   <div class="grid-item 3/4">
     <div class="grid grid-pair grid-middle margin-bottom">
-      <div class="grid-item 1/2">
+      <div class="grid-item 3/4">
         <ul class="list-divided text-small">
           <li class="text-muted">
             Last edited <%= time_ago_in_words(@document.updated_at) %> ago by ???
@@ -14,7 +14,7 @@
         </ul>
       </div>
 
-      <div class="grid-item 1/2">
+      <div class="grid-item 1/4">
         <ul class="collaborators">
           <% @document.collaborators.each do |collaborator| %>
             <li><%= gravatar_tag collaborator.email %></li>
