@@ -1,11 +1,19 @@
 <div class="grid">
   <div class="grid-item 3/4">
-    <div class="grid grid-bottom grid-pair margin-bottom">
+    <div class="grid grid-pair grid-middle margin-bottom">
       <div class="grid-item 1/2">
-        <% if @document.owner?(current_user) %>
-          <%= link_to "Share", editor_document_share_path(@document) %>
-        <% end %>
+        <ul class="list-divided text-small">
+          <li class="text-muted">
+            Last edited <%= time_ago_in_words(@document.updated_at) %> ago by ???
+          </li>
+          <li>
+            <% if @document.owner?(current_user) %>
+              <%= link_to "Share", editor_document_share_path(@document), class: "margin-bottom" %>
+            <% end %>
+          </li>
+        </ul>
       </div>
+
       <div class="grid-item 1/2">
         <ul class="collaborators">
           <% @document.collaborators.each do |collaborator| %>
