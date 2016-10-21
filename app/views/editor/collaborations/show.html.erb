@@ -23,7 +23,7 @@
             <div class="grid-item 1/4">
               <% unless @document.owner?(collaborator) %>
                 <%= link_to (icon_tag "close", "h4"),
-                  editor_document_share_path(@document, email: collaborator.email),
+                  editor_document_share_path(@document, user_email: collaborator.email),
                   method: :delete,
                   class: "text-negative" %>
               <% end %>
@@ -32,9 +32,9 @@
         </li>
       <% end %>
       <li class="padding-2/1-left">
-        <%= form_tag [:editor, @document, :share] do %>
-          <%= text_field_tag :email, nil, class: "1/2" %>
-          <%= submit_tag "Invite" %>
+        <%= form_for @collaboration, url: editor_document_share_path(@document) do |form| %>
+          <%= form.text_field :user_email, class: "1/2" %>
+          <%= form.submit "Invite" %>
         <% end %>
       </li>
     </ul>

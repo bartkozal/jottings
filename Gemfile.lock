@@ -238,6 +238,7 @@ DEPENDENCIES
   codemirror-rails
   coffee-rails (~> 4.2)
   database_rewinder
+  email_validator
   factory_girl_rails
   faker
   guard-livereload

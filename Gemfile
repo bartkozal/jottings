@@ -13,6 +13,7 @@ gem 'autoprefixer-rails'
 gem 'codemirror-rails'
 gem 'clearance'
 gem 'hashids'
+gem 'email_validator'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-hocus-pocus', '0.3.2'
