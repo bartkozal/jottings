@@ -1,7 +1,7 @@
 <h2>Sign up</h2>
 
 <%= form_for @user, html: { class: "form-stacked" } do |form| %>
-  <%= form.label :email %>
+  <%= form.label :email, "E-mail" %>
   <%= form.text_field :email, type: 'email', class: "1/1" %>
 
   <%= form.label :password %>

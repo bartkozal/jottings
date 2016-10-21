@@ -24,4 +24,4 @@ Runtime (production) dependencies:
 
 ## Deployment
 
-1. Run `git push heroku master
+...

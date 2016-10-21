@@ -3,6 +3,12 @@ class Document < ApplicationRecord
   has_many :collaborations, dependent: :destroy
   has_many :collaborators, source: :user, through: :collaborations
 
+  class << self
+    def last
+      order(:created_at).last
+    end
+  end
+
   def assign_to(user)
     self.owner = user
     self.collaborators << user

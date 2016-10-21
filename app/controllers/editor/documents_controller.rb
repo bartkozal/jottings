@@ -6,8 +6,8 @@ class Editor::DocumentsController < EditorController
   end
 
   def index
-    if last_document = current_user.documents.order(:updated_at).last
-      redirect_to editor_document_path(last_document)
+    if document = current_user.last_document
+      redirect_to editor_document_path(document)
     end
   end
 
