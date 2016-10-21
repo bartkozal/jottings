@@ -14,7 +14,7 @@ class ShareDocumentTest < ActionDispatch::IntegrationTest
     visit root_path(as: @user_b)
     click_link "", href: editor_document_path(@document), match: :first
     click_link "Share"
-    fill_in "email", with: @user_a.email
+    fill_in "collaboration_user_email", with: @user_a.email
     click_button "Invite"
     assert page.has_content?(@user_a.email)
 
