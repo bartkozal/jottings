@@ -5,7 +5,10 @@ class Editor::DocumentsController < EditorController
   def show
   end
 
-  def new
+  def index
+    if last_document = current_user.documents.order(:updated_at).last
+      redirect_to editor_document_path(last_document)
+    end
   end
 
   def create
@@ -29,7 +32,7 @@ class Editor::DocumentsController < EditorController
 
   def destroy
     @document.destroy
-    redirect_to new_editor_document_path,
+    redirect_to editor_documents_path,
       notice: "Document \"#{@document.title}\" has been removed"
   end
 

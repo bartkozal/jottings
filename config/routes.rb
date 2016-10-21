@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   namespace :editor do
-    resources :documents, except: [:index, :edit] do
+    resources :documents, except: [:new, :edit] do
       resource :share, controller: "collaborations", only: [:show, :create, :destroy]
     end
   end
 
   constraints Clearance::Constraints::SignedIn.new do
-    root to: "editor/documents#new"
+    root to: "editor/documents#index"
   end
 
   constraints Clearance::Constraints::SignedOut.new do
