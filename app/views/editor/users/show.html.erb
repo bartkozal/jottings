@@ -1,5 +1,7 @@
 <div class="grid">
-  <div class="grid-item 1/2">
+  <div class="grid-item 3/4">
+    <h2>Settings</h2>
+
     <%= form_for current_user, url: editor_profile_path, method: :patch, html: { class: "form-stacked" } do |f| %>
       <%= f.label :name do %>
         Name
