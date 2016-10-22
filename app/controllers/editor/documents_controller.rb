@@ -12,7 +12,7 @@ class Editor::DocumentsController < EditorController
   end
 
   def create
-    @document = Document.new(body: "Untitled")
+    @document = Document.new(body: "# Untitled")
     @document.assign_to(current_user)
 
     if @document.save
@@ -33,7 +33,7 @@ class Editor::DocumentsController < EditorController
   def destroy
     @document.destroy
     redirect_to editor_documents_path,
-      notice: "Document \"#{@document.title}\" has been removed"
+      alert: "Document \"#{@document.title}\" has been removed"
   end
 
   private

@@ -6,7 +6,7 @@ class Editor::UsersController < EditorController
 
   def update
     if current_user.update(user_params)
-      redirect_to editor_profile_path, notice: "Settings updated"
+      redirect_to editor_profile_path, flash: { success: "Settings updated" }
     else
       render :show
     end

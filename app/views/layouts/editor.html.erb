@@ -5,12 +5,12 @@
         <%= render "sidebar" %>
       </div>
 
-      <div class="grid-item 4/5 editor-content">
-        <div class="text-right margin-bottom">
-            <%= render "navbar_menu" %>
-        </div>
-
+      <div class="grid-item 3/5 editor-content">
         <%= yield %>
+      </div>
+
+      <div class="grid-item 1/5 text-right">
+        <%= render "navbar_menu" %>
       </div>
     </div>
   </div>

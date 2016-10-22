@@ -1,11 +1,11 @@
-<ul class="list-inline navbar-menu">
+<ul class="list-inline navbar-menu padding-1/2">
   <li><%= link_to "Pricing", "#" %></li>
   <% if signed_in? %>
     <li><%= link_to "Help", "#" %></li>
     <li>
       <dropdown>
         <a is="dropdown-toggle">
-          <%= gravatar_tag current_user.email %>
+          <%= gravatar_tag current_user.email, size: 52 %>
           <%= icon_tag "arrow-down-b" %>
         </a>
 

@@ -22,7 +22,7 @@ class Editor::CollaborationsController < EditorController
   def destroy
     @document.collaborators.delete(@user)
     redirect_to editor_document_share_path(@document),
-      notice: "#{@user} has been removed from the document"
+      alert: "#{@user} has been removed from the document"
   end
 
   private
