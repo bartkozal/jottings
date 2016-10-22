@@ -12,10 +12,18 @@
 
 this.App = {
   cable: ActionCable.createConsumer(),
-  bus: new Vue()
+  bus: new Vue(),
+  editor: null,
+  intervals: {
+    editorAutosave: null,
+    editorAutosaveBox: null
+  }
 };
 
 const onLoad = () => {
+  window.clearInterval(App.intervals.editorAutosave);
+  window.clearInterval(App.intervals.editorAutosaveBox);
+
   new Vue({
     el: "#v-app"
   });

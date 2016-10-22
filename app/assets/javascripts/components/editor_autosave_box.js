@@ -2,7 +2,7 @@ Vue.component('editor-autosave-box', {
   created() {
     App.bus.$on("documentSaved", () => {
       this.isVisible = true;
-      window.setTimeout(() => {
+      App.intervals.editorAutosaveBox = setTimeout(() => {
         this.isVisible = false;
       }, 3000);
     });
