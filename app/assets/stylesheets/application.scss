@@ -10,6 +10,7 @@ $color-secondary: #f35b25;
 $color-body: #fdfcfc;
 $color-ui: #e8e2e2;
 
+$color-cautionary: #ffdc00;
 $color-brand: $color-primary;
 $color-btn: $color-primary;
 
@@ -26,4 +27,5 @@ $z-index-dropdown: 1;
         'transition',
         'dropdown',
         'form',
-        'turbolinks';
+        'turbolinks',
+        'box';

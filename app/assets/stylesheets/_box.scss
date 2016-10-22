@@ -1,0 +1,10 @@
+.box-autosave {
+  position: fixed;
+  right: $spacing-unit;
+  bottom: 0;
+  padding-right: $spacing-unit;
+  padding-left: $spacing-unit;
+  border-top-left-radius: $ui-border-radius * 3;
+  border-top-right-radius: $ui-border-radius * 3;
+  background-color: $color-cautionary;
+}

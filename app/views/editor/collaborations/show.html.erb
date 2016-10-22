@@ -11,7 +11,7 @@
       <% @document.collaborators.each do |collaborator| %>
         <li class="margin-bottom">
           <div class="grid grid-middle grid-pair">
-            <div class="grid-item 2/3">
+            <div class="grid-item 1/2">
               <div class="media media-middle media-1/2">
                 <%= gravatar_tag collaborator.email, size: 40 %>
                 <div class="media-body">
@@ -20,7 +20,7 @@
               </div>
             </div>
 
-            <div class="grid-item 1/3">
+            <div class="grid-item 1/2">
               <% unless @document.owner?(collaborator) %>
                 <ul class="list-divided">
                   <li>

@@ -166,6 +166,7 @@ GEM
     rails-assets-hocus-pocus (0.3.2)
     rails-assets-ionicons (2.0.1)
     rails-assets-vue (2.0.3)
+    rails-assets-vue-resource (1.0.3)
     rails-dom-testing (2.0.1)
       activesupport (>= 4.2.0, < 6.0)
       nokogiri (~> 1.6.0)
@@ -257,6 +258,7 @@ DEPENDENCIES
   rails-assets-hocus-pocus (= 0.3.2)!
   rails-assets-ionicons (= 2.0.1)!
   rails-assets-vue (= 2.0.3)!
+  rails-assets-vue-resource (= 1.0.3)!
   rb-readline
   sass-rails (~> 5.0)
   selenium-webdriver
