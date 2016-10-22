@@ -20,7 +20,7 @@ class ShareDocumentTest < ActionDispatch::IntegrationTest
 
     visit root_path(as: @user_a)
     click_link "", href: editor_document_path(@document), match: :first
-    within ".collaborators" do
+    within ".editor-content" do
       assert page.has_css?("img[alt=\"Avatar of #{@user_a.email}\"]")
       assert page.has_css?("img[alt=\"Avatar of #{@user_b.email}\"]")
     end

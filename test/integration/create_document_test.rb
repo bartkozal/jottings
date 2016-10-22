@@ -7,8 +7,8 @@ class CreateDocumentTest < ActionDispatch::IntegrationTest
 
   test "creating document" do
     visit root_path(as: @user)
-    click_button "New document"
-    within ".editor-sidebar-item" do
+    click_link "New document"
+    within ".editor-sidebar" do
       assert page.has_content?("Untitled")
     end
     assert_equal editor_document_path(@user.documents.last), current_path

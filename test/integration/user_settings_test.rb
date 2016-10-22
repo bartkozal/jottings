@@ -23,7 +23,7 @@ class UserSettingsTest < ActionDispatch::IntegrationTest
     fill_in "E-mail", with: @new_email
     fill_in "Password", with: @user.password
     click_button "Sign in"
-    assert page.has_button?("New document")
+    assert page.has_link?("New document")
   end
 
   test "updating password" do
@@ -36,6 +36,6 @@ class UserSettingsTest < ActionDispatch::IntegrationTest
     fill_in "E-mail", with: @user.email
     fill_in "Password", with: @new_password
     click_button "Sign in"
-    assert page.has_button?("New document")
+    assert page.has_link?("New document")
   end
 end

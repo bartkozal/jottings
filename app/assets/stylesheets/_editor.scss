@@ -13,25 +13,6 @@
 
   a {
     display: inline-block;
-    color: $color-white;
+    color: $color-primary;
   }
-}
-
-.editor-sidebar-item {
-  .ion-trash-a {
-    display: none;
-    opacity: .75;
-  }
-
-  &:hover .ion-trash-a {
-    display: inline;
-  }
-}
-
-.editor-footer {
-  padding: $spacing-unit / 2;
-  background-color: darken($color-editor-sidebar, 20%);
-  color: $color-white;
-  font-size: $font-size-small;
-  text-align: center;
 }
