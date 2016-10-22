@@ -13,7 +13,7 @@ class Editor::CollaborationsController < EditorController
 
     if @collaboration.save
       redirect_to editor_document_share_path(@document),
-        flash: { success: "#{@collaboration.user_email} has been added to the document" }
+        flash: { success: "#{@collaboration.user} has been added to the document" }
     else
       render :show
     end
@@ -22,7 +22,7 @@ class Editor::CollaborationsController < EditorController
   def destroy
     @document.collaborators.delete(@user)
     redirect_to editor_document_share_path(@document),
-      notice: "#{@user.email} has been removed from the document"
+      notice: "#{@user} has been removed from the document"
   end
 
   private

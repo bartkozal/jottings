@@ -6,4 +6,8 @@ class User < ApplicationRecord
   def last_updated_document
     documents.last_updated
   end
+
+  def to_s
+    name || email
+  end
 end
