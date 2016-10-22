@@ -6,7 +6,7 @@ class Editor::DocumentsController < EditorController
   end
 
   def index
-    if document = current_user.last_document
+    if document = current_user.last_updated_document
       redirect_to editor_document_path(document)
     end
   end

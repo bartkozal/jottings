@@ -4,10 +4,10 @@ class ShareDocumentTest < ActionDispatch::IntegrationTest
   setup do
     @user_a = create(:user)
     @user_b = create(:user, has_document: true)
-    @document = @user_b.documents.last
+    @document = @user_b.last_updated_document
   end
 
-  test "sanity" do
+  test "sharing documents" do
     visit root_path(as: @user_a)
     refute page.has_content?(@document.title)
 

@@ -27,7 +27,7 @@ group :development, :test do
   gem 'capybara'
   gem 'faker'
   gem 'launchy'
-  gem 'poltergeist'
+  gem 'selenium-webdriver'
   gem 'database_rewinder'
 end
 

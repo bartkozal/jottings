@@ -3,7 +3,10 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'clearance/test_unit'
 require 'capybara/rails'
-require 'capybara/poltergeist'
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
+end
 
 class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
@@ -13,11 +16,6 @@ end
 
 class ActionDispatch::IntegrationTest
   include Capybara::DSL
-
-  def setup
-    Capybara.current_driver = :poltergeist
-    Capybara.default_max_wait_time = 5
-  end
 
   def teardown
     Capybara.reset_sessions!

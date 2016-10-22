@@ -4,7 +4,7 @@ class Document < ApplicationRecord
   has_many :collaborators, source: :user, through: :collaborations
 
   class << self
-    def last
+    def last_updated
       order(:created_at).last
     end
   end

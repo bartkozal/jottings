@@ -5,7 +5,7 @@ class CreateDocumentTest < ActionDispatch::IntegrationTest
     @user = create(:user)
   end
 
-  test "sanity" do
+  test "creating document" do
     visit root_path(as: @user)
     click_button "New document"
     within ".editor-sidebar-item" do
