@@ -22,6 +22,10 @@ class Document < ApplicationRecord
     body.lines.first.strip.remove(/\A\W+\s+/)
   end
 
+  def to_s
+    title
+  end
+
   def to_param
     MaskedId.encode(id)
   end

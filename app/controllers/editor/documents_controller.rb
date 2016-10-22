@@ -33,7 +33,7 @@ class Editor::DocumentsController < EditorController
   def destroy
     @document.destroy
     redirect_to editor_documents_path,
-      alert: "Document \"#{@document.title}\" has been removed"
+      alert: "Document \"#{@document}\" has been removed"
   end
 
   private

@@ -1,5 +1,5 @@
 class Editor::CollaborationsController < EditorController
-  before_action -> { find_document(params[:document_id]) }
+  before_action :find_document
   before_action :require_ownership
   before_action :find_user, only: :destroy
 
