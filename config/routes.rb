@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resource :profile, controller: "users", only: [:show, :update, :destroy]
     resources :documents, except: [:new, :edit] do
       resource :share, controller: "collaborations", only: [:show, :create, :destroy]
+      resource :ownership, only: [:update]
       resource :bookmark, only: [:create, :destroy]
     end
   end

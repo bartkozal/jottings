@@ -11,7 +11,7 @@
       <% @document.collaborators.each do |collaborator| %>
         <li class="margin-bottom">
           <div class="grid grid-middle grid-pair">
-            <div class="grid-item 3/4">
+            <div class="grid-item 2/3">
               <div class="media media-middle media-1/2">
                 <%= gravatar_tag collaborator.email, size: 40 %>
                 <div class="media-body">
@@ -20,12 +20,21 @@
               </div>
             </div>
 
-            <div class="grid-item 1/4">
+            <div class="grid-item 1/3">
               <% unless @document.owner?(collaborator) %>
-                <%= link_to (icon_tag "close", "h4"),
-                  editor_document_share_path(@document, user_email: collaborator.email),
-                  method: :delete,
-                  class: "text-negative" %>
+                <ul class="list-divided">
+                  <li>
+                    <%= link_to "Make owner",
+                      editor_document_ownership_path(@document, user_email: collaborator.email),
+                      method: :put %>
+                  </li>
+                  <li>
+                    <%= link_to "Remove",
+                      editor_document_share_path(@document, user_email: collaborator.email),
+                      method: :delete,
+                      class: "text-negative" %>
+                  </li>
+                </ul>
               <% end %>
             </div>
           </div>

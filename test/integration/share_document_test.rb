@@ -4,7 +4,7 @@ class ShareDocumentTest < ActionDispatch::IntegrationTest
   setup do
     @user_a = create(:user)
     @user_b = create(:user, has_document: true)
-    @document = @user_b.last_updated_document
+    @document = @user_b.documents.last
   end
 
   test "sharing documents" do
@@ -24,5 +24,16 @@ class ShareDocumentTest < ActionDispatch::IntegrationTest
       assert page.has_css?("img[alt=\"Avatar of #{@user_a.email}\"]")
       assert page.has_css?("img[alt=\"Avatar of #{@user_b.email}\"]")
     end
+  end
+
+  test "passing ownership" do
+    visit root_path(as: @user_b)
+    click_link "Share"
+    fill_in "collaboration_user_email", with: @user_a.email
+    click_button "Invite"
+    click_link "Make owner"
+    assert_equal editor_document_path(@document), current_path
+    refute page.has_link?("Share")
+    assert_equal @user_a, @user_b.documents.last.owner
   end
 end
