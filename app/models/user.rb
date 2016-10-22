@@ -12,6 +12,14 @@ class User < ApplicationRecord
     bookmarks.find_by(document: document).present?
   end
 
+  def own_shared_documents?
+    documents.joins(:collaborations)
+             .where(owner: self)
+             .group("documents.id")
+             .having("count(collaborations.document_id) > 1")
+             .present?
+  end
+
   def to_s
     name || email
   end

@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :user do
     transient do
       has_document false
+      has_bookmark false
     end
 
     name Faker::Name.name
@@ -13,6 +14,14 @@ FactoryGirl.define do
         document = build(:document)
         document.assign_to(user)
         document.save
+      end
+
+      if evaluator.has_bookmark
+        document = build(:document)
+        document.assign_to(user)
+        document.save
+
+        create(:bookmark, user: user, document: document)
       end
     end
   end
