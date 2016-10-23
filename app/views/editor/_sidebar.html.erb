@@ -2,7 +2,7 @@
 
 <% if current_user.bookmarks.present? %>
   <ul class="list-reset">
-    <% current_user.bookmarks.each do |bookmark| %>
+    <% current_user.bookmarks.sort_by { |b| b.document.title }.each do |bookmark| %>
       <li>
         <%= link_to editor_document_path(bookmark.document) do %>
           <div class="media media-middle media-1/2">
@@ -20,7 +20,7 @@
 <h3>Documents</h3>
 
 <ul class="list-reset">
-  <% current_user.documents.each do |document| %>
+  <% current_user.documents.sort_by(&:title).each do |document| %>
     <li>
       <%= link_to editor_document_path(document) do %>
         <div class="media media-middle media-1/2">

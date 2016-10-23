@@ -21,7 +21,7 @@ class Document < ApplicationRecord
   end
 
   def title
-    body.lines.first.strip.remove(/\A\W+\s+/)
+    body.lines.first.strip.remove(/\A\W+\s+/).truncate(24, separator: " ")
   end
 
   def to_s
