@@ -3,6 +3,8 @@ class Document < ApplicationRecord
   has_many :collaborations, dependent: :destroy
   has_many :collaborators, source: :user, through: :collaborations
 
+  has_paper_trail on: [:create, :update], only: [:body]
+
   class << self
     def last_updated
       order(:created_at).last

@@ -1,7 +1,7 @@
 <div class="grid grid-pair grid-middle margin-1/2-bottom">
   <div class="grid-item 3/5">
     <div class="text-muted">
-      Last edited <%= time_ago_in_words(@document.updated_at) %> ago by ???
+      Last edited <%= time_ago_in_words(@document.updated_at) %> ago by <%= @author %>
     </div>
   </div>
 

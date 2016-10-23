@@ -1,8 +1,10 @@
 class Editor::DocumentsController < EditorController
   before_action :find_document, only: [:show, :update, :destroy]
   before_action :require_ownership , only: :destroy
+  before_action :set_paper_trail_whodunnit
 
   def show
+    @author = User.find(@document.versions.last.whodunnit)
   end
 
   def index
