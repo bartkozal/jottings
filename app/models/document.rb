@@ -7,7 +7,7 @@ class Document < ApplicationRecord
 
   class << self
     def last_updated
-      order(:created_at).last
+      order(:updated_at).last
     end
   end
 

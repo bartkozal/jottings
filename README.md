@@ -4,8 +4,12 @@
 
 Development dependencies:
 
-- Ruby: `2.3.x`
-- PostgreSQL: `9.5.x`
+- Ruby `2.3.x`
+- PostgreSQL `9.5.x`
+
+Test dependencies:
+
+- ChromeDriver
 
 Runtime (production) dependencies:
 
@@ -16,6 +20,7 @@ Runtime (production) dependencies:
 1. Clone the repository
 2. Run `bundle install`
 3. Run `rails db:setup`
+4. Run `rails t` to ensure that tests pass
 
 ## Development
 

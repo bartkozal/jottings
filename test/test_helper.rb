@@ -22,4 +22,8 @@ class ActionDispatch::IntegrationTest
     Capybara.use_default_driver
     DatabaseRewinder.clean
   end
+
+  def use_selenium
+    Capybara.current_driver = :selenium
+  end
 end
