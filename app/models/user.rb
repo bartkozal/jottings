@@ -8,8 +8,12 @@ class User < ApplicationRecord
     documents.last_updated
   end
 
+  def find_bookmark(document)
+    bookmarks.find_by(document: document)
+  end
+
   def bookmarked?(document)
-    bookmarks.find_by(document: document).present?
+    find_bookmark(document).present?
   end
 
   def own_shared_documents?

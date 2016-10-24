@@ -32,7 +32,11 @@ class Editor::DocumentsController < EditorController
   end
 
   def destroy
-    @document.destroy
+    @document.transaction do
+      current_user.find_bookmark(@document)&.destroy
+      @document.destroy
+    end
+
     redirect_to editor_documents_path,
       alert: "Document \"#{@document}\" has been removed"
   end
