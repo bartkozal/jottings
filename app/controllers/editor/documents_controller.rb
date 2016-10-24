@@ -3,7 +3,7 @@ class Editor::DocumentsController < EditorController
   before_action :require_ownership , only: :destroy
 
   def show
-    @author = User.find(@document.versions.last.whodunnit)
+    @changeset = @document.changeset_since_last_seen(current_user)
   end
 
   def index

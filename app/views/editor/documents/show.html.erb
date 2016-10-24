@@ -38,12 +38,12 @@
   </div>
 
   <div class="grid-item 1/4">
-    <div class="media media-1/2">
-      <%= gravatar_tag "", size: 30 %>
-      <div class="media-body text-muted text-small">
-        Added by ??? since your last visit (???).
-        <%= link_to "Mark as read", "#" %>
-      </div>
-    </div>
+    <% if @changeset.present? %>
+      <ul class="editor-changeset">
+        <% @changeset.each do |diff| %>
+          <li>Edited by <%= diff.author %></li>
+        <% end %>
+      </ul>
+    <% end %>
   </div>
 </div>

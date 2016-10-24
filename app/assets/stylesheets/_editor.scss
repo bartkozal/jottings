@@ -17,3 +17,13 @@
     color: $color-white;
   }
 }
+
+.editor-changeset {
+  @extend %list-reset;
+  color: $color-muted;
+  font-size: $font-size-small;
+
+  li + li {
+    margin-top: $spacing-unit;
+  }
+}

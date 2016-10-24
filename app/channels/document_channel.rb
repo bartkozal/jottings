@@ -6,7 +6,7 @@ class DocumentChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    stop_all_streams
+    current_user.touch(:last_seen_at)
   end
 
   def update(data)

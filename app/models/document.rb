@@ -5,6 +5,8 @@ class Document < ApplicationRecord
 
   has_paper_trail on: [:create, :update], only: [:body]
 
+  delegate :version_at, to: :paper_trail
+
   class << self
     def last_updated
       order(:updated_at).last
@@ -22,6 +24,12 @@ class Document < ApplicationRecord
 
   def title
     body.lines.first.strip.remove(/\A\W+\s+/).truncate(24, separator: " ")
+  end
+
+  def changeset_since_last_seen(user)
+    changeset = Document::Changeset.new
+    changeset.document = self
+    changeset.since_last_seen(user)
   end
 
   def to_s
