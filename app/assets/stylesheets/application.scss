@@ -5,14 +5,17 @@
 
 $font-weight-headings: 200;
 
-$color-primary: #0881a3;
-$color-secondary: #f35b25;
+$color-primary: #304352;
 $color-body: #fdfcfc;
 $color-ui: #e8e2e2;
 
 $color-cautionary: #ffdc00;
 $color-brand: $color-primary;
 $color-btn: $color-primary;
+
+$font-family-base: "Open Sans", sans-serif;
+$font-family-editor: "Gentium Basic", serif;
+$font-family-monospace: "Inconsolata", monospace;
 
 $link-underline: false;
 
