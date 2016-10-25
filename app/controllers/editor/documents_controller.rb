@@ -4,11 +4,18 @@ class Editor::DocumentsController < EditorController
 
   def show
     @changeset = @document.changeset_since_last_seen(current_user)
+    cookies.permanent.signed[:last_visited_document] = @document.to_param
   end
 
   def index
+    if param = cookies.signed[:last_visited_document]
+      if document = current_user.documents.find_by(id: MaskedId.decode(param))
+        redirect_to editor_document_path(document) and return
+      end
+    end
+
     if document = current_user.last_updated_document
-      redirect_to editor_document_path(document)
+      redirect_to editor_document_path(document) and return
     end
   end
 
