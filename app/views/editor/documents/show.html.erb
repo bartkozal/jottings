@@ -16,7 +16,9 @@
     <div class="grid-item 1/4">
       <ul class="list-reset margin-bottom">
         <% @document.collaborators.each do |collaborator| %>
-          <li class="margin-1/2-bottom"><%= gravatar_tag collaborator.email, size: 40 %></li>
+          <li class="margin-1/2-bottom">
+            <%= gravatar_tag collaborator.email, size: 40 %>
+          </li>
         <% end %>
       </ul>
       <% if @changeset.present? %>
