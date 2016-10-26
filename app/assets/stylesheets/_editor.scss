@@ -24,6 +24,14 @@
   li:hover .dropdown-toggle {
     visibility: visible;
   }
+
+  [class^="ion-"] {
+    font-size: $font-size-h3;
+  }
+
+  [class^="ion-gear-b"] {
+    font-size: $font-size-h4;
+  }
 }
 
 .editor-changeset {

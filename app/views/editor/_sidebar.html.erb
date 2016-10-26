@@ -6,7 +6,7 @@
       <li>
         <%= link_to editor_document_path(document) do %>
           <div class="media media-middle media-1/2">
-            <%= icon_tag "bookmark", "h3" %>
+            <%= icon_tag "bookmark" %>
             <div class="media-body">
               <%= document %>
             </div>
@@ -27,9 +27,9 @@
       <%= link_to editor_document_path(document) do %>
         <div class="media media-middle media-1/2">
           <% if document.has_collaborators? %>
-            <%= icon_tag "person-stalker", "h3" %>
+            <%= icon_tag "person-stalker" %>
           <% else %>
-            <%= icon_tag "document-text", "h3" %>
+            <%= icon_tag "document-text" %>
           <% end %>
           <div class="media-body">
             <%= document %>
@@ -42,11 +42,26 @@
   <% end %>
 </ul>
 
-<%= link_to editor_documents_path, method: :post do %>
-  <div class="media media-middle media-1/2">
-    <%= icon_tag "document", "h3" %>
-    <div class="media-body">
-      New document
-    </div>
-  </div>
-<% end %>
+<ul class="list-reset">
+  <li>
+    <%= link_to editor_stacks_path, method: :post do %>
+      <div class="media media-middle media-1/2">
+        <%= icon_tag "folder" %>
+        <div class="media-body">
+          New stack
+        </div>
+      </div>
+    <% end %>
+  </li>
+
+  <li>
+    <%= link_to editor_documents_path, method: :post do %>
+      <div class="media media-middle media-1/2">
+        <%= icon_tag "document" %>
+        <div class="media-body">
+          New document
+        </div>
+      </div>
+    <% end %>
+  </li>
+</ul>
