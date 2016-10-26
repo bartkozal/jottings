@@ -1,11 +1,6 @@
 <div class="grid">
   <div class="grid-item 3/4">
-    <div class="margin-bottom">
-      <%= link_to editor_document_path(@document) do %>
-        <%= icon_tag "chevron-left", "padding-1/4-right" %>
-        <%= @document %>
-      <% end %>
-    </div>
+    <h2>Sharing settings for "<%= @document %>"</h2>
 
     <ul class="list-reset">
       <% @document.collaborators.each do |collaborator| %>
