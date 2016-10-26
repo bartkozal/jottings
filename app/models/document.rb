@@ -22,6 +22,10 @@ class Document < ApplicationRecord
     user == owner
   end
 
+  def has_collaborators?
+    collaborators.size > 1
+  end
+
   def title
     body.lines.first.strip.remove(/\A\W+\s+/).truncate(24, separator: " ")
   end
