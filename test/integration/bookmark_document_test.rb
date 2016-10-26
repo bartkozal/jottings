@@ -10,14 +10,14 @@ class BookmarkDocumentTest < ActionDispatch::IntegrationTest
     within ".ion-bookmark + div" do
         assert page.has_content? document.title
     end
-    click_link "Unbookmark"
+    click_link "Unbookmark", match: :first
     refute page.has_css? ".ion-bookmark + div"
   end
 
   test "removing bookmarked document" do
     user = create(:user, has_bookmark: true)
     visit root_path(as: user)
-    click_link "Remove"
+    click_link "Remove", match: :first
     assert user.documents.empty?
   end
 end

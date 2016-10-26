@@ -16,6 +16,14 @@
     display: inline-block;
     color: $color-white;
   }
+
+  .dropdown-toggle {
+    visibility: hidden;
+  }
+
+  li:hover .dropdown-toggle {
+    visibility: visible;
+  }
 }
 
 .editor-changeset {

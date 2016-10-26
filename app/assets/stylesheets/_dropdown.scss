@@ -10,6 +10,7 @@
   @extend %list-reset;
   position: absolute;
   right: $spacing-unit / -4;
+  margin-top: $spacing-unit / -2;
   border: 1px solid $color-ui;
   text-align: left;
   z-index: $z-index-dropdown;
@@ -22,6 +23,7 @@
     display: block;
     padding: ($spacing-unit / 4) ($spacing-unit / 2);
     background-color: $color-white;
+    color: $color-link;
 
     &:hover {
       background-color: $color-brand;

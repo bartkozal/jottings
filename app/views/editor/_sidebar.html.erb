@@ -1,17 +1,19 @@
 <h3>Bookmarks</h3>
 
-<% if current_user.bookmarks.present? %>
+<% if bookmarked_documents = current_user.bookmarked_documents.presence %>
   <ul class="list-reset">
-    <% current_user.bookmarks.sort_by { |b| b.document.title }.each do |bookmark| %>
+    <% bookmarked_documents.sort_by(&:title).each do |document| %>
       <li>
-        <%= link_to editor_document_path(bookmark.document) do %>
+        <%= link_to editor_document_path(document) do %>
           <div class="media media-middle media-1/2">
             <%= icon_tag "bookmark", "h3" %>
             <div class="media-body">
-              <%= bookmark.document %>
+              <%= document %>
             </div>
           </div>
         <% end %>
+
+        <%= render "editor/sidebar/dropdown", document: document %>
       </li>
     <% end %>
   </ul>
@@ -34,6 +36,8 @@
           </div>
         </div>
       <% end %>
+
+      <%= render "editor/sidebar/dropdown", document: document %>
     </li>
   <% end %>
 </ul>

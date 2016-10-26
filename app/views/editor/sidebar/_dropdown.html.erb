@@ -1,0 +1,18 @@
+<dropdown class="float-right">
+  <a is="dropdown-toggle">
+    <%= icon_tag "gear-b", "h5" %>
+  </a>
+
+  <ul is="dropdown-menu" width="150">
+    <% if current_user.bookmarked?(document) %>
+      <li><%= link_to "Unbookmark", editor_document_bookmark_path(document), method: :delete %></li>
+    <% else %>
+      <li><%= link_to "Bookmark", editor_document_bookmark_path(document), method: :post %></li>
+    <% end %>
+
+    <% if document.owner?(current_user) %>
+      <li><%= link_to "Share", editor_document_share_path(document) %></li>
+      <li><%= link_to "Remove", editor_document_path(document), method: :delete, class: "text-negative" %></li>
+    <% end %>
+  </ul>
+</dropdown>

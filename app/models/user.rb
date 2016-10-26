@@ -8,6 +8,10 @@ class User < ApplicationRecord
     documents.last_updated
   end
 
+  def bookmarked_documents
+    bookmarks.map(&:document)
+  end
+
   def find_bookmark(document)
     bookmarks.find_by(document: document)
   end

@@ -1,28 +1,5 @@
 <div class="grid">
   <div class="grid-item 3/4">
-    <ul class="list-divided margin-1/2-bottom">
-      <% if current_user.bookmarked?(@document) %>
-        <li><%= link_to "Unbookmark", editor_document_bookmark_path(@document), method: :delete %></li>
-      <% else %>
-        <li><%= link_to "Bookmark", editor_document_bookmark_path(@document), method: :post %></li>
-      <% end %>
-
-      <% if @document.owner?(current_user) %>
-        <li><%= link_to "Share", editor_document_share_path(@document) %></li>
-        <li><%= link_to "Remove", editor_document_path(@document), method: :delete, class: "text-negative" %></li>
-      <% end %>
-    </ul>
-
-    <ul class="list-inline margin-bottom">
-      <% @document.collaborators.each do |collaborator| %>
-        <li><%= gravatar_tag collaborator.email, size: 40 %></li>
-      <% end %>
-    </ul>
-  </div>
-</div>
-
-<div class="grid">
-  <div class="grid-item 3/4">
     <%= form_for [:editor, @document], method: :put, html: { class: 'form-stacked' } do |form| %>
       <%= form.text_area :body, class: "1/1 margin-bottom",
                                 is: "editor",
@@ -35,13 +12,20 @@
     </div>
   </div>
 
-  <div class="grid-item 1/4">
-    <% if @changeset.present? %>
-      <ul class="editor-changeset">
-        <% @changeset.each do |diff| %>
-          <li>Edited by <%= diff.author %></li>
+  <% if @document.has_collaborators? %>
+    <div class="grid-item 1/4">
+      <ul class="list-reset margin-bottom">
+        <% @document.collaborators.each do |collaborator| %>
+          <li class="margin-1/2-bottom"><%= gravatar_tag collaborator.email, size: 40 %></li>
         <% end %>
       </ul>
-    <% end %>
-  </div>
+      <% if @changeset.present? %>
+        <ul class="editor-changeset">
+          <% @changeset.each do |diff| %>
+            <li>Edited by <%= diff.author %></li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
 </div>
