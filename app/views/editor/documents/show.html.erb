@@ -27,9 +27,7 @@
       <%= form.text_area :body, class: "1/1 margin-bottom",
                                 is: "editor",
                                 "document": @document.to_param %>
-      <div>
-        <%= form.submit "Save" %>
-      </div>
+      <%= form.submit "Save" %>
     <% end %>
 
     <div is="editor-autosave-box">

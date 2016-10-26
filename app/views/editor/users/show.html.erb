@@ -2,25 +2,23 @@
   <div class="grid-item 3/4">
     <h2>Settings</h2>
 
-    <%= form_for current_user, url: editor_profile_path, method: :patch, html: { class: "form-stacked" } do |f| %>
-      <%= f.label :name do %>
+    <%= form_for current_user, url: editor_profile_path, method: :patch, html: { class: "form-stacked" } do |form| %>
+      <%= form.label :name do %>
         Name
         <small class="text-muted">(How you will be named for collaborators)</small>
       <% end %>
-      <%= f.text_field :name, class: "1/1" %>
+      <%= form.text_field :name, class: "1/1" %>
 
-      <%= f.label :email, "E-mail" %>
-      <%= f.email_field :email, class: "1/1" %>
+      <%= form.label :email, "E-mail" %>
+      <%= form.email_field :email, class: "1/1" %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password, class: "1/1" %>
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "1/1" %>
 
-      <div>
-        <%= f.submit "Update" %>
-      </div>
+      <%= form.submit "Update" %>
     <% end %>
 
-    <div class="text-right">
+    <div class="text-right text-small">
       <%= link_to "Remove account", editor_profile_path, method: :delete, class: "text-negative" %>
     </div>
   </div>
