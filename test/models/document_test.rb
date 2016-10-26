@@ -18,6 +18,9 @@ class DocumentTest < ActiveSupport::TestCase
 
     @document.body = "-   First Line"
     assert_equal "First Line", @document.title
+
+    @document.body = nil
+    assert_equal "Untitled", @document.title
   end
 
   test "#assign_to" do

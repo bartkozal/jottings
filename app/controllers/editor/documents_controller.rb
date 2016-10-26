@@ -20,7 +20,7 @@ class Editor::DocumentsController < EditorController
   end
 
   def create
-    @document = Document.new(body: "# Untitled")
+    @document = Document.new
     @document.assign_to(current_user)
 
     if @document.save
