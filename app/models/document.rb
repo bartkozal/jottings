@@ -1,7 +1,7 @@
 class Document < ApplicationRecord
-  belongs_to :owner, class_name: "User"
-  has_many :collaborations, dependent: :destroy
-  has_many :collaborators, source: :user, through: :collaborations
+  include Shareable
+
+  belongs_to :stack, optional: true
 
   has_paper_trail on: [:create, :update], only: [:body]
 
@@ -13,24 +13,11 @@ class Document < ApplicationRecord
     end
   end
 
-  def assign_to(user)
-    self.owner = user
-    self.collaborators << user
-  end
-
-  def owner?(user)
-    user == owner
-  end
-
-  def has_collaborators?
-    collaborators.size > 1
-  end
-
   def title
     if body.present?
       body.lines.first.strip.remove(/\A\W+\s+/).truncate(24, separator: " ")
     else
-      "Untitled"
+      "Untitled document"
     end
   end
 
@@ -45,6 +32,6 @@ class Document < ApplicationRecord
   end
 
   def to_param
-    MaskedId.encode(id)
+    MaskedId.encode(:document, id)
   end
 end

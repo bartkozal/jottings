@@ -1,0 +1,30 @@
+.has-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $z-index-modal;
+}
+
+.modal {
+  display: inline-block;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  padding: $spacing-unit / 2;
+  transform: translate(-50%, -50%);
+  border-radius: $ui-border-radius;
+  background-color: $color-body;
+  color: $color-text;
+}
+
+.modal-backdrop {
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color-black, .8);
+}
+
+.modal-trigger {
+  cursor: pointer;
+}

@@ -5,7 +5,7 @@ class TrackChangesTest < ActionDispatch::IntegrationTest
     @user_a = create(:user, has_document: true)
     @user_b = create(:user)
     @document = @user_a.documents.last
-    create(:collaboration, document: @document, user: @user_b)
+    create(:collaboration, share: @document, user: @user_b)
   end
 
   def disconnect(user)

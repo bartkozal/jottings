@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   include Clearance::User
+
   has_many :collaborations, dependent: :destroy
-  has_many :documents, through: :collaborations
+  has_many :documents, through: :collaborations, source: :share, source_type: "Document"
+  has_many :stacks, through: :collaborations, source: :share, source_type: "Stack"
   has_many :bookmarks, dependent: :destroy
 
   def last_updated_document
@@ -24,7 +26,7 @@ class User < ApplicationRecord
     documents.joins(:collaborations)
              .where(owner: self)
              .group("documents.id")
-             .having("count(collaborations.document_id) > 1")
+             .having("count(collaborations.share_id) > 1")
              .present?
   end
 

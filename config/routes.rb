@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   namespace :editor do
     resource :profile, controller: "users", only: [:show, :update, :destroy]
-    resources :stacks, only: [:create, :udpate, :destroy]
+    resources :stacks, only: [:create, :update, :destroy]
     resources :documents, except: [:new, :edit] do
       resource :share, controller: "collaborations", only: [:show, :create, :destroy]
       resource :ownership, only: [:update]

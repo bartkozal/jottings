@@ -14,4 +14,11 @@ class Editor::BookmarksController < EditorController
     redirect_back fallback_location: editor_document_path(@document),
                   alert: "Bookmark for #{@document} removed"
   end
+
+  private
+
+  def find_document
+    decoded_id = MaskedId.decode(:document, params[:document_id])
+    @document = current_user.documents.find(decoded_id)
+  end
 end

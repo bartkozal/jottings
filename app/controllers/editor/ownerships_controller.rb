@@ -1,5 +1,5 @@
 class Editor::OwnershipsController < EditorController
-  before_action :find_document
+  before_action :find_share
   before_action :require_ownership
 
   def update
@@ -11,6 +11,15 @@ class Editor::OwnershipsController < EditorController
   end
 
   private
+
+  def find_share
+    decoded_id = MaskedId.decode(:document, params[:document_id])
+    @document = current_user.documents.find(decoded_id)
+  end
+
+  def require_ownership
+    raise ApplicationController::NotAuthorized unless @document.owner?(current_user)
+  end
 
   def user_email
     params.require(:user_email)

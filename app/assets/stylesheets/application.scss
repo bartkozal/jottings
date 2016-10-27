@@ -6,7 +6,7 @@
 $font-weight-headings: 200;
 
 $color-primary: #304352;
-$color-body: #fdfcfc;
+$color-body: #fff;
 $color-ui: #e8e2e2;
 $color-link: $color-primary;
 
@@ -20,6 +20,7 @@ $font-family-monospace: "Inconsolata", monospace;
 $link-underline: false;
 
 $z-index-dropdown: 1;
+$z-index-modal: 2;
 
 @import 'hocus-pocus/hocus-pocus',
         'ionicons/ionicons',
@@ -31,4 +32,5 @@ $z-index-dropdown: 1;
         'dropdown',
         'form',
         'turbolinks',
-        'box';
+        'box',
+        'modal';

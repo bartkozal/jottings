@@ -20,10 +20,10 @@ class DocumentTest < ActiveSupport::TestCase
     assert_equal "First Line", @document.title
 
     @document.body = ""
-    assert_equal "Untitled", @document.title
+    assert_equal "Untitled document", @document.title
 
     @document.body = nil
-    assert_equal "Untitled", @document.title
+    assert_equal "Untitled document", @document.title
   end
 
   test "#assign_to" do

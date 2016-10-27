@@ -1,5 +1,5 @@
 class Collaboration < ApplicationRecord
-  belongs_to :document
+  belongs_to :share, polymorphic: true
   belongs_to :user
 
   validates :user_email, email: true, presence: true

@@ -9,7 +9,8 @@ class Editor::DocumentsController < EditorController
 
   def index
     if param = cookies.signed[:last_visited_document]
-      if document = current_user.documents.find_by(id: MaskedId.decode(param))
+      decoded_id = MaskedId.decode(:document, param)
+      if document = current_user.documents.find_by(id: decoded_id)
         redirect_to editor_document_path(document) and return
       end
     end
@@ -26,7 +27,7 @@ class Editor::DocumentsController < EditorController
     if @document.save
       redirect_to editor_document_path(@document)
     else
-      render "new"
+      redirect_to editor_documents_path
     end
   end
 
@@ -34,7 +35,7 @@ class Editor::DocumentsController < EditorController
     if @document.update(document_params)
       redirect_to editor_document_path(@document)
     else
-      render "edit"
+      redirect_to editor_documents_path
     end
   end
 
@@ -49,6 +50,15 @@ class Editor::DocumentsController < EditorController
   end
 
   private
+
+  def find_document
+    decoded_id = MaskedId.decode(:document, params[:id])
+    @document = current_user.documents.includes(:collaborators).find(decoded_id)
+  end
+
+  def require_ownership
+    raise ApplicationController::NotAuthorized unless @document.owner?(current_user)
+  end
 
   def document_params
     params.require(:document).permit(:body)

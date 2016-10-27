@@ -4,16 +4,21 @@
   <ul class="list-reset">
     <% bookmarked_documents.sort_by(&:title).each do |document| %>
       <li>
-        <%= link_to editor_document_path(document) do %>
-          <div class="media media-middle media-1/2">
-            <%= icon_tag "bookmark" %>
-            <div class="media-body">
-              <%= document %>
-            </div>
+        <div class="grid grid-pair">
+          <div class="grid-item 5/6">
+            <%= link_to editor_document_path(document) do %>
+              <div class="media media-middle media-1/2">
+                <%= icon_tag "bookmark" %>
+                <div class="media-body">
+                  <%= document %>
+                </div>
+              </div>
+            <% end %>
           </div>
-        <% end %>
 
-        <%= render "editor/sidebar/dropdown", document: document %>
+          <div class="grid-item 1/6">
+            <%= render "editor/sidebar/dropdown_document", document: document %>
+          </div>
       </li>
     <% end %>
   </ul>
@@ -21,43 +26,73 @@
 
 <h3>Documents</h3>
 
+<ul class="list-reset no-margin-bottom">
+  <% current_user.stacks.sort_by(&:to_s).each do |stack| %>
+    <li>
+      <div class="grid grid-pair">
+        <div class="grid-item 5/6">
+          <div class="media media-middle media-1/2">
+            <%= icon_tag "folder" %>
+            <div class="media-body">
+              <%= stack %>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid-item 1/6">
+          <%= render "editor/sidebar/dropdown_stack", stack: stack %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
 <ul class="list-reset">
   <% current_user.documents.sort_by(&:title).each do |document| %>
     <li>
-      <%= link_to editor_document_path(document) do %>
-        <div class="media media-middle media-1/2">
-          <% if document.has_collaborators? %>
-            <%= icon_tag "person-stalker" %>
-          <% else %>
-            <%= icon_tag "document-text" %>
+      <div class="grid grid-pair">
+        <div class="grid-item 5/6">
+          <%= link_to editor_document_path(document) do %>
+            <div class="media media-middle media-1/2">
+              <% if document.has_collaborators? %>
+                <%= icon_tag "person-stalker" %>
+              <% else %>
+                <%= icon_tag "document-text" %>
+              <% end %>
+              <div class="media-body">
+                <%= document %>
+              </div>
+            </div>
           <% end %>
-          <div class="media-body">
-            <%= document %>
-          </div>
         </div>
-      <% end %>
 
-      <%= render "editor/sidebar/dropdown", document: document %>
+        <div class="grid-item 1/6">
+          <%= render "editor/sidebar/dropdown_document", document: document %>
+        </div>
+      </div>
     </li>
   <% end %>
 </ul>
 
 <ul class="list-reset">
   <li>
-    <%= link_to editor_stacks_path, method: :post do %>
-      <div class="media media-middle media-1/2">
-        <%= icon_tag "folder" %>
-        <div class="media-body">
-          New stack
-        </div>
+    <modal>
+      <div class="media media-middle media-1/2" slot="modal-trigger">
+        <%= icon_tag "plus-round" %>
+        <div class="media-body">New stack</div>
       </div>
-    <% end %>
+
+      <%= form_for [:editor, Stack.new], html: { class: "form-inline" } do |form| %>
+        <%= form.text_field :name, placeholder: "Type stack name..", autofocus: true %>
+        <%= form.submit "Create" %>
+      <% end %>
+    </modal>
   </li>
 
   <li>
     <%= link_to editor_documents_path, method: :post do %>
       <div class="media media-middle media-1/2">
-        <%= icon_tag "document" %>
+        <%= icon_tag "plus-round" %>
         <div class="media-body">
           New document
         </div>
