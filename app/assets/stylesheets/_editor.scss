@@ -32,6 +32,12 @@
   [class^="ion-gear-b"] {
     font-size: $font-size-h4;
   }
+
+  [class^="ion-person-stalker"] {
+    margin-left: $spacing-unit / 4;
+    font-size: $font-size-base;
+    opacity: .5;
+  }
 }
 
 .editor-changeset {
