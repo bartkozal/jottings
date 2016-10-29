@@ -1,0 +1,22 @@
+<% if stack.owner?(current_user) %>
+  <dropdown>
+    <a is="dropdown-toggle">
+      <%= icon_tag "gear-b" %>
+    </a>
+
+    <ul is="dropdown-menu" width="150">
+      <li><%= link_to "Share", editor_stack_share_path(stack) %></li>
+      <li>
+        <modal>
+          <span slot="modal-trigger">Rename</span>
+
+          <%= form_for [:editor, stack], method: :patch, html: { class: "form-inline" } do |form| %>
+            <%= form.text_field :name, placeholder: "Type stack name..", autofocus: true %>
+            <%= form.submit "Update" %>
+          <% end %>
+        </modal>
+      </li>
+      <li><%= link_to "Remove", editor_stack_path(stack), method: :delete, class: "text-negative" %></li>
+    </ul>
+  </dropdown>
+<% end %>

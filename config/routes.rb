@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
   namespace :editor do
     resource :profile, controller: "users", only: [:show, :update, :destroy]
-    resources :stacks, only: [:create, :update, :destroy]
+    resources :stacks, only: [:create, :update, :destroy] do
+      scope module: :stacks do
+        resource :share, controller: "collaborations", only: [:show, :create, :destroy]
+        resource :ownership, only: :update
+      end
+    end
     resources :documents, except: [:new, :edit] do
-      resource :share, controller: "collaborations", only: [:show, :create, :destroy]
-      resource :ownership, only: [:update]
-      resource :bookmark, only: [:create, :destroy]
+      scope module: :documents do
+        resource :share, controller: "collaborations", only: [:show, :create, :destroy]
+        resource :ownership, only: :update
+        resource :bookmark, only: [:create, :destroy]
+      end
     end
   end
 

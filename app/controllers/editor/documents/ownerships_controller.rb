@@ -1,9 +1,9 @@
-class Editor::OwnershipsController < EditorController
-  before_action :find_share
+class Editor::Documents::OwnershipsController < EditorController
+  before_action :find_document
   before_action :require_ownership
 
   def update
-    @user = User.find_by(email: user_email)
+    @user = @document.collaborators.find_by(email: user_email)
     @document.owner = @user
     @document.save
     redirect_to editor_document_path(@document),
@@ -12,7 +12,7 @@ class Editor::OwnershipsController < EditorController
 
   private
 
-  def find_share
+  def find_document
     decoded_id = MaskedId.decode(:document, params[:document_id])
     @document = current_user.documents.find(decoded_id)
   end

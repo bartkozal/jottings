@@ -1,0 +1,46 @@
+<div class="grid">
+  <div class="grid-item 3/4">
+    <h2>Sharing settings for "<%= @stack %>"</h2>
+
+    <ul class="list-reset">
+      <% @stack.collaborators.each do |collaborator| %>
+        <li class="margin-bottom">
+          <div class="grid grid-middle grid-pair">
+            <div class="grid-item 1/2">
+              <div class="media media-middle media-1/2">
+                <%= gravatar_tag collaborator.email, size: 40 %>
+                <div class="media-body">
+                  <%= collaborator.email %>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-item 1/2">
+              <% unless @stack.owner?(collaborator) %>
+                <ul class="list-divided">
+                  <li>
+                    <%= link_to "Make owner",
+                      editor_stack_ownership_path(@stack, user_email: collaborator.email),
+                      method: :put %>
+                  </li>
+                  <li>
+                    <%= link_to "Remove",
+                      editor_stack_share_path(@stack, user_email: collaborator.email),
+                      method: :delete,
+                      class: "text-negative" %>
+                  </li>
+                </ul>
+              <% end %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+      <li class="padding-2/1-left">
+        <%= form_for @collaboration, url: editor_stack_share_path(@stack) do |form| %>
+          <%= form.text_field :user_email, class: "1/2", placeholder: "Type user's email to invite" %>
+          <%= form.submit "Invite" %>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>

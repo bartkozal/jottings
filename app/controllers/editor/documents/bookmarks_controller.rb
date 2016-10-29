@@ -1,4 +1,4 @@
-class Editor::BookmarksController < EditorController
+class Editor::Documents::BookmarksController < EditorController
   before_action :find_document
 
   def create

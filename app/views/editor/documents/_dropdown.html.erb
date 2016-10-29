@@ -4,6 +4,10 @@
   </a>
 
   <ul is="dropdown-menu" width="150">
+    <% if document.owner?(current_user) %>
+      <li><%= link_to "Share", editor_document_share_path(document) %></li>
+    <% end %>
+
     <% if current_user.bookmarked?(document) %>
       <li><%= link_to "Unbookmark", editor_document_bookmark_path(document), method: :delete %></li>
     <% else %>
@@ -11,7 +15,6 @@
     <% end %>
 
     <% if document.owner?(current_user) %>
-      <li><%= link_to "Share", editor_document_share_path(document) %></li>
       <li><%= link_to "Remove", editor_document_path(document), method: :delete, class: "text-negative" %></li>
     <% end %>
   </ul>

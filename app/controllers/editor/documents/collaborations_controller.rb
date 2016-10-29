@@ -1,5 +1,5 @@
-class Editor::CollaborationsController < EditorController
-  before_action :find_share
+class Editor::Documents::CollaborationsController < EditorController
+  before_action :find_document
   before_action :require_ownership
 
   def show
@@ -19,7 +19,7 @@ class Editor::CollaborationsController < EditorController
   end
 
   def destroy
-    @user = User.find_by(email: params[:user_email])
+    @user = @document.collaborators.find_by(email: params[:user_email])
     @document.collaborators.delete(@user)
     redirect_to editor_document_share_path(@document),
       alert: "#{@user} has been removed from the document"
@@ -31,7 +31,7 @@ class Editor::CollaborationsController < EditorController
     params.require(:collaboration).permit(:user_email)
   end
 
-  def find_share
+  def find_document
     decoded_id = MaskedId.decode(:document, params[:document_id])
     @document = current_user.documents.includes(:collaborators).find(decoded_id)
   end
