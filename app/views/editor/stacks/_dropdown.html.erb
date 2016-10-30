@@ -11,8 +11,8 @@
           <span slot="modal-trigger">Rename</span>
 
           <%= form_for [:editor, stack], method: :patch, html: { class: "form-inline" } do |form| %>
-            <%= form.text_field :name, placeholder: "Type stack name..", autofocus: true %>
-            <%= form.submit "Update" %>
+            <%= form.text_field :name, placeholder: "Type stack name..", autofocus: true, id: nil %>
+            <%= form.submit "Rename" %>
           <% end %>
         </modal>
       </li>
