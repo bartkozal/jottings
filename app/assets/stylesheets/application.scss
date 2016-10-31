@@ -7,7 +7,7 @@ $font-weight-headings: 200;
 
 $color-primary: #304352;
 $color-body: #fff;
-$color-ui: #e8e2e2;
+$color-ui: #f4f4f4;
 $color-link: $color-primary;
 
 $color-brand: $color-primary;
@@ -16,6 +16,8 @@ $color-btn: $color-primary;
 $font-family-base: "Open Sans", sans-serif;
 $font-family-editor: "Gentium Basic", serif;
 $font-family-monospace: "Inconsolata", monospace;
+
+$font-size-editor: 1.375rem;
 
 $link-underline: false;
 
@@ -33,4 +35,5 @@ $z-index-modal: 10;
         'form',
         'turbolinks',
         'box',
-        'modal';
+        'modal',
+        'markdown_editor';

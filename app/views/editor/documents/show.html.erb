@@ -3,6 +3,7 @@
     <%= form_for [:editor, @document], method: :put, html: { class: 'form-stacked' } do |form| %>
       <%= form.text_area :body, class: "1/1 margin-bottom",
                                 is: "editor",
+                                placeholder: "Start writing here...",
                                 "document": @document.to_param %>
       <%= form.submit "Save" %>
     <% end %>

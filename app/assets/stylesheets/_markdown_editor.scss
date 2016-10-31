@@ -1,0 +1,9 @@
+.CodeMirror {
+  height: auto;
+  font-family: $font-family-editor;
+  font-size: $font-size-editor;
+}
+
+.CodeMirror-empty {
+  color: $color-muted;
+}
