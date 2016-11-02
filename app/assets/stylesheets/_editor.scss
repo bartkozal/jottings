@@ -21,7 +21,7 @@
     visibility: hidden;
   }
 
-  li:hover .dropdown-toggle {
+  ul > li > .grid:hover > .grid-item > .dropdown > .dropdown-toggle {
     visibility: visible;
   }
 

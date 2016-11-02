@@ -20,4 +20,21 @@ class UserTest < ActiveSupport::TestCase
     user_a.documents.last.update(owner: user_b)
     refute user_a.own_shared_documents?
   end
+
+  test "#tree_view" do
+    user = create(:user, has_document: true)
+    document = user.documents.last
+    stack = create(:stack, name: "Zzz", assign_to: user)
+    empty_stack = create(:stack, name: "Aaa", assign_to: user)
+    in_stack_document_a = create(:document, body: "# Zzz", assign_to: user, stack: stack)
+    in_stack_document_b = create(:document, body: "# Aaa", assign_to: user, stack: stack)
+
+    expected = {
+      empty_stack => [],
+      stack => [in_stack_document_b, in_stack_document_a],
+      document => nil
+    }
+
+    assert_equal expected, user.tree_view
+  end
 end

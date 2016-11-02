@@ -15,3 +15,11 @@
     <%= render "editor/stacks/dropdown", stack: stack %>
   </div>
 </div>
+
+<ul class="list-reset padding-left">
+  <% stack.documents.sort_by(&:title).each do |document| %>
+    <li>
+      <%= render "editor/documents/sidebar_item", document: document, type: :document %>
+    </li>
+  <% end %>
+</ul>

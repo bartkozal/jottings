@@ -11,7 +11,7 @@ class User < ApplicationRecord
   end
 
   def bookmarked_documents
-    bookmarks.map(&:document)
+    bookmarks.includes(:document).order("documents.body").map(&:document)
   end
 
   def find_bookmark(document)
@@ -28,6 +28,14 @@ class User < ApplicationRecord
              .group("documents.id")
              .having("count(collaborations.share_id) > 1")
              .present?
+  end
+
+  def tree_view
+    stacks = self.stacks.includes(:documents).order(:name, "documents.body")
+    documents = self.documents.where(stack: nil).order(:body)
+
+    tree_view = TreeView.new(stacks: stacks, documents: documents)
+    tree_view.arrange
   end
 
   def to_s

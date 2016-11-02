@@ -2,9 +2,9 @@
 
 <% if bookmarked_documents = current_user.bookmarked_documents.presence %>
   <ul class="list-reset">
-    <% bookmarked_documents.sort_by(&:title).each do |document| %>
+    <% bookmarked_documents.each do |document| %>
       <li>
-        <%= render "editor/documents/sidebar_item", document: document, sidebar_icon: "bookmark" %>
+        <%= render "editor/documents/sidebar_item", document: document, type: :bookmark %>
       </li>
     <% end %>
   </ul>
@@ -12,18 +12,14 @@
 
 <h3>Documents</h3>
 
-<ul class="list-reset no-margin-bottom">
-  <% current_user.stacks.sort_by(&:to_s).each do |stack| %>
+<ul class="list-reset margin-bottom">
+  <% current_user.tree_view.each do |key, value| %>
     <li>
-      <%= render "editor/stacks/sidebar_item", stack: stack %>
-    </li>
-  <% end %>
-</ul>
-
-<ul class="list-reset">
-  <% current_user.documents.sort_by(&:title).each do |document| %>
-    <li>
-      <%= render "editor/documents/sidebar_item", document: document, sidebar_icon: "document-text" %>
+      <% if value.nil? %>
+        <%= render "editor/documents/sidebar_item", document: key, type: :document %>
+      <% else %>
+        <%= render "editor/stacks/sidebar_item", stack: key, documents: value %>
+      <% end %>
     </li>
   <% end %>
 </ul>
