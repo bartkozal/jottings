@@ -32,7 +32,7 @@ class User < ApplicationRecord
 
   def tree_view
     stacks = self.stacks.includes(:documents).order(:name, "documents.body")
-    documents = self.documents.where(stack: nil).order(:body)
+    documents = self.documents.includes(:stack).order(:body)
 
     tree_view = TreeView.new(stacks: stacks, documents: documents)
     tree_view.arrange

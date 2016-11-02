@@ -11,6 +11,7 @@ class User::TreeView
       end
 
       @documents.each do |document|
+        next if @stacks.include?(document.stack)
         hash[document] = nil
       end
     end

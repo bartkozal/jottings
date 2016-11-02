@@ -29,4 +29,25 @@ class ShareStackTest < ActionDispatch::IntegrationTest
     refute page.has_link?("Share")
     assert_equal @user_a, @user_b.stacks.last.owner
   end
+
+  test "accessing document shared from the stack" do
+    document = create(:document, assign_to: @user_b, stack: @stack)
+    visit root_path(as: @user_b)
+    within ".editor-sidebar" do
+      assert page.has_content?(document.title)
+      within "ul ul ul" do
+        click_link "Share"
+      end
+    end
+    fill_in "collaboration_user_email", with: @user_a.email
+    click_button "Invite"
+    visit root_path(as: @user_a)
+    within ".editor-sidebar" do
+      assert page.has_content?(document.title)
+    end
+  end
+
+  test "accessing document from the shared stacks" do
+    skip
+  end
 end

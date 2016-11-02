@@ -17,7 +17,7 @@
 </div>
 
 <ul class="list-reset padding-left">
-  <% stack.documents.sort_by(&:title).each do |document| %>
+  <% documents.each do |document| %>
     <li>
       <%= render "editor/documents/sidebar_item", document: document, type: :document %>
     </li>
