@@ -1,6 +1,8 @@
 class Stack < ApplicationRecord
   include Shareable
 
+  has_many :documents
+
   def to_s
     return "Untitled stack" unless name.present?
     name

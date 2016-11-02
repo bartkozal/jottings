@@ -1,0 +1,19 @@
+<div class="grid grid-pair">
+  <div class="grid-item 5/6">
+    <%= link_to editor_document_path(document) do %>
+      <div class="media media-middle media-1/2">
+        <%= icon_tag sidebar_icon %>
+        <div class="media-body">
+          <%= document %>
+          <% if document.has_collaborators? %>
+            <%= icon_tag "person-stalker" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="grid-item 1/6">
+    <%= render "editor/documents/dropdown", document: document %>
+  </div>
+</div>

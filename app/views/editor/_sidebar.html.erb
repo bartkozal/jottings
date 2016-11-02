@@ -4,21 +4,7 @@
   <ul class="list-reset">
     <% bookmarked_documents.sort_by(&:title).each do |document| %>
       <li>
-        <div class="grid grid-pair">
-          <div class="grid-item 5/6">
-            <%= link_to editor_document_path(document) do %>
-              <div class="media media-middle media-1/2">
-                <%= icon_tag "bookmark" %>
-                <div class="media-body">
-                  <%= document %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-
-          <div class="grid-item 1/6">
-            <%= render "editor/documents/dropdown", document: document %>
-          </div>
+        <%= render "editor/documents/sidebar_item", document: document, sidebar_icon: "bookmark" %>
       </li>
     <% end %>
   </ul>
@@ -29,23 +15,7 @@
 <ul class="list-reset no-margin-bottom">
   <% current_user.stacks.sort_by(&:to_s).each do |stack| %>
     <li>
-      <div class="grid grid-pair">
-        <div class="grid-item 5/6">
-          <div class="media media-middle media-1/2">
-            <%= icon_tag "folder" %>
-            <div class="media-body">
-              <%= stack %>
-              <% if stack.has_collaborators? %>
-                <%= icon_tag "person-stalker" %>
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid-item 1/6">
-          <%= render "editor/stacks/dropdown", stack: stack %>
-        </div>
-      </div>
+      <%= render "editor/stacks/sidebar_item", stack: stack %>
     </li>
   <% end %>
 </ul>
@@ -53,25 +23,7 @@
 <ul class="list-reset">
   <% current_user.documents.sort_by(&:title).each do |document| %>
     <li>
-      <div class="grid grid-pair">
-        <div class="grid-item 5/6">
-          <%= link_to editor_document_path(document) do %>
-            <div class="media media-middle media-1/2">
-              <%= icon_tag "document-text" %>
-              <div class="media-body">
-                <%= document %>
-                <% if document.has_collaborators? %>
-                  <%= icon_tag "person-stalker" %>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        </div>
-
-        <div class="grid-item 1/6">
-          <%= render "editor/documents/dropdown", document: document %>
-        </div>
-      </div>
+      <%= render "editor/documents/sidebar_item", document: document, sidebar_icon: "document-text" %>
     </li>
   <% end %>
 </ul>

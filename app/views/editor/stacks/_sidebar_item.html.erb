@@ -1,0 +1,17 @@
+<div class="grid grid-pair">
+  <div class="grid-item 5/6">
+    <div class="media media-middle media-1/2">
+      <%= icon_tag "folder" %>
+      <div class="media-body">
+        <%= stack %>
+        <% if stack.has_collaborators? %>
+          <%= icon_tag "person-stalker" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-item 1/6">
+    <%= render "editor/stacks/dropdown", stack: stack %>
+  </div>
+</div>
