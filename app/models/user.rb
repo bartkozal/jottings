@@ -30,6 +30,12 @@ class User < ApplicationRecord
              .present?
   end
 
+  def find_document_through_collaborations(param)
+    self.documents.includes(:collaborators).find_by(id: param) ||
+      self.stacks.joins(:documents).where("documents.id = ?", param).first
+      &.documents&.includes(:collaborators)&.find(param)
+  end
+
   def tree_view
     stacks = self.stacks.includes(:documents).order(:name, "documents.body")
     documents = self.documents.includes(:stack).order(:body)

@@ -7,7 +7,7 @@ FactoryGirl.define do
     end
 
     name Faker::Name.name
-    sequence(:email) { |n| Faker::Internet.email(n) }
+    sequence(:email) { |n| Faker::Internet.email("#{name}-#{n}") }
     password Faker::Internet.password
 
     after(:create) do |user, evaluator|

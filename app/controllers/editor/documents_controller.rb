@@ -53,7 +53,8 @@ class Editor::DocumentsController < EditorController
 
   def find_document
     decoded_id = MaskedId.decode(:document, params[:id])
-    @document = current_user.documents.includes(:collaborators).find(decoded_id)
+    return if @document = current_user.find_document_through_collaborations(decoded_id)
+    raise ApplicationController::NotAuthorized
   end
 
   def require_ownership

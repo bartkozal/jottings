@@ -37,4 +37,8 @@ class UserTest < ActiveSupport::TestCase
 
     assert_equal expected, user.tree_view
   end
+
+  test "#find_document_through_collaborations" do
+    skip
+  end
 end

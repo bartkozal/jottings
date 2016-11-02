@@ -2,7 +2,7 @@
 class DocumentChannel < ApplicationCable::Channel
   def subscribed
     decoded_id = MaskedId.decode(:document, params[:id])
-    @document = current_user.documents.find(decoded_id)
+    @document = current_user.find_document_through_collaborations(decoded_id)
     stream_for @document
   end
 
