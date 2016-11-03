@@ -13,8 +13,9 @@ class Editor::UsersController < EditorController
   end
 
   def destroy
-    if current_user.own_shared_documents?
-      redirect_to editor_profile_path, alert: "You can't remove the account until you pass the ownership of shared documents."
+    if current_user.own_shares?
+      redirect_to editor_profile_path,
+        alert: "You can't remove the account until you pass the ownership of shared documents and stacks."
     else
       current_user.collaborations.delete_all
       current_user.bookmarks.delete_all

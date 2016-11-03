@@ -22,12 +22,11 @@ class User < ApplicationRecord
     find_bookmark(document).present?
   end
 
-  def own_shared_documents?
-    documents.joins(:collaborations)
-             .where(owner: self)
-             .group("documents.id")
-             .having("count(collaborations.share_id) > 1")
-             .present?
+  def own_shares?
+    documents.joins(:collaborations).where(owner: self).group("documents.id")
+      .having("count(collaborations.share_id) > 1").present? ||
+    stacks.joins(:collaborations).where(owner: self).group("stacks.id")
+      .having("count(collaborations.share_id) > 1").present?
   end
 
   def find_document_through_collaborations(param)

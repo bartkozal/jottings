@@ -8,20 +8,28 @@ class UserTest < ActiveSupport::TestCase
     assert user.bookmarked?(document)
   end
 
-  test "#own_shared_documents?" do
-    user_a = create(:user, has_document: true)
+  test "#own_shares?" do
+    user_a = create(:user, has_document: true, has_stack: true)
     document = user_a.documents.last
-    refute user_a.own_shared_documents?
+    stack = user_a.stacks.last
+    refute user_a.own_shares?
 
     user_b = create(:user)
     document.collaborators << user_b
-    assert user_a.own_shared_documents?
+    assert user_a.own_shares?
 
     user_a.documents.last.update(owner: user_b)
-    refute user_a.own_shared_documents?
+    refute user_a.own_shares?
+
+    stack.collaborators << user_b
+    assert user_a.own_shares?
+
+    user_a.stacks.last.update(owner: user_b)
+    refute user_a.own_shares?
   end
 
   test "#tree_view" do
+    # TODO extract to separate test file
     user = create(:user, has_document: true)
     document = user.documents.last
     stack = create(:stack, name: "Zzz", assign_to: user)
