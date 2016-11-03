@@ -3,14 +3,31 @@
     visibility: hidden;
   }
 
-  .grid:hover > .grid-item > .dropdown > .dropdown-toggle {
+  > .grid:hover > .grid-item > .dropdown > .dropdown-toggle {
     visibility: visible;
   }
 }
 
 .sidebar-item-stack {
   @extend %sidebar-item;
-  cursor: pointer;
+
+  > .grid > .grid-item > .media {
+    cursor: pointer;
+  }
+
+  .sidebar-icon-stack-icon-active {
+    display: none;
+  }
+
+  &.is-active {
+    .sidebar-icon-stack-icon {
+      display: none;
+    }
+
+    .sidebar-icon-stack-icon-active {
+      display: inline;
+    }
+  }
 }
 
 .sidebar-item-document {

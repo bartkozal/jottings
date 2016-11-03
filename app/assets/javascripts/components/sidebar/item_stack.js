@@ -2,30 +2,30 @@ Vue.component("sidebar-item-stack", {
   props: ['stack'],
   data() {
     return {
-      isVisible: false
+      isActive: false
     };
   },
   created() {
-    this.$data.isVisible = JSON.parse(localStorage.getItem(this.stackKey)) || false;
+    this.$data.isActive = JSON.parse(localStorage.getItem(this.stackKey)) || false;
   },
   computed: {
     stackKey() {
       return `stack-${this.stack}`;
     },
-    isVisible: {
+    isActive: {
       get() {
-        return this.$data.isVisible;
+        return this.$data.isActive;
       },
       set(newValue) {
-        this.$data.isVisible = newValue;
+        this.$data.isActive = newValue;
         localStorage.setItem(this.stackKey, newValue);
       }
     }
   },
   template: `
-    <li @click="isVisible = !isVisible" class="sidebar-item-stack" :class="{ 'is-visible': isVisible }">
+    <li class="sidebar-item-stack" :class="{ 'is-active': isActive }">
       <slot></slot>
-      <slot name="sidebar-item-stack-list" v-if="isVisible"></slot>
+      <slot name="sidebar-item-stack-list" v-if="isActive"></slot>
     </li>
   `
 });
