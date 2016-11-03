@@ -9,7 +9,7 @@ class ShareStackTest < ActionDispatch::IntegrationTest
 
   test "sharing stacks" do
     visit root_path(as: @user_a)
-    refute page.has_content?(@stack.name)
+    refute page.has_content?(@stack)
 
     visit root_path(as: @user_b)
     click_link "Share"
@@ -60,5 +60,16 @@ class ShareStackTest < ActionDispatch::IntegrationTest
       click_link(document.title)
     end
     assert_equal editor_document_path(document), current_path
+  end
+
+  test "leaving shared stack" do
+    @stack.collaborators << @user_a
+    visit root_path(as: @user_a)
+    assert page.has_content?(@stack)
+    click_link "Leave"
+    assert page.has_content?("You left the stack \"#{@stack}\"")
+    within ".editor-sidebar" do
+      refute page.has_content?(@stack)
+    end
   end
 end

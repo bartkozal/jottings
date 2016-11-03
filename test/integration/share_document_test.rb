@@ -9,7 +9,7 @@ class ShareDocumentTest < ActionDispatch::IntegrationTest
 
   test "sharing documents" do
     visit root_path(as: @user_a)
-    refute page.has_content?(@document.title)
+    refute page.has_content?(@document)
 
     visit root_path(as: @user_b)
     click_link "Share"
@@ -33,5 +33,16 @@ class ShareDocumentTest < ActionDispatch::IntegrationTest
     assert_equal editor_document_path(@document), current_path
     refute page.has_link?("Share")
     assert_equal @user_a, @user_b.documents.last.owner
+  end
+
+  test "leaving shared document" do
+    @document.collaborators << @user_a
+    visit root_path(as: @user_a)
+    assert page.has_content?(@document)
+    click_link "Leave"
+    assert page.has_content?("You left the document \"#{@document}\"")
+    within ".editor-sidebar" do
+      refute page.has_content?(@document)
+    end
   end
 end

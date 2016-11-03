@@ -1,10 +1,10 @@
-<% if stack.owner?(current_user) %>
-  <dropdown>
-    <a is="dropdown-toggle">
-      <%= icon_tag "gear-b" %>
-    </a>
+<dropdown>
+  <a is="dropdown-toggle">
+    <%= icon_tag "gear-b" %>
+  </a>
 
-    <ul is="dropdown-menu" width="150">
+  <ul is="dropdown-menu" width="150">
+    <% if stack.owner?(current_user) %>
       <li><%= link_to "Share", editor_stack_share_path(stack) %></li>
       <li>
         <modal>
@@ -17,6 +17,8 @@
         </modal>
       </li>
       <li><%= link_to "Remove", editor_stack_path(stack), method: :delete, class: "text-negative" %></li>
-    </ul>
-  </dropdown>
-<% end %>
+    <% else %>
+      <li><%= link_to "Leave", editor_stack_leave_path(stack), method: :post, class: "text-negative" %></li>
+    <% end %>
+  </ul>
+</dropdown>

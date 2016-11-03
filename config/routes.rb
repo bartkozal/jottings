@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       scope module: :stacks do
         resource :share, controller: "collaborations", only: [:show, :create, :destroy]
         resource :ownership, only: :update
+        resource :leave, only: :create
       end
     end
     resources :documents, except: [:new, :edit] do
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
         resource :share, controller: "collaborations", only: [:show, :create, :destroy]
         resource :ownership, only: :update
         resource :bookmark, only: [:create, :destroy]
+        resource :leave, only: :create
       end
     end
   end
