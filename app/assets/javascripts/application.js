@@ -23,6 +23,9 @@ this.App = {
 const onLoad = () => {
   window.clearInterval(App.intervals.editorAutosave);
   window.clearInterval(App.intervals.editorAutosaveBox);
+  document.body.addEventListener("click", () => {
+    App.bus.$emit("closeDropdowns");
+  });
 
   new Vue({
     el: "#v-app"

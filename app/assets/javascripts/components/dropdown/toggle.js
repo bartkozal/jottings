@@ -10,7 +10,7 @@ Vue.component('dropdown-toggle', {
     }
   },
   template: `
-    <a class="dropdown-toggle" @click="isVisible = !isVisible">
+    <a class="dropdown-toggle" @click.stop="isVisible = !isVisible">
       <slot></slot>
     </a>
   `
