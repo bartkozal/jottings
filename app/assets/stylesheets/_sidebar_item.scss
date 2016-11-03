@@ -1,0 +1,18 @@
+%sidebar-item {
+  .dropdown-toggle {
+    visibility: hidden;
+  }
+
+  .grid:hover > .grid-item > .dropdown > .dropdown-toggle {
+    visibility: visible;
+  }
+}
+
+.sidebar-item-stack {
+  @extend %sidebar-item;
+  cursor: pointer;
+}
+
+.sidebar-item-document {
+  @extend %sidebar-item;
+}

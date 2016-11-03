@@ -17,14 +17,6 @@
     color: $color-white;
   }
 
-  .dropdown-toggle {
-    visibility: hidden;
-  }
-
-  ul > li > .grid:hover > .grid-item > .dropdown > .dropdown-toggle {
-    visibility: visible;
-  }
-
   [class^="ion-"] {
     font-size: $font-size-h3;
   }

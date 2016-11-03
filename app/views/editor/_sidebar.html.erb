@@ -3,7 +3,7 @@
 <% if bookmarked_documents = current_user.bookmarked_documents.presence %>
   <ul class="list-reset">
     <% bookmarked_documents.each do |document| %>
-      <li>
+      <li class="sidebar-item-document">
         <%= render "editor/documents/sidebar_item", document: document, type: :bookmark %>
       </li>
     <% end %>
@@ -14,13 +14,15 @@
 
 <ul class="list-reset margin-bottom">
   <% current_user.tree_view.each do |key, value| %>
-    <li>
-      <% if value.nil? %>
+    <% if value.nil? %>
+      <li class="sidebar-item-document">
         <%= render "editor/documents/sidebar_item", document: key, type: :document %>
-      <% else %>
+      </li>
+    <% else %>
+      <li is="sidebar-item-stack" stack="<%= key.to_param %>">
         <%= render "editor/stacks/sidebar_item", stack: key, documents: value %>
-      <% end %>
-    </li>
+      </li>
+    <% end %>
   <% end %>
 </ul>
 

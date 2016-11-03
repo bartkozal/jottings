@@ -33,11 +33,9 @@ class ShareStackTest < ActionDispatch::IntegrationTest
   test "accessing document shared from the stack" do
     document = create(:document, assign_to: @user_b, stack: @stack)
     visit root_path(as: @user_b)
-    within ".editor-sidebar" do
+    within ".editor-sidebar .sidebar-item-document" do
       assert page.has_content?(document.title)
-      within "ul ul ul" do
         click_link "Share"
-      end
     end
     fill_in "collaboration_user_email", with: @user_a.email
     click_button "Invite"
@@ -50,7 +48,7 @@ class ShareStackTest < ActionDispatch::IntegrationTest
   test "accessing document from the shared stacks" do
     document = create(:document, assign_to: @user_b, stack: @stack)
     visit root_path(as: @user_b)
-    within ".editor-sidebar" do
+    within ".editor-sidebar .sidebar-item-stack" do
       click_link "Share", match: :first
     end
     fill_in "collaboration_user_email", with: @user_a.email
