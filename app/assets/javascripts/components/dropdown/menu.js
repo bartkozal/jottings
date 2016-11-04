@@ -18,7 +18,7 @@ Vue.component('dropdown-menu', {
     }
   },
   template: `
-    <ul class="dropdown-menu" :style="styleAttr" v-if="isVisible">
+    <ul class="dropdown-menu" :style="styleAttr" v-if="isVisible" @click.stop>
       <slot></slot>
     </ul>
   `

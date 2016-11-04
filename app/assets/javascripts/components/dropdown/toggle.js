@@ -5,6 +5,7 @@ Vue.component('dropdown-toggle', {
         return this.$parent.isVisible;
       },
       set(newValue) {
+        App.bus.$emit("closeDropdowns");
         this.$parent.isVisible = newValue;
       }
     }
