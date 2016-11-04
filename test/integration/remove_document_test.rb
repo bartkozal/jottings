@@ -10,4 +10,8 @@ class RemoveDocumentTest < ActionDispatch::IntegrationTest
     click_link "Remove"
     assert @user.documents.empty?
   end
+
+  test "removing document with bookmarks" do
+    skip
+  end
 end

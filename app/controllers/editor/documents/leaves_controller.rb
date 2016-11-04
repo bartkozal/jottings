@@ -2,7 +2,10 @@ class Editor::Documents::LeavesController < EditorController
   before_action :find_document
 
   def create
-    @document.collaborators.destroy(current_user)
+    @document.transaction do
+      current_user.find_bookmark(@document)&.destroy
+      @document.collaborators.destroy(current_user)
+    end
     redirect_to root_path, notice: "You left the document \"#{@document}\""
   end
 

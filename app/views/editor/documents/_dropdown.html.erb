@@ -4,7 +4,7 @@
   </a>
 
   <ul is="dropdown-menu" width="150">
-    <% if document.owner?(current_user) %>
+    <% if document.owner?(current_user) && !document.has_shared_stack? %>
       <li><%= link_to "Share", editor_document_share_path(document) %></li>
     <% end %>
 
@@ -14,10 +14,10 @@
       <li><%= link_to "Bookmark", editor_document_bookmark_path(document), method: :post %></li>
     <% end %>
 
-    <% if document.owner?(current_user) %>
-      <li><%= link_to "Remove", editor_document_path(document), method: :delete, class: "text-negative" %></li>
-    <% else %>
+    <% if !document.owner?(current_user) && !document.has_shared_stack? %>
       <li><%= link_to "Leave", editor_document_leave_path(document), method: :post, class: "text-negative" %></li>
     <% end %>
+
+    <li><%= link_to "Remove", editor_document_path(document), method: :delete, class: "text-negative" %></li>
   </ul>
 </dropdown>

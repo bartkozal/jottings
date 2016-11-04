@@ -16,6 +16,10 @@ module Shareable
     user == owner
   end
 
+  def collaborate?(user)
+    collaborators.include?(user)
+  end
+
   def has_collaborators?
     collaborators.size > 1
   end

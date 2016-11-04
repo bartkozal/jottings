@@ -2,6 +2,7 @@ class Document < ApplicationRecord
   include Shareable
 
   belongs_to :stack, optional: true
+  has_many :bookmarks
 
   has_paper_trail on: [:create, :update], only: [:body]
 
@@ -11,6 +12,14 @@ class Document < ApplicationRecord
     def last_updated
       order(:updated_at).last
     end
+  end
+
+  def has_shared_stack?
+    stack && stack.has_collaborators?
+  end
+
+  def collaborators
+    has_shared_stack? ? stack.collaborators : super
   end
 
   def title

@@ -32,13 +32,7 @@ class ShareStackTest < ActionDispatch::IntegrationTest
 
   test "accessing document shared from the stack" do
     document = create(:document, assign_to: @user_b, stack: @stack)
-    visit root_path(as: @user_b)
-    within ".editor-sidebar .sidebar-item-document" do
-      assert page.has_content?(document.title)
-        click_link "Share"
-    end
-    fill_in "collaboration_user_email", with: @user_a.email
-    click_button "Invite"
+    document.collaborators << @user_a
     visit root_path(as: @user_a)
     within ".editor-sidebar" do
       assert page.has_content?(document.title)
@@ -47,27 +41,11 @@ class ShareStackTest < ActionDispatch::IntegrationTest
 
   test "accessing document from the shared stacks" do
     document = create(:document, assign_to: @user_b, stack: @stack)
-    visit root_path(as: @user_b)
-    within ".editor-sidebar .sidebar-item-stack" do
-      click_link "Share", match: :first
-    end
-    fill_in "collaboration_user_email", with: @user_a.email
-    click_button "Invite"
+    @stack.collaborators << @user_a
     visit root_path(as: @user_a)
     within ".editor-sidebar" do
       click_link(document.title)
     end
     assert_equal editor_document_path(document), current_path
-  end
-
-  test "leaving shared stack" do
-    @stack.collaborators << @user_a
-    visit root_path(as: @user_a)
-    assert page.has_content?(@stack)
-    click_link "Leave"
-    assert page.has_content?("You left the stack \"#{@stack}\"")
-    within ".editor-sidebar" do
-      refute page.has_content?(@stack)
-    end
   end
 end

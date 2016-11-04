@@ -1,6 +1,6 @@
 class Editor::DocumentsController < EditorController
   before_action :find_document, only: [:show, :update, :destroy]
-  before_action :require_ownership , only: :destroy
+  before_action :require_collaboration , only: :destroy
 
   def show
     @changeset = @document.changeset_since_last_seen(current_user)
@@ -41,7 +41,7 @@ class Editor::DocumentsController < EditorController
 
   def destroy
     @document.transaction do
-      current_user.find_bookmark(@document)&.destroy
+      @document.bookmarks.destroy_all
       @document.destroy
     end
 
@@ -57,8 +57,8 @@ class Editor::DocumentsController < EditorController
     raise ApplicationController::NotAuthorized
   end
 
-  def require_ownership
-    raise ApplicationController::NotAuthorized unless @document.owner?(current_user)
+  def require_collaboration
+    raise ApplicationController::NotAuthorized unless @document.collaborate?(current_user)
   end
 
   def document_params
