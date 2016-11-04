@@ -28,7 +28,7 @@ Vue.component("modal", {
       </a>
       <transition name="transition-fade">
         <div class="has-modal" v-if="isVisible">
-          <div class="modal-backdrop" @click="isVisible = false" />
+          <div class="modal-backdrop" @click="isVisible = false"></div>
           <div class="modal box">
             <slot></slot>
           </div>

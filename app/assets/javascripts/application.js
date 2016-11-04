@@ -24,7 +24,9 @@ const onLoad = () => {
   window.clearInterval(App.intervals.editorAutosave);
   window.clearInterval(App.intervals.editorAutosaveBox);
   document.body.addEventListener("click", () => {
-    App.bus.$emit("closeDropdowns");
+    // Fix for modals nested in dropdowns i.e. Renaming stack
+    let isModalVisible = document.querySelectorAll('.modal-backdrop').length > 0;
+    if (!isModalVisible) { App.bus.$emit("closeDropdowns"); }
   });
 
   new Vue({
