@@ -23,7 +23,7 @@ Vue.component("sidebar-item-stack", {
     }
   },
   template: `
-    <li class="sidebar-item-stack" :class="{ 'is-active': isActive }">
+    <li :class="{ 'is-active': isActive }">
       <slot></slot>
       <slot name="sidebar-item-stack-list" v-if="isActive"></slot>
     </li>

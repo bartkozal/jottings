@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class RedirectsTest < ActionDispatch::IntegrationTest
   test "redirecting to last visited document" do
@@ -28,5 +28,12 @@ class RedirectsTest < ActionDispatch::IntegrationTest
     visit root_path(as: user_b)
     visit editor_document_path(document)
     assert_equal editor_document_path(document), current_path
+  end
+
+  test "signing out" do
+    user = create(:user)
+    visit root_path(as: user)
+    click_link "Sign out"
+    assert_equal sign_in_path, current_path
   end
 end

@@ -1,17 +1,18 @@
-require 'test_helper'
+require "test_helper"
 
 class RemoveDocumentTest < ActionDispatch::IntegrationTest
-  setup do
-    @user = create(:user, has_document: true)
-  end
-
   test "removing document" do
-    visit root_path(as: @user)
+    user = create(:user, has_document: true)
+    visit root_path(as: user)
     click_link "Remove"
-    assert @user.documents.empty?
+    assert user.documents.empty?
   end
 
   test "removing document with bookmarks" do
-    skip
+    user = create(:user, has_bookmark: true)
+    visit root_path(as: user)
+    click_link "Remove", match: :first
+    assert user.bookmarks.empty?
+    assert user.documents.empty?
   end
 end

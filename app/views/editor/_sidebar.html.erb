@@ -19,7 +19,7 @@
         <%= render "editor/documents/sidebar_item", document: key %>
       </li>
     <% else %>
-      <li is="sidebar-item-stack" stack="<%= key.to_param %>">
+      <li class="sidebar-item-stack" is="sidebar-item-stack" stack="<%= key.to_param %>">
         <%= render "editor/stacks/sidebar_item", stack: key, documents: value %>
       </li>
     <% end %>
