@@ -32,4 +32,12 @@
 
 .sidebar-item-document {
   @extend %sidebar-item;
+
+  .sidebar-item-stack + & {
+    margin-top: $spacing-unit / 4;
+  }
+
+  & + & {
+    margin-top: $spacing-unit / 2;
+  }
 }

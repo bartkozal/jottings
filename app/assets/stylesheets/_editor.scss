@@ -9,8 +9,10 @@
 }
 
 .editor-sidebar {
+  width: $editor-sidebar-width;
   background-color: $color-primary;
   color: $color-white;
+  font-size: $editor-sidebar-font-size;
 
   a {
     display: inline-block;
@@ -21,15 +23,15 @@
     font-size: $font-size-h3;
   }
 
-  [class^="ion-gear-b"] {
-    font-size: $font-size-h4;
-  }
-
   [class^="ion-person-stalker"] {
     margin-left: $spacing-unit / 4;
     font-size: $font-size-base;
     opacity: .5;
   }
+}
+
+.editor-content {
+  flex-grow: 1;
 }
 
 .editor-changeset {

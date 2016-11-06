@@ -24,7 +24,7 @@ class Document < ApplicationRecord
 
   def title
     if body.present?
-      body.lines.first.strip.remove(/\A\W+\s+/).truncate(24, separator: " ")
+      body.lines.first.strip.remove(/\A\W+\s+/)
     else
       "Untitled document"
     end
