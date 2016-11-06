@@ -3,15 +3,14 @@ require "test_helper"
 class BookmarkDocumentTest < ActionDispatch::IntegrationTest
   test "bookmarking document" do
     user = create(:user, has_document: true)
-    document = user.documents.last
 
     visit root_path(as: user)
     click_link "Bookmark"
-    within ".ion-bookmark + div" do
-        assert page.has_content? document.title
+    within ".editor-sidebar" do
+        assert page.has_css? ".sidebar-item-document", count: 2
     end
     click_link "Unbookmark", match: :first
-    refute page.has_css? ".ion-bookmark + div"
+    refute page.has_css? ".sidebar-item-document", count: 2
   end
 
   test "removing bookmarked document" do
