@@ -4,7 +4,7 @@
   <ul class="list-reset">
     <% bookmarked_documents.each do |document| %>
       <li class="sidebar-item-document">
-        <%= render "editor/documents/sidebar_item", document: document, type: :bookmark %>
+        <%= render "editor/documents/sidebar_item", document: document %>
       </li>
     <% end %>
   </ul>
@@ -16,7 +16,7 @@
   <% current_user.tree_view.each do |key, value| %>
     <% if value.nil? %>
       <li class="sidebar-item-document">
-        <%= render "editor/documents/sidebar_item", document: key, type: :document %>
+        <%= render "editor/documents/sidebar_item", document: key %>
       </li>
     <% else %>
       <li is="sidebar-item-stack" stack="<%= key.to_param %>">

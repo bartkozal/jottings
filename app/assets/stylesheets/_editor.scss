@@ -32,6 +32,7 @@
 
 .editor-content {
   flex-grow: 1;
+  width: map-get($rwd-map, 'regular');
 }
 
 .editor-changeset {
