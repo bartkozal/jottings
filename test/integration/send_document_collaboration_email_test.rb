@@ -15,7 +15,7 @@ class SendDocumentCollaborationEmailTest < ActionDispatch::IntegrationTest
       click_button "Invite"
     end
     assert page.has_content? %(#{new_user_email} invited to collaborate on "#{@document}")
-    assert page.has_content?("Pending invite")
+    assert page.has_content?("Pending")
     click_link "Sign out"
     open_email new_user_email
     assert_equal %(You are invited to collaborate on "#{@document}"), current_email.subject
