@@ -3,7 +3,7 @@
     <h2>Sharing settings for "<%= @document %>"</h2>
 
     <ul class="list-reset">
-      <% @document.collaborations.each do |collaboration| %>
+      <% @document.collaborations.order(:created_at).each do |collaboration| %>
         <li class="margin-bottom">
           <div class="grid grid-middle grid-pair">
             <div class="grid-item 1/2">
