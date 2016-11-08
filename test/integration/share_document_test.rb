@@ -13,21 +13,21 @@ class ShareDocumentTest < ActionDispatch::IntegrationTest
 
     visit root_path(as: @user_b)
     click_link "Share"
-    fill_in "collaboration_user_email", with: @user_a.email
+    fill_in "collaboration_email", with: @user_a.email
     click_button "Invite"
-    assert page.has_content?(@user_a.email)
+    assert page.has_content?(@user_a)
 
     visit root_path(as: @user_a)
     within ".editor-content" do
-      assert page.has_css?("img[alt=\"Avatar of #{@user_a.email}\"]")
-      assert page.has_css?("img[alt=\"Avatar of #{@user_b.email}\"]")
+      assert page.has_css? %(img[alt="Avatar of #{@user_a.email}"])
+      assert page.has_css? %(img[alt="Avatar of #{@user_b.email}"])
     end
   end
 
   test "passing ownership" do
     visit root_path(as: @user_b)
     click_link "Share"
-    fill_in "collaboration_user_email", with: @user_a.email
+    fill_in "collaboration_email", with: @user_a.email
     click_button "Invite"
     click_link "Make owner"
     assert_equal editor_document_path(@document), current_path

@@ -3,7 +3,7 @@ class Editor::Stacks::LeavesController < EditorController
 
   def create
     @stack.collaborators.destroy(current_user)
-    redirect_to root_path, notice: "You left the stack \"#{@stack}\""
+    redirect_to root_path, notice: %(You left the stack "#{@stack}")
   end
 
   private

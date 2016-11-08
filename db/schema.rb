@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027143059) do
+ActiveRecord::Schema.define(version: 20161107164824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +26,12 @@ ActiveRecord::Schema.define(version: 20161027143059) do
 
   create_table "collaborations", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "share_type"
     t.integer  "share_id"
+    t.string   "invite_email"
+    t.index ["invite_email", "share_type", "share_id"], name: "index_collaborations_unique_invite_email", unique: true, using: :btree
     t.index ["share_type", "share_id"], name: "index_collaborations_on_share_type_and_share_id", using: :btree
     t.index ["user_id"], name: "index_collaborations_on_user_id", using: :btree
   end

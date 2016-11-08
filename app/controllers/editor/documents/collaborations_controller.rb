@@ -11,16 +11,23 @@ class Editor::Documents::CollaborationsController < EditorController
     @collaboration.share = @document
 
     if @collaboration.save
-      redirect_to editor_document_share_path(@document),
-        flash: { success: "#{@collaboration.user} has been added to the document" }
+      if @collaboration.invite?
+        CollaborationMailer.invite(@collaboration).deliver_later
+        redirect_to editor_document_share_path(@document),
+          notice: %(#{@collaboration.invite_email} invited to collaborate on "#{@document}")
+      else
+        CollaborationMailer.notify(@collaboration).deliver_later
+        redirect_to editor_document_share_path(@document),
+          flash: { success: "#{@collaboration.user} has been added to the document" }
+      end
     else
       render :show
     end
   end
 
   def destroy
-    @user = @document.collaborators.find_by(email: params[:user_email])
-    @document.collaborators.delete(@user)
+    @user = @document.collaborators.find_by(email: params[:email])
+    @document.collaborators.destroy(@user)
     redirect_to editor_document_share_path(@document),
       alert: "#{@user} has been removed from the document"
   end
@@ -28,7 +35,7 @@ class Editor::Documents::CollaborationsController < EditorController
   private
 
   def collaboration_params
-    params.require(:collaboration).permit(:user_email)
+    params.require(:collaboration).permit(:email)
   end
 
   def find_document

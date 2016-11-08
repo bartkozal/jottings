@@ -29,7 +29,6 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "#tree_view" do
-    # TODO extract to separate test file
     user = create(:user, has_document: true)
     document = user.documents.last
     stack = create(:stack, name: "Zzz", assign_to: user)

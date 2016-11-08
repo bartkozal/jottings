@@ -1,3 +1,5 @@
+<% @user.email = params[:invite] if params[:invite].present? %>
+
 <h2>Sign up</h2>
 
 <%= form_for @user, html: { class: "form-stacked" } do |form| %>

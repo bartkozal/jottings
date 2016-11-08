@@ -18,7 +18,7 @@ class Editor::StacksController < EditorController
 
   def destroy
     @stack.destroy
-    redirect_to editor_documents_path, alert: "Stack \"#{@stack}\" has been removed"
+    redirect_to editor_documents_path, alert: %(Stack "#{@stack}" has been removed)
   end
 
   private

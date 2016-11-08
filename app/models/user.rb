@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :stacks, through: :collaborations, source: :share, source_type: "Stack"
   has_many :bookmarks, dependent: :destroy
 
+  after_create :assign_invited_collaborations
+
   def last_updated_document
     documents.last_updated
   end
@@ -45,5 +47,11 @@ class User < ApplicationRecord
 
   def to_s
     name || email
+  end
+
+  private
+
+  def assign_invited_collaborations
+    Collaboration.where(invite_email: email).update_all(user_id: id)
   end
 end

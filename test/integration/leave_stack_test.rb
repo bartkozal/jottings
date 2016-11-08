@@ -12,7 +12,7 @@ class LeaveStackTest < ActionDispatch::IntegrationTest
     visit root_path(as: @user_a)
     assert page.has_content?(@stack)
     click_link "Leave"
-    assert page.has_content?("You left the stack \"#{@stack}\"")
+    assert page.has_content? %(You left the stack "#{@stack}")
     within ".editor-sidebar" do
       refute page.has_content?(@stack)
     end

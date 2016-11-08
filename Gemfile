@@ -31,6 +31,7 @@ group :development, :test do
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'database_rewinder'
+  gem 'capybara-email'
 end
 
 group :development do

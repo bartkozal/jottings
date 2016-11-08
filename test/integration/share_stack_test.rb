@@ -13,9 +13,9 @@ class ShareStackTest < ActionDispatch::IntegrationTest
 
     visit root_path(as: @user_b)
     click_link "Share"
-    fill_in "collaboration_user_email", with: @user_a.email
+    fill_in "collaboration_email", with: @user_a.email
     click_button "Invite"
-    assert page.has_content?(@user_a.email)
+    assert page.has_content?(@user_a)
 
     visit root_path(as: @user_a)
   end
@@ -23,7 +23,7 @@ class ShareStackTest < ActionDispatch::IntegrationTest
   test "passing ownership" do
     visit root_path(as: @user_b)
     click_link "Share"
-    fill_in "collaboration_user_email", with: @user_a.email
+    fill_in "collaboration_email", with: @user_a.email
     click_button "Invite"
     click_link "Make owner"
     refute page.has_link?("Share")

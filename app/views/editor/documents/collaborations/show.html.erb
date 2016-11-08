@@ -3,41 +3,46 @@
     <h2>Sharing settings for "<%= @document %>"</h2>
 
     <ul class="list-reset">
-      <% @document.collaborators.each do |collaborator| %>
+      <% @document.collaborations.each do |collaboration| %>
         <li class="margin-bottom">
           <div class="grid grid-middle grid-pair">
             <div class="grid-item 1/2">
               <div class="media media-middle media-1/2">
-                <%= gravatar_tag collaborator.email, size: 40 %>
+                <%= gravatar_tag collaboration.email, size: 40 %>
                 <div class="media-body">
-                  <%= collaborator.email %>
+                  <%= collaboration %>
                 </div>
               </div>
             </div>
 
             <div class="grid-item 1/2">
-              <% unless @document.owner?(collaborator) %>
-                <ul class="list-divided">
-                  <li>
-                    <%= link_to "Make owner",
-                      editor_document_ownership_path(@document, user_email: collaborator.email),
-                      method: :put %>
-                  </li>
-                  <li>
-                    <%= link_to "Remove",
-                      editor_document_share_path(@document, user_email: collaborator.email),
-                      method: :delete,
-                      class: "text-negative" %>
-                  </li>
-                </ul>
+              <% if collaboration.user %>
+                <% unless @document.owner?(collaboration.user)  %>
+                  <ul class="list-divided">
+                    <li>
+                      <%= link_to "Make owner",
+                        editor_document_ownership_path(@document, email: collaboration.email),
+                        method: :put %>
+                    </li>
+                    <li class="no-padding-right">
+                      <%= link_to "Remove",
+                        editor_document_share_path(@document, email: collaboration.email),
+                        method: :delete,
+                        class: "text-negative" %>
+                    </li>
+                  </ul>
+                <% end %>
+              <% else %>
+                <span class="text-muted">Pending invite</span>
               <% end %>
             </div>
           </div>
         </li>
       <% end %>
+
       <li class="padding-2/1-left">
         <%= form_for @collaboration, url: editor_document_share_path(@document) do |form| %>
-          <%= form.text_field :user_email, class: "1/2", placeholder: "Type user's email to invite" %>
+          <%= form.text_field :email, class: "1/2", placeholder: "Type user's email to invite to collaborate" %>
           <%= form.submit "Invite" %>
         <% end %>
       </li>

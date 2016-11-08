@@ -3,11 +3,11 @@ class Editor::Documents::OwnershipsController < EditorController
   before_action :require_ownership
 
   def update
-    @user = @document.collaborators.find_by(email: user_email)
+    @user = @document.collaborators.find_by(email: email)
     @document.owner = @user
     @document.save
     redirect_to editor_document_path(@document),
-      notice: "#{@user} is a new owner of \"#{@document}\""
+      notice: %(#{@user} is a new owner of "#{@document}")
   end
 
   private
@@ -21,7 +21,7 @@ class Editor::Documents::OwnershipsController < EditorController
     raise ApplicationController::NotAuthorized unless @document.owner?(current_user)
   end
 
-  def user_email
-    params.require(:user_email)
+  def email
+    params.require(:email)
   end
 end

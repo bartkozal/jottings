@@ -11,16 +11,23 @@ class Editor::Stacks::CollaborationsController < EditorController
     @collaboration.share = @stack
 
     if @collaboration.save
-      redirect_to editor_stack_share_path(@stack),
-        flash: { success: "#{@collaboration.user} has been added to the stack" }
+      if @collaboration.invite?
+        CollaborationMailer.invite(@collaboration).deliver_later
+        redirect_to editor_stack_share_path(@stack),
+          notice: %(#{@collaboration.invite_email} invited to collaborate on "#{@stack}")
+      else
+        CollaborationMailer.notify(@collaboration).deliver_later
+        redirect_to editor_stack_share_path(@stack),
+          flash: { success: "#{@collaboration.user} has been added to the stack" }
+      end
     else
       render :show
     end
   end
 
   def destroy
-    @user = @stack.collaborators.find_by(email: params[:user_email])
-    @stack.collaborators.delete(@user)
+    @user = @stack.collaborators.find_by(email: params[:email])
+    @stack.collaborators.destroy(@user)
     redirect_to editor_stack_share_path(@stack),
       alert: "#{@user} has been removed from the stack"
   end
@@ -28,7 +35,7 @@ class Editor::Stacks::CollaborationsController < EditorController
   private
 
   def collaboration_params
-    params.require(:collaboration).permit(:user_email)
+    params.require(:collaboration).permit(:email)
   end
 
   def find_stack

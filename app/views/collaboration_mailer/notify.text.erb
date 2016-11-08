@@ -1,0 +1,4 @@
+Hi,
+
+<%= link_to %(Click to see and start working on "#{@collaboration.share}"),
+  @collaboration.document? ? editor_document_url(@collaboration.share) : root_url %>

@@ -12,7 +12,7 @@ class LeaveDocumentTest < ActionDispatch::IntegrationTest
     visit root_path(as: @user_a)
     assert page.has_content?(@document)
     click_link "Leave"
-    assert page.has_content?("You left the document \"#{@document}\"")
+    assert page.has_content? %(You left the document "#{@document}")
     within ".editor-sidebar" do
       refute page.has_content?(@document)
     end
