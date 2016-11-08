@@ -26,10 +26,16 @@ class Editor::Stacks::CollaborationsController < EditorController
   end
 
   def destroy
-    @user = @stack.collaborators.find_by(email: params[:email])
-    @stack.collaborators.destroy(@user)
-    redirect_to editor_stack_share_path(@stack),
-      alert: "#{@user} has been removed from the stack"
+    @collaboration = @stack.find_collaboration(email: params[:email])
+    @collaboration.destroy
+
+    if @collaboration.invite?
+      redirect_to editor_stack_share_path(@stack),
+        alert: "Invite to #{@collaboration.invite_email} has been canceled"
+    else
+      redirect_to editor_stack_share_path(@stack),
+        alert: "#{@collaboration.user} has been removed from the stack"
+    end
   end
 
   private

@@ -7,7 +7,7 @@ class Collaboration < ApplicationRecord
   validates :invite_email, uniqueness: { scope: [:share_type, :share_id], message: "already exists", allow_blank: true }
 
   def email
-    invite_email || user&.email
+    user&.email || invite_email
   end
 
   def email=(email)

@@ -26,10 +26,16 @@ class Editor::Documents::CollaborationsController < EditorController
   end
 
   def destroy
-    @user = @document.collaborators.find_by(email: params[:email])
-    @document.collaborators.destroy(@user)
-    redirect_to editor_document_share_path(@document),
-      alert: "#{@user} has been removed from the document"
+    @collaboration = @document.find_collaboration(email: params[:email])
+    @collaboration.destroy
+
+    if @collaboration.invite?
+      redirect_to editor_document_share_path(@document),
+        alert: "Invite to #{@collaboration.invite_email} has been canceled"
+    else
+      redirect_to editor_document_share_path(@document),
+        alert: "#{@collaboration.user} has been removed from the document"
+    end
   end
 
   private

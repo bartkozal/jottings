@@ -16,25 +16,33 @@
             </div>
 
             <div class="grid-item 1/2">
-              <% if collaboration.user %>
-                <% unless @stack.owner?(collaboration.user)  %>
-                  <ul class="list-divided">
-                    <li>
-                      <%= link_to "Make owner",
-                        editor_stack_ownership_path(@stack, email: collaboration.email),
-                        method: :put %>
-                    </li>
-                    <li class="no-padding-right">
-                      <%= link_to "Remove",
-                        editor_stack_share_path(@stack, email: collaboration.email),
-                        method: :delete,
-                        class: "text-negative" %>
-                    </li>
-                  </ul>
+              <ul class="list-divided">
+                <% if collaboration.user %>
+                  <% unless @stack.owner?(collaboration.user)  %>
+                      <li>
+                        <%= link_to "Make owner",
+                          editor_stack_ownership_path(@stack, email: collaboration.email),
+                          method: :put %>
+                      </li>
+                      <li>
+                        <%= link_to "Remove",
+                          editor_stack_share_path(@stack, email: collaboration.email),
+                          method: :delete,
+                          class: "text-negative" %>
+                      </li>
+                  <% end %>
+                <% else %>
+                  <li class="text-muted">
+                    Pending
+                  </li>
+                  <li>
+                    <%= link_to "Cancel",
+                      editor_stack_share_path(@stack, email: collaboration.email),
+                      method: :delete,
+                      class: "text-negative" %>
+                  </li>
                 <% end %>
-              <% else %>
-                <span class="text-muted">Pending</span>
-              <% end %>
+              </ul>
             </div>
           </div>
         </li>

@@ -16,25 +16,33 @@
             </div>
 
             <div class="grid-item 1/2">
-              <% if collaboration.user %>
-                <% unless @document.owner?(collaboration.user)  %>
-                  <ul class="list-divided">
+              <ul class="list-divided">
+                <% if collaboration.user %>
+                  <% unless @document.owner?(collaboration.user)  %>
                     <li>
                       <%= link_to "Make owner",
                         editor_document_ownership_path(@document, email: collaboration.email),
                         method: :put %>
                     </li>
-                    <li class="no-padding-right">
+                    <li>
                       <%= link_to "Remove",
                         editor_document_share_path(@document, email: collaboration.email),
                         method: :delete,
                         class: "text-negative" %>
                     </li>
-                  </ul>
+                  <% end %>
+                <% else %>
+                  <li class="text-muted">
+                    Pending
+                  </li>
+                  <li>
+                    <%= link_to "Cancel",
+                      editor_document_share_path(@document, email: collaboration.email),
+                      method: :delete,
+                      class: "text-negative" %>
+                  </li>
                 <% end %>
-              <% else %>
-                <span class="text-muted">Pending</span>
-              <% end %>
+              </ul>
             </div>
           </div>
         </li>

@@ -23,4 +23,8 @@ module Shareable
   def has_collaborators?
     collaborators.size > 1
   end
+
+  def find_collaboration(email:)
+    collaborations.find { |c| c.email == email }
+  end
 end
