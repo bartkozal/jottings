@@ -16,7 +16,7 @@ module Shareable
     user == owner
   end
 
-  def collaborate?(user)
+  def has_collaborator?(user)
     collaborators.include?(user)
   end
 

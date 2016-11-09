@@ -4,7 +4,8 @@
       <%= form.text_area :body, class: "1/1 margin-bottom",
                                 is: "editor",
                                 placeholder: "Start writing here...",
-                                "document": @document.to_param %>
+                                "document": @document.to_param,
+                                "shared": @document.has_collaborators? %>
       <%= form.submit "Save" %>
     <% end %>
 

@@ -53,12 +53,12 @@ class Editor::DocumentsController < EditorController
 
   def find_document
     decoded_id = MaskedId.decode(:document, params[:id])
-    return if @document = current_user.find_document_through_collaborations(decoded_id)
+    return if @document = current_user.find_document(decoded_id)
     raise ApplicationController::NotAuthorized
   end
 
   def require_collaboration
-    raise ApplicationController::NotAuthorized unless @document.collaborate?(current_user)
+    raise ApplicationController::NotAuthorized unless @document.has_collaborator?(current_user)
   end
 
   def document_params

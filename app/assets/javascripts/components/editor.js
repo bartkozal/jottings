@@ -1,5 +1,5 @@
 Vue.component('editor', {
-  props: ['document'],
+  props: ['document', 'shared'],
   created() {
     App.intervals.editorAutosave = setInterval(() => {
       this.$http.patch(`/editor/documents/${this.document}`, {
@@ -12,8 +12,13 @@ Vue.component('editor', {
     }, 120000);
   },
   mounted() {
-    new MarkdownEditor(this.$el);
-    new DocumentChannel(this.document);
+    const isShared = JSON.parse(this.shared);
+    const mdEditor = new MarkdownEditor(this.$el);
+
+    if (isShared) {
+      new DocumentChannel(this.document);
+      mdEditor.broadcast();
+    }
   },
   template: `
     <textarea>

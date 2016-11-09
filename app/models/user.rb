@@ -31,7 +31,7 @@ class User < ApplicationRecord
       .having("count(collaborations.share_id) > 1").present?
   end
 
-  def find_document_through_collaborations(param)
+  def find_document(param)
     self.documents.includes(:collaborators).find_by(id: param) ||
       self.stacks.joins(:documents).where("documents.id = ?", param).first
       &.documents&.includes(:collaborators)&.find(param)
