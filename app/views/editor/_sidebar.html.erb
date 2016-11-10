@@ -8,6 +8,10 @@
       </li>
     <% end %>
   </ul>
+<% else %>
+  <div class="dropzone">
+    Drag and drop documents here to create bookmarks.
+  </div>
 <% end %>
 
 <h3>Documents</h3>
@@ -15,7 +19,7 @@
 <ul class="list-reset margin-bottom">
   <% current_user.tree_view.each do |key, value| %>
     <% if value.nil? %>
-      <li class="sidebar-item-document">
+      <li class="sidebar-item-document" is="sidebar-item-document">
         <%= render "editor/documents/sidebar_item", document: key %>
       </li>
     <% else %>

@@ -5,6 +5,7 @@
 //= require vue/vue
 //= require vue-resource/vue-resource
 //= require vue_csrf_token
+//= require interact
 //= require_tree ./channels
 //= require_tree ./models
 //= require_tree ./components
@@ -24,7 +25,7 @@ const onLoad = () => {
   window.clearInterval(App.intervals.editorAutosave);
   window.clearInterval(App.intervals.editorAutosaveBox);
   document.body.addEventListener("click", () => {
-    // Fix for modals nested in dropdowns i.e. Renaming stack
+    // Fix for modals nested in dropdowns i.e. renaming stack modal
     let isModalVisible = document.querySelectorAll('.modal-backdrop').length > 0;
     if (!isModalVisible) { App.bus.$emit("closeDropdowns"); }
   });
