@@ -1,4 +1,5 @@
 Vue.component('sidebar-item-document', {
+  props: ['document'],
   data() {
     return {
       isDragging: false,
@@ -13,7 +14,7 @@ Vue.component('sidebar-item-document', {
       styleCursor: false
     }).draggable({
       autoScroll: true,
-      onstart(event) {
+      onstart() {
         self.isDragging = true;
       },
       onmove(event) {
@@ -22,7 +23,7 @@ Vue.component('sidebar-item-document', {
           y: self.y += event.dy
         };
       },
-      onend(event) {
+      onend() {
         self.isDragging = false;
         self.isDragged = true;
         self.translate = {x: 0, y: 0};

@@ -1,0 +1,14 @@
+.dropzone {
+  &.is-droppable {
+    outline: darken($color-primary, 10%) solid ($spacing-unit / 2);
+    background-color: darken($color-primary, 10%);
+  }
+}
+
+.dropzone-empty {
+  margin-bottom: $spacing-unit;
+  padding: $spacing-unit / 2;
+  border: 1px dashed $color-white;
+  text-align: center;
+  opacity: .5;
+}
