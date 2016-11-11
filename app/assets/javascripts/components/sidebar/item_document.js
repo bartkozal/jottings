@@ -2,7 +2,7 @@ Vue.component('sidebar-item-document', {
   data() {
     return {
       isDragging: false,
-      dragged: false,
+      isDragged: false,
       x: 0,
       y: 0
     };
@@ -23,8 +23,8 @@ Vue.component('sidebar-item-document', {
         };
       },
       onend(event) {
-        self.dragged = true;
         self.isDragging = false;
+        self.isDragged = true;
         self.translate = {x: 0, y: 0};
       }
     });

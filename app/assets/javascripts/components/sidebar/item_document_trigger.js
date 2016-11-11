@@ -1,13 +1,11 @@
 Vue.component("sidebar-item-document-trigger", {
   methods: {
     resetDragged() {
-      this.$parent.dragged = false;
+      this.$parent.isDragged = false;
     },
     preventWhenDragging(event) {
-      if (this.$parent.dragged) {
+      if (this.$parent.isDragged) {
         event.preventDefault();
-      } else {
-        return;
       }
     }
   },
