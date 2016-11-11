@@ -43,7 +43,7 @@ $el-dropdown-toggle-active: '> .grid:hover > .grid-item > .dropdown > .dropdown-
     margin-top: $spacing-unit / 2;
   }
 
-  &.is-dragged {
+  &.is-dragging {
     opacity: .8;
     z-index: $z-index-dragged;
 

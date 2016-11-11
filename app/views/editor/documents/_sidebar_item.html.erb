@@ -1,6 +1,6 @@
 <div class="grid grid-pair grid-middle">
   <div class="grid-item 5/6">
-    <%= link_to editor_document_path(document) do %>
+    <%= link_to editor_document_path(document), is: "sidebar-item-document-trigger" do %>
       <%= document %>
       <% if document.has_collaborators? %>
         <%= icon_tag "person-stalker" %>

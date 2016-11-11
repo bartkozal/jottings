@@ -1,33 +1,48 @@
 Vue.component('sidebar-item-document', {
+  data() {
+    return {
+      isDragging: false,
+      dragged: false,
+      x: 0,
+      y: 0
+    };
+  },
   mounted() {
-    interact(this.$el, {
+    const self = this;
+    interact(self.$el, {
       styleCursor: false
     }).draggable({
       autoScroll: true,
       onstart(event) {
-        event.target.classList.add("is-dragged");
+        self.isDragging = true;
       },
       onmove(event) {
-        let target = event.target,
-            x = +(target.dataset.x || 0) + event.dx,
-            y = +(target.dataset.y || 0) + event.dy;
-
-        target.style.transform = `translate(${x}px, ${y}px)`;
-        target.dataset.x = x;
-        target.dataset.y = y;
+        self.translate = {
+          x: self.x += event.dx,
+          y: self.y += event.dy
+        };
       },
       onend(event) {
-        let target = event.target;
-
-        target.classList.remove("is-dragged");
-        target.style.transform = null;
-        target.dataset.x = 0;
-        target.dataset.y = 0;
+        self.dragged = true;
+        self.isDragging = false;
+        self.translate = {x: 0, y: 0};
       }
     });
   },
+  computed: {
+    translate: {
+      get() {
+        return `translate(${this.x}px, ${this.y}px)`;
+      },
+
+      set(newValue) {
+        this.x = newValue.x;
+        this.y = newValue.y;
+      }
+    }
+  },
   template: `
-    <li>
+    <li :class="{ 'is-dragging': isDragging }" :style="{ transform: translate }">
       <slot></slot>
     </li>
   `
