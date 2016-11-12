@@ -19,7 +19,7 @@
 
 <ul class="list-reset padding-left" slot="sidebar-item-stack-list">
   <% documents.each do |document| %>
-    <li class="sidebar-item-document" is="sidebar-item-document" document="<%= document.to_param %>">
+    <li class="sidebar-item-document" is="sidebar-item-document" document="<%= document.to_param %>" stack="<%= stack.to_param %>">
       <%= render "editor/documents/sidebar_item", document: document %>
     </li>
   <% end %>

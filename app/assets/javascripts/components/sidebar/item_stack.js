@@ -21,9 +21,13 @@ Vue.component("sidebar-item-stack", {
       },
       ondrop(event) {
         const droppedEl = event.relatedTarget.__vue__;
+
+        if (droppedEl.stack !== self.stack) {
+          self.$http.post(`/editor/documents/${droppedEl.document}/move/${self.stack}`).
+            then((response) => { window.location.href = "/"; });
+        }
+
         self.isDroppable = false;
-        self.$http.post(`/editor/documents/${droppedEl.document}/move/${self.stack}`).
-          then((response) => { window.location.href = "/"; });
       }
     });
   },

@@ -1,5 +1,5 @@
 Vue.component('sidebar-item-document', {
-  props: ['document'],
+  props: ['document', 'stack'],
   data() {
     return {
       isDragging: false,
