@@ -18,17 +18,19 @@
 
 <h3>Documents</h3>
 
+<ul class="list-reset margin-1/2-bottom">
+  <% current_user.tree_view.stacks.each do |stack, documents| %>
+    <li class="sidebar-item-stack dropzone" is="sidebar-item-stack" stack="<%= stack.to_param %>">
+      <%= render "editor/stacks/sidebar_item", stack: stack, documents: documents %>
+    </li>
+  <% end %>
+</ul>
+
 <ul class="list-reset margin-bottom">
-  <% current_user.tree_view.arrange.each do |key, value| %>
-    <% if value.nil? %>
-      <li class="sidebar-item-document" is="sidebar-item-document" document="<%= key.to_param %>">
-        <%= render "editor/documents/sidebar_item", document: key %>
-      </li>
-    <% else %>
-      <li class="sidebar-item-stack dropzone" is="sidebar-item-stack" stack="<%= key.to_param %>">
-        <%= render "editor/stacks/sidebar_item", stack: key, documents: value %>
-      </li>
-    <% end %>
+  <% current_user.tree_view.documents.each do |document| %>
+    <li class="sidebar-item-document" is="sidebar-item-document" document="<%= document.to_param %>">
+      <%= render "editor/documents/sidebar_item", document: document %>
+    </li>
   <% end %>
 </ul>
 
