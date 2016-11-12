@@ -1,16 +1,16 @@
 Vue.component("sidebar-item-stack-trigger", {
   computed: {
-    isActive: {
+    isOpen: {
       get() {
-        return this.$parent.isActive;
+        return this.$parent.isOpen;
       },
       set(newValue) {
-        this.$parent.isActive = newValue;
+        this.$parent.isOpen = newValue;
       }
     }
   },
   template: `
-    <div @click="isActive = !isActive">
+    <div @click="isOpen = !isOpen">
       <slot></slot>
     </div>
   `

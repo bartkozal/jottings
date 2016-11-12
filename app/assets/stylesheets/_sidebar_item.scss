@@ -21,7 +21,7 @@ $el-dropdown-toggle-active: '> .grid:hover > .grid-item > .dropdown > .dropdown-
     display: none;
   }
 
-  &.is-active {
+  &.is-open {
     .sidebar-icon-stack-icon {
       display: none;
     }

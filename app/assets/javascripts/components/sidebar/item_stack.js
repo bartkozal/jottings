@@ -2,30 +2,49 @@ Vue.component("sidebar-item-stack", {
   props: ['stack'],
   data() {
     return {
-      isActive: false
+      isOpen: false,
+      isDroppable: false
     };
   },
   created() {
-    this.$data.isActive = JSON.parse(localStorage.getItem(this.stackKey)) || false;
+    this.$data.isOpen = JSON.parse(localStorage.getItem(this.stackKey)) || false;
+  },
+  mounted() {
+    const self = this;
+    interact(self.$el).dropzone({
+      overlap: 0.1,
+      ondragenter() {
+        self.isDroppable = true;
+      },
+      ondragleave() {
+        self.isDroppable = false;
+      },
+      ondrop(event) {
+        const droppedEl = event.relatedTarget.__vue__;
+        self.isDroppable = false;
+        self.$http.post(`/editor/documents/${droppedEl.document}/move/${self.stack}`).
+          then((response) => { window.location.href = "/"; });
+      }
+    });
   },
   computed: {
     stackKey() {
       return `stack-${this.stack}`;
     },
-    isActive: {
+    isOpen: {
       get() {
-        return this.$data.isActive;
+        return this.$data.isOpen;
       },
       set(newValue) {
-        this.$data.isActive = newValue;
+        this.$data.isOpen = newValue;
         localStorage.setItem(this.stackKey, newValue);
       }
     }
   },
   template: `
-    <li :class="{ 'is-active': isActive }">
+    <li :class="{ 'is-open': isOpen, 'is-droppable': isDroppable }">
       <slot></slot>
-      <slot name="sidebar-item-stack-list" v-if="isActive"></slot>
+      <slot name="sidebar-item-stack-list" v-if="isOpen"></slot>
     </li>
   `
 });

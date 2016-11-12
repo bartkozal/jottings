@@ -24,9 +24,10 @@ $editor-sidebar-font-size: .9rem;
 
 $link-underline: false;
 
-$z-index-dropdown: 1;
-$z-index-modal: 10;
-$z-index-dragged: 100;
+$z-index-dragged: 1;
+$z-index-dropdown: 2;
+$z-index-modal: 3;
+
 
 @import 'hocus-pocus/hocus-pocus',
         'ionicons/ionicons',

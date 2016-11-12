@@ -1,6 +1,5 @@
 .dropzone {
   &.is-droppable {
-    outline: darken($color-primary, 10%) solid ($spacing-unit / 2);
     background-color: darken($color-primary, 10%);
   }
 }
