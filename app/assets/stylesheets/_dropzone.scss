@@ -1,4 +1,6 @@
 .dropzone {
+  min-height: $spacing-unit;
+
   &.is-droppable {
     background-color: darken($color-primary, 10%);
   }

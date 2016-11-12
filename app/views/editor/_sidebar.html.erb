@@ -26,7 +26,7 @@
   <% end %>
 </ul>
 
-<ul class="list-reset margin-bottom">
+<ul class="list-reset margin-1/2-bottom dropzone" is="sidebar-dropzone-documents">
   <% current_user.tree_view.documents.each do |document| %>
     <li class="sidebar-item-document" is="sidebar-item-document" document="<%= document.to_param %>">
       <%= render "editor/documents/sidebar_item", document: document %>

@@ -1,10 +1,9 @@
 class Editor::Documents::MovesController < EditorController
   before_action :find_document
-  before_action :find_stack
+  before_action :find_stack, only: :create
   # before_action :require_ownership
 
   # TODO
-  # Allow to move documents out of stacks
   # Don't allow to move documents out of shared stack if not an owner
   # Don't allow to move shared documents into shared stacks
 
@@ -12,6 +11,12 @@ class Editor::Documents::MovesController < EditorController
     @document.stack = @stack
     @document.save
     head :ok
+  end
+
+  def destroy
+    @document.stack = nil
+    @document.save
+    head :accepted
   end
 
   private

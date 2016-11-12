@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         resource :ownership, only: :update
         resource :bookmark, only: [:create, :destroy]
         resource :leave, only: :create
-        resource :move, only: [] do
+        resource :move, only: :destroy do
           post ":id", to: "moves#create", as: ""
         end
       end
