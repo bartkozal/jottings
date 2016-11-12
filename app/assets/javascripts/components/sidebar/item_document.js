@@ -33,7 +33,11 @@ Vue.component('sidebar-item-document', {
   computed: {
     translate: {
       get() {
-        return `translate(${this.x}px, ${this.y}px)`;
+        if (this.x !== 0 || this.y !== 0) {
+          return `translate(${this.x}px, ${this.y}px)`;
+        } else {
+          return "";
+        }
       },
 
       set(newValue) {
