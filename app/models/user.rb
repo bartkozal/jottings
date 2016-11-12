@@ -41,8 +41,7 @@ class User < ApplicationRecord
     stacks = self.stacks.includes(:documents).order(:name, "documents.body")
     documents = self.documents.includes(:stack).order(:body)
 
-    tree_view = TreeView.new(stacks: stacks, documents: documents)
-    tree_view.arrange
+    TreeView.new(stacks: stacks, documents: documents)
   end
 
   def to_s

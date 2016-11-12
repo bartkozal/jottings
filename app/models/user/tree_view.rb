@@ -4,14 +4,27 @@ class User::TreeView
     @documents = documents
   end
 
-  def arrange
+  def documents
+    [].tap do |array|
+      @documents.each do |document|
+        next if @stacks.include?(document.stack)
+        array << document
+      end
+    end
+  end
+
+  def stacks
     {}.tap do |hash|
       @stacks.each do |stack|
         hash[stack] = stack.documents.to_a
       end
+    end
+  end
 
-      @documents.each do |document|
-        next if @stacks.include?(document.stack)
+  def arrange
+    {}.tap do |hash|
+      hash.merge!(stacks)
+      documents.each do |document|
         hash[document] = nil
       end
     end
