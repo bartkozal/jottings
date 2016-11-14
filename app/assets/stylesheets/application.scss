@@ -24,9 +24,10 @@ $editor-sidebar-font-size: .9rem;
 
 $link-underline: false;
 
-$z-index-dragged: 1;
-$z-index-dropdown: 2;
-$z-index-modal: 3;
+$z-index-markdown-editor: 1;
+$z-index-dragged: 2;
+$z-index-dropdown: 3;
+$z-index-modal: 4;
 
 
 @import 'hocus-pocus/hocus-pocus',
