@@ -24,8 +24,7 @@ Runtime (production) dependencies:
 
 ## Development
 
-1. Run `rails s`
-2. Run `bundle exec guard`
+1. Run `bundle exec foreman start`
 
 ## Deployment
 
