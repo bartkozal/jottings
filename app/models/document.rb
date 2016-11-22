@@ -23,11 +23,7 @@ class Document < ApplicationRecord
   end
 
   def title
-    if body.present?
-      body.lines.first.strip.remove(/\A\W+\s+/)
-    else
-      "Untitled document"
-    end
+    "Untitled document"
   end
 
   def changeset_since_last_seen(user)

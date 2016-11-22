@@ -14,16 +14,10 @@
 this.App = {
   cable: ActionCable.createConsumer(),
   bus: new Vue(),
-  editor: null,
-  intervals: {
-    editorAutosave: null,
-    editorAutosaveBox: null
-  }
+  editor: null
 };
 
 const onLoad = () => {
-  window.clearInterval(App.intervals.editorAutosave);
-  window.clearInterval(App.intervals.editorAutosaveBox);
   document.body.addEventListener("click", () => {
     // Fix for modals nested in dropdowns i.e. renaming stack modal
     let isModalVisible = document.querySelectorAll('.modal-backdrop').length > 0;

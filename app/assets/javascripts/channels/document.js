@@ -5,13 +5,7 @@ class DocumentChannel {
       id: id
     }, {
       received(data) {
-        let cursor = App.editor.getCursor();
-        App.editor.setValue(data.body);
-        App.editor.setCursor(cursor);
-      },
-
-      update(body) {
-        this.perform('update', { body: body });
+        // ...
       }
     });
   }

@@ -12,12 +12,4 @@ class MarkdownEditor {
       lineWrapping: true
     });
   }
-
-  broadcast() {
-    App.editor.on("change", (editor, change) => {
-      if (change.origin != "setValue") {
-        App.document.update(editor.getValue());
-      }
-    });
-  }
 }

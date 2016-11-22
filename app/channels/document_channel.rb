@@ -9,8 +9,4 @@ class DocumentChannel < ApplicationCable::Channel
   def unsubscribed
     current_user.touch(:last_seen_at)
   end
-
-  def update(data)
-    self.class.broadcast_to @document, body: data["body"]
-  end
 end
