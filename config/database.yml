@@ -80,6 +80,4 @@ test:
 #
 production:
   <<: *default
-  database: jottings_production
-  username: jottings
-  password: <%= ENV['JOTTINGS_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>

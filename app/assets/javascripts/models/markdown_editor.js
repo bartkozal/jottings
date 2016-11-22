@@ -21,18 +21,16 @@ class MarkdownEditor {
     this.broadcast();
   }
 
-  // process.env.SHAREDB_URL
   connect() {
-    const socket = new WebSocket("ws://localhost:5000/");
+    const socket = new WebSocket(App.env.SHAREDB_URL);
     const connection = new ShareDB.Connection(socket);
     return connection;
   }
 
-  // process.env.SHAREDB_OUTPUT
   broadcast() {
     ShareDBCodeMirror.attachDocToCodeMirror(this.doc, this.editor, {
       key: 'content',
-      verbose: true
+      verbose: App.env.SHAREDB_OUTPUT
     });
   }
 }

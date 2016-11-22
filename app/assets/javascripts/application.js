@@ -6,15 +6,14 @@
 //= require vue-resource/vue-resource
 //= require vue_csrf_token
 //= require interact
+//= require env
 //= require_tree ./channels
 //= require_tree ./models
 //= require_tree ./components
 //= require_self
 
-this.App = {
-  cable: ActionCable.createConsumer(),
-  bus: new Vue()
-};
+App.cable = ActionCable.createConsumer();
+App.bus = new Vue();
 
 const onLoad = () => {
   document.body.addEventListener("click", () => {
