@@ -23,7 +23,7 @@ Test dependencies:
 
 ## Development
 
-1. Run `bundle exec foreman start`
+1. Run `bundle exec foreman start -f Procfile.dev`
 
 ## Deployment
 
