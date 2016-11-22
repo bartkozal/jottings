@@ -4,16 +4,14 @@
 
 Development dependencies:
 
-- Ruby `2.3.x`
-- PostgreSQL `9.5.x`
+- Ruby
+- PostgreSQL
+- Redis
+- MongoDB
 
 Test dependencies:
 
 - ChromeDriver
-
-Runtime (production) dependencies:
-
-- Redis
 
 ## Setup
 
@@ -21,6 +19,7 @@ Runtime (production) dependencies:
 2. Run `bundle install`
 3. Run `rails db:setup`
 4. Run `rails t` to ensure that tests pass
+5. Clone sharedb repository
 
 ## Development
 
@@ -28,4 +27,4 @@ Runtime (production) dependencies:
 
 ## Deployment
 
-...
+1. Run `git push dokku master`
