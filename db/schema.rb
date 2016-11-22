@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 20161122110124) do
     t.string   "share_type"
     t.integer  "share_id"
     t.string   "invite_email"
-    t.index ["invite_email", "share_type", "share_id"], name: "index_collaborations_unique_invite_email", unique: true, using: :btree
     t.index ["share_type", "share_id"], name: "index_collaborations_on_share_type_and_share_id", using: :btree
     t.index ["user_id"], name: "index_collaborations_on_user_id", using: :btree
   end

@@ -3,7 +3,7 @@ require "test_helper"
 class RedirectsTest < ActionDispatch::IntegrationTest
   test "redirecting to last visited document" do
     user = create(:user, has_document: true)
-    create(:document, body: Faker::Lorem.paragraph, assign_to: user)
+    create(:document, title: Faker::Lorem.word, assign_to: user)
 
     document_a = user.documents.first
     document_b = user.documents.last

@@ -4,7 +4,7 @@ FactoryGirl.define do
       assign_to nil
     end
 
-    body Faker::Lorem.paragraphs.join("\n\n")
+    title Faker::Lorem.words.join
 
     after(:build) do |document, evaluator|
       if user = evaluator.assign_to.presence

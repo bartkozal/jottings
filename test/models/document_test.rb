@@ -6,24 +6,15 @@ class DocumentTest < ActiveSupport::TestCase
     @user = build(:user)
   end
 
-  test "#title" do
-    @document.body = "First Line\n\nSecond Line\n\n\n\nThird Line"
-    assert_equal "First Line", @document.title
+  test "#to_s" do
+    @document.title = "Title"
+    assert_equal "Title", @document.to_s
 
-    @document.body = "# First Line"
-    assert_equal "First Line", @document.title
+    @document.title = ""
+    assert_equal "Untitled document", @document.to_s
 
-    @document.body = "### First Line"
-    assert_equal "First Line", @document.title
-
-    @document.body = "-   First Line"
-    assert_equal "First Line", @document.title
-
-    @document.body = ""
-    assert_equal "Untitled document", @document.title
-
-    @document.body = nil
-    assert_equal "Untitled document", @document.title
+    @document.title = nil
+    assert_equal "Untitled document", @document.to_s
   end
 
   test "#assign_to" do
