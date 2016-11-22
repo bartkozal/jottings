@@ -13,8 +13,7 @@
 
 this.App = {
   cable: ActionCable.createConsumer(),
-  bus: new Vue(),
-  editor: null
+  bus: new Vue()
 };
 
 const onLoad = () => {
