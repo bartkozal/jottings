@@ -22,10 +22,6 @@ class Document < ApplicationRecord
     has_shared_stack? ? stack.collaborators : super
   end
 
-  def title
-    "Untitled document"
-  end
-
   def changeset_since_last_seen(user)
     changeset = Document::Changeset.new
     changeset.document = self
@@ -33,7 +29,7 @@ class Document < ApplicationRecord
   end
 
   def to_s
-    title
+    title.presence || "Untitled document"
   end
 
   def to_param
