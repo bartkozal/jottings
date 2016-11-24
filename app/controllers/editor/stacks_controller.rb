@@ -12,7 +12,6 @@ class Editor::StacksController < EditorController
 
   def update
     @stack.update(stack_params)
-
     redirect_to editor_documents_path
   end
 

@@ -4,6 +4,17 @@
   </a>
 
   <ul is="dropdown-menu" width="150">
+    <li>
+      <modal>
+        <span slot="modal-trigger">Rename</span>
+
+        <%= form_for [:editor, document], method: :patch, html: { class: "form-inline" } do |form| %>
+          <%= form.text_field :name, placeholder: "Type document name..", autofocus: true, id: nil %>
+          <%= form.submit "Rename" %>
+        <% end %>
+      </modal>
+    </li>
+
     <% if document.owner?(current_user) && !document.has_shared_stack? %>
       <li><%= link_to "Share", editor_document_share_path(document) %></li>
     <% end %>

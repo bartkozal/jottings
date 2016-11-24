@@ -32,11 +32,8 @@ class Editor::DocumentsController < EditorController
   end
 
   def update
-    if @document.update(document_params)
-      redirect_to editor_document_path(@document)
-    else
-      redirect_to editor_documents_path
-    end
+    @document.update(document_params)
+    redirect_to editor_documents_path
   end
 
   def destroy
