@@ -8,8 +8,10 @@ class CreateStackTest < ActionDispatch::IntegrationTest
   test "creating stack" do
     visit root_path(as: @user)
     assert page.has_content?("New stack")
-    fill_in "stack_name", with: "Example stack"
-    click_button "Create"
+    within "#new_stack" do
+      fill_in "stack_name", with: "Example stack"
+      click_button "Create"
+    end
     within ".editor-sidebar" do
       assert page.has_content?("Example stack")
     end

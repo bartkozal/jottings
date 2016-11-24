@@ -38,12 +38,12 @@
   <li>
     <modal>
       <div class="media media-middle media-1/2" slot="modal-trigger">
-        <%= icon_tag "ios-box-outline" %>
-        <div class="media-body">New stack</div>
+        <%= icon_tag "ios-compose-outline" %>
+        <div class="media-body">New document</div>
       </div>
 
-      <%= form_for [:editor, Stack.new], html: { class: "form-inline" } do |form| %>
-        <%= form.text_field :name, placeholder: "Type stack name..", autofocus: true %>
+      <%= form_for [:editor, Document.new], html: { class: "form-inline" } do |form| %>
+        <%= form.text_field :name, placeholder: "Type document name..", autofocus: true %>
         <%= form.submit "Create" %>
       <% end %>
     </modal>
@@ -52,12 +52,12 @@
   <li>
     <modal>
       <div class="media media-middle media-1/2" slot="modal-trigger">
-        <%= icon_tag "ios-compose-outline" %>
-        <div class="media-body">New document</div>
+        <%= icon_tag "ios-box-outline" %>
+        <div class="media-body">New stack</div>
       </div>
 
-      <%= form_for [:editor, Document.new], html: { class: "form-inline" } do |form| %>
-        <%= form.text_field :name, placeholder: "Type document name..", autofocus: true %>
+      <%= form_for [:editor, Stack.new], html: { class: "form-inline" } do |form| %>
+        <%= form.text_field :name, placeholder: "Type stack name..", autofocus: true %>
         <%= form.submit "Create" %>
       <% end %>
     </modal>
