@@ -5,8 +5,9 @@ class User < ApplicationRecord
   has_many :collaborations, dependent: :destroy
   has_many :documents, through: :stacks
   has_many :bookmarks, dependent: :destroy
+  has_one :root_stack, class_name: "Stack", dependent: :destroy
 
-  after_create :assign_invited_collaborations
+  after_create :assign_invited_collaborations, :create_root_stack
 
   def last_updated_document
     documents.last_updated
@@ -33,5 +34,11 @@ class User < ApplicationRecord
 
   def assign_invited_collaborations
     Collaboration.where(invite_email: email).update_all(user_id: id)
+  end
+
+  def create_root_stack
+    stack = Stack.create
+    stack.assign_to(user)
+    self.root_stack = stack
   end
 end

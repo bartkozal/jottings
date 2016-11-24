@@ -3,6 +3,7 @@ class Stack < ApplicationRecord
   has_many :collaborations, dependent: :destroy
   has_many :collaborators, source: :user, through: :collaborations
   belongs_to :owner, class_name: "User"
+  belongs_to :user, inverse_of: :root_stack, optional: true
 
   default_scope { order(name: :desc) }
 

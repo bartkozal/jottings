@@ -15,6 +15,10 @@ class Document < ApplicationRecord
     end
   end
 
+  def can_move?(user)
+    stack.owner?(user)
+  end
+
   def has_shared_stack?
     stack.has_collaborators?
   end

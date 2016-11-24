@@ -8,7 +8,7 @@ class Editor::Stacks::CollaborationsController < EditorController
 
   def create
     @collaboration = Collaboration.new(collaboration_params)
-    @collaboration.share = @stack
+    @collaboration.stack = @stack
 
     if @collaboration.save
       if @collaboration.invite?

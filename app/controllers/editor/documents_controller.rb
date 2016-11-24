@@ -21,7 +21,7 @@ class Editor::DocumentsController < EditorController
 
   def create
     @document = Document.new(document_params)
-    @document.assign_to(current_user)
+    @document.stack = current_user.root_stack
 
     if @document.save
       redirect_to editor_document_path(@document)

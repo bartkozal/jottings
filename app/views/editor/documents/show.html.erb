@@ -2,10 +2,10 @@
   <div class="grid-item 3/4">
     <editor placeholder="Start writing here..."
       document="<%= @document.to_param %>"
-      shared="<%= @document.has_collaborators? %>">
+      shared="<%= @document.has_shared_stack? %>">
   </div>
 
-  <% if @document.has_collaborators? %>
+  <% if @document.has_shared_stack? %>
     <div class="grid-item 1/4">
       <ul class="list-reset margin-bottom">
         <% @document.collaborators.each do |collaborator| %>

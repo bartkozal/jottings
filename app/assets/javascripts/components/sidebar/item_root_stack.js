@@ -1,4 +1,4 @@
-Vue.component("sidebar-dropzone-documents", {
+Vue.component("sidebar-item-root-stack", {
   data() {
     return {
       isDroppable: false

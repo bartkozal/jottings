@@ -19,15 +19,15 @@
 <h3>Documents</h3>
 
 <ul class="list-reset margin-1/2-bottom">
-  <% current_user.stacks.each do |stack, documents| %>
+  <% current_user.stacks.where(user: nil).each do |stack| %>
     <li class="sidebar-item-stack dropzone" is="sidebar-item-stack" stack="<%= stack.to_param %>">
-      <%= render "editor/stacks/sidebar_item", stack: stack, documents: documents %>
+      <%= render "editor/stacks/sidebar_item", stack: stack, documents: stack.documents %>
     </li>
   <% end %>
 </ul>
 
-<ul class="list-reset margin-1/2-bottom dropzone" is="sidebar-dropzone-documents">
-  <% current_user.root_stack.documents.each do |document| %>
+<ul class="list-reset margin-1/2-bottom dropzone" is="sidebar-item-root-stack">
+  <% current_user.root_stack&.documents&.each do |document| %>
     <li class="sidebar-item-document" is="sidebar-item-document" document="<%= document.to_param %>">
       <%= render "editor/documents/sidebar_item", document: document %>
     </li>

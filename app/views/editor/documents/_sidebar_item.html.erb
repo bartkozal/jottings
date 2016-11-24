@@ -2,7 +2,7 @@
   <div class="grid-item 5/6">
     <%= link_to editor_document_path(document), is: "sidebar-item-document-trigger" do %>
       <%= document %>
-      <% if document.has_collaborators? %>
+      <% if document.has_shared_stack? %>
         <%= icon_tag "person-stalker" %>
       <% end %>
     <% end %>
