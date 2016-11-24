@@ -17,9 +17,7 @@ class Editor::UsersController < EditorController
       redirect_to editor_profile_path,
         alert: "You can't remove the account until you pass the ownership of shared stacks."
     else
-      current_user.collaborations.delete_all
-      current_user.bookmarks.delete_all
-      current_user.delete
+      current_user.destroy
       redirect_to root_path, notice: "Your account has been removed"
     end
   end

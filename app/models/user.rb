@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   include Clearance::User
 
-  has_many :stacks, through: :collaborations
+  has_many :stacks, through: :collaborations, dependent: :destroy
   has_many :collaborations, dependent: :destroy
   has_many :documents, through: :stacks
   has_many :bookmarks, dependent: :destroy
