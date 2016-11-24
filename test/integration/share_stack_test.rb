@@ -35,7 +35,7 @@ class ShareStackTest < ActionDispatch::IntegrationTest
     document.collaborators << @user_a
     visit root_path(as: @user_a)
     within ".editor-sidebar" do
-      assert page.has_content?(document.title)
+      assert page.has_content?(document.name)
     end
   end
 
@@ -44,7 +44,7 @@ class ShareStackTest < ActionDispatch::IntegrationTest
     @stack.collaborators << @user_a
     visit root_path(as: @user_a)
     within ".editor-sidebar" do
-      click_link(document.title)
+      click_link(document.name)
     end
     assert_equal editor_document_path(document), current_path
   end

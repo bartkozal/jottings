@@ -13,7 +13,7 @@ class User < ApplicationRecord
   end
 
   def bookmarked_documents
-    bookmarks.includes(:document).order("documents.title").map(&:document)
+    bookmarks.includes(:document).order("documents.name").map(&:document)
   end
 
   def find_bookmark(document)
@@ -38,8 +38,8 @@ class User < ApplicationRecord
   end
 
   def tree_view
-    stacks = self.stacks.includes(:documents).order(:name, "documents.title")
-    documents = self.documents.includes(:stack).order(:title)
+    stacks = self.stacks.includes(:documents).order(:name, "documents.name")
+    documents = self.documents.includes(:stack).order(:name)
 
     TreeView.new(stacks: stacks, documents: documents)
   end

@@ -4,7 +4,7 @@ FactoryGirl.define do
       assign_to nil
     end
 
-    title Faker::Lorem.words.join
+    name Faker::Lorem.words.join.titleize
 
     after(:build) do |document, evaluator|
       if user = evaluator.assign_to.presence

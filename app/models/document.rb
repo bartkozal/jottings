@@ -29,7 +29,7 @@ class Document < ApplicationRecord
   end
 
   def to_s
-    title.presence || "Untitled document"
+    name.presence || "Untitled document"
   end
 
   def to_param

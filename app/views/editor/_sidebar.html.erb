@@ -50,13 +50,16 @@
   </li>
 
   <li>
-    <%= link_to editor_documents_path, method: :post do %>
-      <div class="media media-middle media-1/2">
+    <modal>
+      <div class="media media-middle media-1/2" slot="modal-trigger">
         <%= icon_tag "ios-compose-outline" %>
-        <div class="media-body">
-          New document
-        </div>
+        <div class="media-body">New document</div>
       </div>
-    <% end %>
+
+      <%= form_for [:editor, Document.new], html: { class: "form-inline" } do |form| %>
+        <%= form.text_field :name, placeholder: "Type document name..", autofocus: true %>
+        <%= form.submit "Create" %>
+      <% end %>
+    </modal>
   </li>
 </ul>

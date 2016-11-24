@@ -7,13 +7,13 @@ class DocumentTest < ActiveSupport::TestCase
   end
 
   test "#to_s" do
-    @document.title = "Title"
+    @document.name = "Title"
     assert_equal "Title", @document.to_s
 
-    @document.title = ""
+    @document.name = ""
     assert_equal "Untitled document", @document.to_s
 
-    @document.title = nil
+    @document.name = nil
     assert_equal "Untitled document", @document.to_s
   end
 

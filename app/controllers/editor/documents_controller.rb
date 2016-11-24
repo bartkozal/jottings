@@ -21,7 +21,7 @@ class Editor::DocumentsController < EditorController
   end
 
   def create
-    @document = Document.new
+    @document = Document.new(document_params)
     @document.assign_to(current_user)
 
     if @document.save
@@ -62,6 +62,6 @@ class Editor::DocumentsController < EditorController
   end
 
   def document_params
-    params.require(:document).permit(:body)
+    params.require(:document).permit(:name)
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122110124) do
+ActiveRecord::Schema.define(version: 20161124120242) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20161122110124) do
     t.string   "share_type"
     t.integer  "share_id"
     t.string   "invite_email"
+    t.index ["invite_email", "share_type", "share_id"], name: "index_collaborations_unique_invite_email", unique: true, using: :btree
     t.index ["share_type", "share_id"], name: "index_collaborations_on_share_type_and_share_id", using: :btree
     t.index ["user_id"], name: "index_collaborations_on_user_id", using: :btree
   end
@@ -40,7 +41,7 @@ ActiveRecord::Schema.define(version: 20161122110124) do
     t.datetime "updated_at", null: false
     t.integer  "owner_id"
     t.integer  "stack_id"
-    t.string   "title"
+    t.string   "name"
     t.index ["owner_id"], name: "index_documents_on_owner_id", using: :btree
     t.index ["stack_id"], name: "index_documents_on_stack_id", using: :btree
   end
