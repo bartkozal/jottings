@@ -27,12 +27,4 @@ class UserTest < ActiveSupport::TestCase
     user_a.stacks.last.update(owner: user_b)
     refute user_a.own_shared_stacks?
   end
-
-  test "#tree_view" do
-    skip
-  end
-
-  test "#find_document" do
-    skip
-  end
 end

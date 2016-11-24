@@ -4,6 +4,8 @@ class Stack < ApplicationRecord
   has_many :collaborators, source: :user, through: :collaborations
   belongs_to :owner, class_name: "User"
 
+  default_scope { order(name: :desc) }
+
   def assign_to(user)
     self.owner = user
     self.collaborators << user

@@ -2,10 +2,12 @@ class Document < ApplicationRecord
   belongs_to :stack
   has_many :bookmarks
 
-  has_paper_trail on: [:create, :update], only: [:body]
+  default_scope { order(name: :desc) }
 
-  delegate :version_at, to: :paper_trail
   delegate :collaborators, to: :stack
+
+  has_paper_trail on: [:create, :update], only: [:body]
+  delegate :version_at, to: :paper_trail
 
   class << self
     def last_updated
