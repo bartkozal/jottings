@@ -1,12 +1,11 @@
 class Document < ApplicationRecord
-  include Shareable
-
-  belongs_to :stack, optional: true
+  belongs_to :stack
   has_many :bookmarks
 
   has_paper_trail on: [:create, :update], only: [:body]
 
   delegate :version_at, to: :paper_trail
+  delegate :collaborators, to: :stack
 
   class << self
     def last_updated
@@ -15,11 +14,7 @@ class Document < ApplicationRecord
   end
 
   def has_shared_stack?
-    stack && stack.has_collaborators?
-  end
-
-  def collaborators
-    has_shared_stack? ? stack.collaborators : super
+    stack.has_collaborators?
   end
 
   def changeset_since_last_seen(user)

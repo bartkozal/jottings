@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   include Clearance::User
 
+  has_many :stacks, through: :collaborations
   has_many :collaborations, dependent: :destroy
-  has_many :documents, through: :collaborations, source: :share, source_type: "Document"
-  has_many :stacks, through: :collaborations, source: :share, source_type: "Stack"
+  has_many :documents, through: :stacks
   has_many :bookmarks, dependent: :destroy
 
   after_create :assign_invited_collaborations
@@ -24,17 +24,9 @@ class User < ApplicationRecord
     find_bookmark(document).present?
   end
 
-  def own_shares?
-    documents.joins(:collaborations).where(owner: self).group("documents.id")
-      .having("count(collaborations.share_id) > 1").present? ||
+  def own_shared_stacks?
     stacks.joins(:collaborations).where(owner: self).group("stacks.id")
       .having("count(collaborations.share_id) > 1").present?
-  end
-
-  def find_document(param)
-    self.documents.includes(:collaborators).find_by(id: param) ||
-      self.stacks.joins(:documents).where("documents.id = ?", param).first
-      &.documents&.includes(:collaborators)&.find(param)
   end
 
   def tree_view

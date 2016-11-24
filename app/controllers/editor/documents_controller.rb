@@ -1,6 +1,5 @@
 class Editor::DocumentsController < EditorController
   before_action :find_document, only: [:show, :update, :destroy]
-  before_action :require_collaboration , only: :destroy
 
   def show
     @changeset = @document.changeset_since_last_seen(current_user)
@@ -50,12 +49,8 @@ class Editor::DocumentsController < EditorController
 
   def find_document
     decoded_id = MaskedId.decode(:document, params[:id])
-    return if @document = current_user.find_document(decoded_id)
+    return if @document = current_user.documents.find(decoded_id)
     raise ApplicationController::NotAuthorized
-  end
-
-  def require_collaboration
-    raise ApplicationController::NotAuthorized unless @document.has_collaborator?(current_user)
   end
 
   def document_params

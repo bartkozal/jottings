@@ -1,10 +1,10 @@
 class Collaboration < ApplicationRecord
-  belongs_to :share, polymorphic: true
+  belongs_to :stack
   belongs_to :user, optional: true
 
   validates :email, email: true, presence: true
-  validates :user, uniqueness: { scope: [:share_type, :share_id], message: "already exists", allow_blank: true }
-  validates :invite_email, uniqueness: { scope: [:share_type, :share_id], message: "already exists", allow_blank: true }
+  validates :user, uniqueness: { scope: :stack_id, message: "already exists", allow_blank: true }
+  validates :invite_email, uniqueness: { scope: :stack_id, message: "already exists", allow_blank: true }
 
   def email
     user&.email || invite_email
@@ -21,14 +21,6 @@ class Collaboration < ApplicationRecord
 
   def invite?
     user.blank? && invite_email.present?
-  end
-
-  def type
-    share_type.downcase.to_sym
-  end
-
-  def document?
-    type == :document
   end
 
   def to_s
