@@ -12,11 +12,11 @@ FactoryGirl.define do
 
     after(:create) do |user, evaluator|
       if evaluator.has_document
-        create(:document, assign_to: user)
+        create(:document, stack: user.root_stack)
       end
 
       if evaluator.has_bookmark
-        document = create(:document, assign_to: user)
+        document = create(:document, user: user)
         create(:bookmark, user: user, document: document)
       end
 

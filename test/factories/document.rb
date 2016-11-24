@@ -1,19 +1,19 @@
 FactoryGirl.define do
   factory :document do
     transient do
-      assign_to nil
+      user nil
     end
 
     name Faker::Lorem.words.join.titleize
 
     after(:build) do |document, evaluator|
-      if user = evaluator.assign_to.presence
-        document.assign_to(user)
+      if user = evaluator.user.presence
+        document.stack = user.root_stack
       end
     end
 
     after(:create) do |document, evaluator|
-      PaperTrail.whodunnit = document.owner.id
+      PaperTrail.whodunnit = "1"
     end
   end
 end

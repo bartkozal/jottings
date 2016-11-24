@@ -3,7 +3,7 @@ require "test_helper"
 class RedirectsTest < ActionDispatch::IntegrationTest
   test "redirecting to last visited document" do
     user = create(:user, has_document: true)
-    create(:document, name: Faker::Lorem.word, assign_to: user)
+    create(:document, name: Faker::Lorem.word, user: user)
 
     document_a = user.documents.first
     document_b = user.documents.last
@@ -22,8 +22,9 @@ class RedirectsTest < ActionDispatch::IntegrationTest
     document = user_b.documents.last
 
     visit root_path(as: user_a)
-    visit editor_document_path(document)
-    assert_equal root_path, current_path
+    assert_raise ActiveRecord::RecordNotFound do
+      visit editor_document_path(document)
+    end
 
     visit root_path(as: user_b)
     visit editor_document_path(document)

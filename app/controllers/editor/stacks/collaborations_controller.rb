@@ -26,7 +26,7 @@ class Editor::Stacks::CollaborationsController < EditorController
   end
 
   def destroy
-    @collaboration = @stack.collaborations.find_by(email: params[:email])
+    @collaboration = @stack.collaborations.find_by(invite_email: params[:email])
     @collaboration.destroy
 
     if @collaboration.invite?

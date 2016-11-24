@@ -12,8 +12,4 @@ class MoveDocumentTest < ActionDispatch::IntegrationTest
   test "disallowing to move shared document out of stack on lack of ownership" do
     skip
   end
-
-  test "disallowing to move shared document between stacks on lack of ownership" do
-    skip
-  end
 end

@@ -18,27 +18,12 @@ class RemoveAccountTest < ActionDispatch::IntegrationTest
     assert_empty Bookmark.where(user: @user_a)
   end
 
-  test "rejecting remove when shared documents exist" do
-    @document.collaborators << @user_b
-    visit root_path(as: @user_a)
-    click_link "Settings"
-    click_link "Remove account"
-    assert page.has_content?("You can't remove the account until you pass the ownership of shared documents and stacks.")
-    assert User.find(@user_a.id).present?
-
-    @document.update(owner: @user_b)
-    click_link "Remove account"
-    assert page.has_content?("Your account has been removed")
-    assert User.find_by(id: @user_a.id).blank?
-    assert_empty Document.where(owner: @user_a)
-  end
-
   test "rejecting remove when shared stack exist" do
     @stack.collaborators << @user_b
     visit root_path(as: @user_a)
     click_link "Settings"
     click_link "Remove account"
-    assert page.has_content?("You can't remove the account until you pass the ownership of shared documents and stacks.")
+    assert page.has_content?("You can't remove the account until you pass the ownership of shared stacks.")
     assert User.find(@user_a.id).present?
 
     @stack.update(owner: @user_b)

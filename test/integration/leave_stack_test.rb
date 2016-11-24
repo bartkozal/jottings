@@ -17,20 +17,4 @@ class LeaveStackTest < ActionDispatch::IntegrationTest
       refute page.has_content?(@stack)
     end
   end
-
-  test "leaving document from the shared stack" do
-    document = @stack.documents.create(owner: @user_a)
-    visit root_path(as: @user_a)
-    within ".sidebar-item-document" do
-      refute page.has_link?("Leave")
-    end
-
-    within ".sidebar-item-stack" do
-      click_link "Leave"
-    end
-    refute page.has_content?(document)
-
-    visit root_path(as: @user_b)
-    assert page.has_content?(document)
-  end
 end

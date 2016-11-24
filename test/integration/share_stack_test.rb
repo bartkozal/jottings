@@ -30,17 +30,8 @@ class ShareStackTest < ActionDispatch::IntegrationTest
     assert_equal @user_a, @user_b.stacks.last.owner
   end
 
-  test "accessing document shared from the stack" do
-    document = create(:document, assign_to: @user_b, stack: @stack)
-    document.collaborators << @user_a
-    visit root_path(as: @user_a)
-    within ".editor-sidebar" do
-      assert page.has_content?(document.name)
-    end
-  end
-
   test "accessing document from the shared stacks" do
-    document = create(:document, assign_to: @user_b, stack: @stack)
+    document = create(:document, stack: @stack)
     @stack.collaborators << @user_a
     visit root_path(as: @user_a)
     within ".editor-sidebar" do

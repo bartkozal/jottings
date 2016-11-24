@@ -23,7 +23,7 @@ class User < ApplicationRecord
 
   def own_shared_stacks?
     stacks.joins(:collaborations).where(owner: self).group("stacks.id")
-      .having("count(collaborations.share_id) > 1").present?
+      .having("count(collaborations.stack_id) > 1").present?
   end
 
   def to_s
@@ -38,7 +38,7 @@ class User < ApplicationRecord
 
   def create_root_stack
     stack = Stack.create
-    stack.assign_to(user)
+    stack.assign_to(self)
     self.root_stack = stack
   end
 end
