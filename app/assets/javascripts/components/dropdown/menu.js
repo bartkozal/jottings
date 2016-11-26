@@ -18,8 +18,10 @@ Vue.component('dropdown-menu', {
     }
   },
   template: `
-    <ul class="dropdown-menu" :style="styleAttr" v-if="isVisible">
-      <slot></slot>
-    </ul>
+    <transition name="transition-slide-down">
+      <ul class="dropdown-menu" :style="styleAttr" v-if="isVisible">
+        <slot></slot>
+      </ul>
+    </transition>
   `
 });

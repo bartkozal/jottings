@@ -11,6 +11,7 @@ Vue.component("sidebar-item-stack-trigger", {
   },
   template: `
     <div @click="isOpen = !isOpen">
+      <i class="ion-ios-arrow-right sidebar-item-stack-trigger-icon" :class="{ 'is-active': isOpen }"></i>
       <slot></slot>
     </div>
   `

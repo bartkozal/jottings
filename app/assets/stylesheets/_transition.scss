@@ -1,9 +1,20 @@
 .transition-fade-leave-active,
 .transition-fade-enter-active {
-  transition: opacity .3s;
+  transition: opacity $base-transition-duration;
 }
 
 .transition-fade-leave-active,
 .transition-fade-enter {
   opacity: 0;
+}
+
+.transition-slide-down-leave-active,
+.transition-slide-down-enter-active {
+  transition: all $base-transition-duration;
+}
+
+.transition-slide-down-leave-active,
+.transition-slide-down-enter {
+  opacity: 0;
+  transform: translateY(-10%);
 }

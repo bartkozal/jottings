@@ -16,19 +16,14 @@ $el-dropdown-toggle-active: '> .grid:hover > .grid-item > .dropdown > .dropdown-
   > .grid > .grid-item > .media {
     cursor: pointer;
   }
+}
 
-  .sidebar-icon-stack-icon-active {
-    display: none;
-  }
+.sidebar-item-stack-trigger-icon {
+  display: inline-block;
+  transition: transform $base-transition-duration;
 
-  &.is-open {
-    .sidebar-icon-stack-icon {
-      display: none;
-    }
-
-    .sidebar-icon-stack-icon-active {
-      display: inline;
-    }
+  &.is-active {
+    transform: rotate(90deg);
   }
 }
 
