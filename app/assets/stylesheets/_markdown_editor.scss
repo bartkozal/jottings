@@ -9,6 +9,12 @@
   color: $color-muted;
 }
 
+.CodeMirror-focused {
+  .CodeMirror-selected {
+    background-color: $color-text-selected;
+  }
+}
+
 .cm-s-default {
   .cm-header,
   .cm-variable-2,

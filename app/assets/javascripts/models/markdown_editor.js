@@ -1,6 +1,7 @@
 //= require codemirror
 //= require codemirror/addons/mode/overlay
 //= require codemirror/addons/display/placeholder
+//= require codemirror/addons/selection/mark-selection
 //= require codemirror/modes/markdown
 //= require codemirror/modes/gfm
 //= require ot-text
