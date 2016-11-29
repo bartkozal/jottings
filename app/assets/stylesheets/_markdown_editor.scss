@@ -9,8 +9,10 @@
   color: $color-muted;
 }
 
-.CodeMirror-focused {
-  .CodeMirror-selected {
+.CodeMirror-selected {
+  background-color: $color-text-selected;
+
+  .CodeMirror-focused & {
     background-color: $color-text-selected;
   }
 }
