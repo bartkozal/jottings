@@ -9,7 +9,7 @@ class SendStackCollaborationEmailTest < ActionDispatch::IntegrationTest
 
   test "sending inivitation email when user doesn't have account" do
     visit root_path(as: @user_a)
-    click_link "Share"
+    click_link "Collaborators"
     fill_in "collaboration_email", with: @new_user_email
     perform_enqueued_jobs do
       click_button "Invite"
@@ -28,7 +28,7 @@ class SendStackCollaborationEmailTest < ActionDispatch::IntegrationTest
   test "sending notification email when user exists" do
     @user_b = create(:user)
     visit root_path(as: @user_a)
-    click_link "Share"
+    click_link "Collaborators"
     fill_in "collaboration_email", with: @user_b.email
     perform_enqueued_jobs do
       click_button "Invite"
@@ -41,7 +41,7 @@ class SendStackCollaborationEmailTest < ActionDispatch::IntegrationTest
 
   test "canceling invite" do
     visit root_path(as: @user_a)
-    click_link "Share"
+    click_link "Collaborators"
     fill_in "collaboration_email", with: @new_user_email
     click_button "Invite"
     click_link "Cancel"

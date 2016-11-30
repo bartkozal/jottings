@@ -5,7 +5,7 @@
 
   <ul is="dropdown-menu" width="150">
     <% if stack.owner?(current_user) %>
-      <li><%= link_to "Share", editor_stack_share_path(stack) %></li>
+      <li><%= link_to "Collaborators", editor_stack_share_path(stack) %></li>
       <li>
         <modal>
           <span slot="modal-trigger">Rename</span>
