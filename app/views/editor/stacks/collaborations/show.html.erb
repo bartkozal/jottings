@@ -23,6 +23,16 @@
                         <%= link_to "Make owner",
                           editor_stack_ownership_path(@stack, email: collaboration.email),
                           method: :put %>
+                        <tooltip width="300" offset="9">
+                          <sup slot="tooltip-trigger">
+                            <%= icon_tag "help", "text-muted", "margin-1/4-left" %>
+                          </sup>
+
+                          <p>
+                            Every collaborator can view, edit, add and remove documents in the stack.
+                            Only owner can remove and manage access to the stack.
+                          </p>
+                        </tooltip>
                       </li>
                       <li>
                         <%= link_to "Remove",
