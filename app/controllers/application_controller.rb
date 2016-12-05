@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   class NotAuthorized < StandardError; end
 
-  before_action :set_paper_trail_whodunnit
-
   include Clearance::Controller
 
   protect_from_forgery with: :exception

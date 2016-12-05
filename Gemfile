@@ -16,7 +16,6 @@ gem 'codemirror-rails'
 gem 'clearance'
 gem 'hashids'
 gem 'email_validator'
-gem 'paper_trail'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-hocus-pocus', '0.3.3'

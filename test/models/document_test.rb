@@ -16,14 +16,4 @@ class DocumentTest < ActiveSupport::TestCase
     @document.name = nil
     assert_equal "Untitled document", @document.to_s
   end
-
-  test "#changeset_since_last_seen" do
-    changeset_mock = Minitest::Mock.new
-    changeset_mock.expect :document=, nil, [@document]
-    changeset_mock.expect :since_last_seen, nil, [@user]
-
-    Document::Changeset.stub :new, changeset_mock do
-      @document.changeset_since_last_seen(@user)
-    end
-  end
 end

@@ -2,7 +2,6 @@ class Editor::DocumentsController < EditorController
   before_action :find_document, only: [:show, :update, :destroy]
 
   def show
-    @changeset = @document.changeset_since_last_seen(current_user)
     cookies.permanent.signed[:last_visited_document] = @document.to_param
   end
 

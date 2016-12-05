@@ -6,9 +6,6 @@ class Document < ApplicationRecord
 
   delegate :collaborators, to: :stack
 
-  has_paper_trail on: [:create, :update], only: [:body]
-  delegate :version_at, to: :paper_trail
-
   class << self
     def last_updated
       order(:updated_at).last
@@ -21,12 +18,6 @@ class Document < ApplicationRecord
 
   def has_shared_stack?
     stack.has_collaborators?
-  end
-
-  def changeset_since_last_seen(user)
-    changeset = Document::Changeset.new
-    changeset.document = self
-    changeset.since_last_seen(user)
   end
 
   def to_s

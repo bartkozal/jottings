@@ -11,9 +11,5 @@ FactoryGirl.define do
         document.stack = user.root_stack
       end
     end
-
-    after(:create) do |document, evaluator|
-      PaperTrail.whodunnit = "1"
-    end
   end
 end

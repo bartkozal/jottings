@@ -38,13 +38,3 @@
   flex-grow: 1;
   width: map-get($rwd-map, 'regular');
 }
-
-.editor-changeset {
-  @extend %list-reset;
-  color: $color-muted;
-  font-size: $font-size-small;
-
-  li + li {
-    margin-top: $spacing-unit;
-  }
-}
