@@ -9,7 +9,9 @@
 }
 
 .transition-slide-down-leave-active,
-.transition-slide-down-enter-active {
+.transition-slide-down-enter-active,
+.transition-tooltip-leave-active,
+.transition-tooltip-enter-active {
   transition: all $base-transition-duration;
 }
 
@@ -17,4 +19,10 @@
 .transition-slide-down-enter {
   opacity: 0;
   transform: translateY(-10%);
+}
+
+.transition-tooltip-leave-active,
+.transition-tooltip-enter {
+  opacity: 0;
+  transform: translate(-50%, -105%) !important;
 }

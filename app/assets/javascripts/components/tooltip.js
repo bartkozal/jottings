@@ -16,7 +16,7 @@ Vue.component("tooltip", {
         <slot name="tooltip-trigger"></slot>
       </span>
 
-      <transition name="transition-fade">
+      <transition name="transition-tooltip">
         <div class="tooltip" v-if="isVisible" :style="styleAttr">
           <slot></slot>
         </div>
