@@ -1,24 +1,23 @@
 Rails.application.routes.draw do
   namespace :editor do
     resource :profile, controller: "users", only: [:show, :update, :destroy]
-    resource :trash, only: :show
+    resource :trash, only: [:show, :destroy]
     resources :stacks, only: [:create, :update, :destroy] do
       scope module: :stacks do
         resource :share, controller: "collaborations", only: [:show, :create, :destroy]
         resource :ownership, only: :update
         resource :leave, only: :create
+        resource :restore, only: [:create, :destroy]
       end
     end
 
     resources :documents, except: [:new, :edit] do
       scope module: :documents do
-        resource :share, controller: "collaborations", only: [:show, :create, :destroy]
-        resource :ownership, only: :update
         resource :bookmark, only: [:create, :destroy]
-        resource :leave, only: :create
         resource :move, only: :destroy do
           post ":id", to: "moves#create", as: ""
         end
+        resource :restore, only: [:create, :destroy]
       end
     end
   end

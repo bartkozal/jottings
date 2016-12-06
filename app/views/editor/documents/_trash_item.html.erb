@@ -6,11 +6,11 @@
   <div class="grid-item 1/2">
     <ul class="list-divided">
       <li>
-        <%= link_to "Restore", "#" %>
+        <%= link_to "Restore", editor_document_restore_path(document), method: :post %>
       </li>
 
       <li>
-        <%= link_to "Delete Forever", "#", class: "text-negative" %>
+        <%= link_to "Delete Forever", editor_document_restore_path(document), method: :delete, class: "text-negative" %>
       </li>
     </ul>
   </div>

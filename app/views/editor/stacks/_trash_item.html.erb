@@ -9,12 +9,12 @@
   <div class="grid-item 1/2">
     <ul class="list-divided">
       <li>
-        <%= link_to "Restore", "#" %>
+        <%= link_to "Restore", editor_stack_restore_path(stack), method: :post %>
       </li>
 
       <% if stack.owner?(current_user) %>
         <li>
-          <%= link_to "Delete Forever", "#", class: "text-negative" %>
+          <%= link_to "Delete Forever", editor_stack_restore_path(stack), method: :delete, class: "text-negative" %>
         </li>
       <% end %>
     </ul>

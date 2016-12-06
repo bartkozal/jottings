@@ -4,7 +4,7 @@
       Trash
 
       <% if @removed_items_count > 0 %>
-        <%= link_to "Empty", "#", class: "text-negative text-small" %>
+        <%= link_to "Empty", editor_trash_path, method: :delete, class: "text-negative text-small" %>
       <% end %>
     </h2>
 
@@ -24,7 +24,7 @@
       </ul>
     <% else %>
       <div class="trash-empty">
-        Trash is empty.
+        No files
       </div>
     <% end %>
   </div>
