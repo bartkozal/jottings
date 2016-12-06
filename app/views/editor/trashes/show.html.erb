@@ -1,8 +1,31 @@
 <div class="grid">
   <div class="grid-item 3/4">
-    <h2>Trash</h2>
-    <%= @documents.to_a %>
-    <br>
-    <%= @stacks.to_a %>
+    <h2>
+      Trash
+
+      <% if @removed_items_count > 0 %>
+        <%= link_to "Empty", "#", class: "text-negative text-small" %>
+      <% end %>
+    </h2>
+
+    <% if @removed_items_count > 0 %>
+      <ul class="list-reset">
+        <% @stacks.each do |stack| %>
+          <li class="margin-bottom">
+            <%= render "editor/stacks/trash_item", stack: stack %>
+          </li>
+        <% end %>
+
+        <% @documents.each do |document| %>
+          <li class="margin-bottom">
+            <%= render "editor/documents/trash_item", document: document %>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <div class="trash-empty">
+        Trash is empty.
+      </div>
+    <% end %>
   </div>
 </div>

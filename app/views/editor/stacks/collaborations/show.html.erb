@@ -20,7 +20,7 @@
                 <% if collaboration.user %>
                   <% unless @stack.owner?(collaboration.user)  %>
                       <li>
-                        <%= link_to "Make owner",
+                        <%= link_to "Make Owner",
                           editor_stack_ownership_path(@stack, email: collaboration.email),
                           method: :put %>
                         <tooltip width="300" offset="9">

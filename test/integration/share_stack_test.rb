@@ -25,7 +25,7 @@ class ShareStackTest < ActionDispatch::IntegrationTest
     click_link "Collaborators"
     fill_in "collaboration_email", with: @user_a.email
     click_button "Invite"
-    click_link "Make owner"
+    click_link "Make Owner"
     refute page.has_link?("Share")
     assert_equal @user_a, @user_b.stacks.last.owner
   end
