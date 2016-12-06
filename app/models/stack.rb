@@ -7,6 +7,14 @@ class Stack < ApplicationRecord
 
   default_scope { order(name: :desc) }
 
+  acts_as_paranoid
+
+  class << self
+    def without_root
+      where(user: nil)
+    end
+  end
+
   def assign_to(user)
     self.owner = user
     self.collaborators << user

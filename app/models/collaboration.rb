@@ -6,6 +6,8 @@ class Collaboration < ApplicationRecord
   validates :user, uniqueness: { scope: :stack_id, message: "already exists", allow_blank: true }
   validates :invite_email, uniqueness: { scope: :stack_id, message: "already exists", allow_blank: true }
 
+  acts_as_paranoid
+
   def email
     user&.email || invite_email
   end

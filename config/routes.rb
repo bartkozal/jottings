@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :editor do
     resource :profile, controller: "users", only: [:show, :update, :destroy]
+    resource :trash, only: :show
     resources :stacks, only: [:create, :update, :destroy] do
       scope module: :stacks do
         resource :share, controller: "collaborations", only: [:show, :create, :destroy]
@@ -8,6 +9,7 @@ Rails.application.routes.draw do
         resource :leave, only: :create
       end
     end
+
     resources :documents, except: [:new, :edit] do
       scope module: :documents do
         resource :share, controller: "collaborations", only: [:show, :create, :destroy]

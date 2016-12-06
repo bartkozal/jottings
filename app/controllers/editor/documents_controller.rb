@@ -41,7 +41,7 @@ class Editor::DocumentsController < EditorController
     end
 
     redirect_to editor_documents_path,
-      alert: %(Document "#{@document}" has been removed)
+      alert: %(Document "#{@document}" has been moved to trash)
   end
 
   private

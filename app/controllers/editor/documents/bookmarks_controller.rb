@@ -10,7 +10,7 @@ class Editor::Documents::BookmarksController < EditorController
 
   def destroy
     bookmark = Bookmark.find_by(document: @document, user: current_user)
-    bookmark.delete
+    bookmark.destroy
     redirect_back fallback_location: editor_document_path(@document),
                   alert: %(Bookmark for "#{@document}" removed)
   end

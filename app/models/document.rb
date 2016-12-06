@@ -6,9 +6,15 @@ class Document < ApplicationRecord
 
   delegate :collaborators, to: :stack
 
+  acts_as_paranoid
+
   class << self
     def last_updated
       order(:updated_at).last
+    end
+
+    def without_deleted_in_stacks
+      select { |d| !d.stack.deleted? if d.stack }
     end
   end
 

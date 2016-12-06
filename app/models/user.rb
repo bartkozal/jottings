@@ -17,12 +17,16 @@ class User < ApplicationRecord
     bookmarks.includes(:document).map(&:document)
   end
 
+  def owned_stacks
+    stacks.where(owner: self)
+  end
+
   def bookmarked?(document)
     bookmarks.find_by(document: document).present?
   end
 
   def own_shared_stacks?
-    stacks.joins(:collaborations).where(owner: self).group("stacks.id")
+    stacks.unscoped.joins(:collaborations).where(owner: self).group("stacks.id")
       .having("count(collaborations.stack_id) > 1").present?
   end
 
