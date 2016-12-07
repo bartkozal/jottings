@@ -7,7 +7,7 @@ class Stack < ApplicationRecord
 
   default_scope { order(name: :desc) }
 
-  accepts_nested_attributes_for :collaborations
+  accepts_nested_attributes_for :collaborations, reject_if: :all_blank
 
   acts_as_paranoid
 
