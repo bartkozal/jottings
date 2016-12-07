@@ -1,28 +1,30 @@
-.transition-fade-leave-active,
-.transition-fade-enter-active {
-  transition: opacity $base-transition-duration;
+@mixin transition($name) {
+  .transition-#{$name}-leave-active,
+  .transition-#{$name}-enter-active {
+    transition: all $base-transition-duration;
+  }
+
+  .transition-#{$name}-leave-active,
+  .transition-#{$name}-enter {
+    @content;
+  }
 }
 
-.transition-fade-leave-active,
-.transition-fade-enter {
+@include transition('fade') {
   opacity: 0;
 }
 
-.transition-slide-down-leave-active,
-.transition-slide-down-enter-active,
-.transition-tooltip-leave-active,
-.transition-tooltip-enter-active {
-  transition: all $base-transition-duration;
+@include transition('zoom-in') {
+  transform: scale(.8);
+  opacity: 0;
 }
 
-.transition-slide-down-leave-active,
-.transition-slide-down-enter {
-  opacity: 0;
+@include transition('slide-down') {
   transform: translateY(-10%);
+  opacity: 0;
 }
 
-.transition-tooltip-leave-active,
-.transition-tooltip-enter {
-  opacity: 0;
+@include transition('tooltip') {
   transform: translate(-50%, -105%) !important;
+  opacity: 0;
 }
