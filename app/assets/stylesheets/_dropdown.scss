@@ -9,7 +9,7 @@
 .dropdown-menu {
   @extend %list-reset;
   position: absolute;
-  right: $spacing-unit / -4;
+  left: $spacing-unit / -4;
   margin-top: $spacing-unit / -2;
   border: 1px solid $color-ui;
   font-size: $font-size-base;
