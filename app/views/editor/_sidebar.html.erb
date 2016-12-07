@@ -36,7 +36,7 @@
 
 <ul class="list-reset margin-top">
   <li>
-    <modal width="285">
+    <modal width="300">
       <div class="media media-middle media-1/2" slot="modal-trigger">
         <%= icon_tag "ios-compose-outline" %>
         <div class="media-body">New document</div>
@@ -44,7 +44,7 @@
 
       <%= form_for [:editor, @new_document], html: { class: "form-stacked" } do |form| %>
         <%= form.label :name, "Type the document name:" %>
-        <%= form.text_field :name, placeholder: "i.e. Blog Post", autofocus: true, class: "margin-1/3-bottom" %>
+        <%= form.text_field :name, placeholder: "i.e. Blog Post", autofocus: true, class: "margin-1/3-bottom margin-1/3-right" %>
         <%= form.submit "Create" %>
       <% end %>
     </modal>
@@ -58,12 +58,12 @@
       </div>
 
       <%= form_for [:editor, @new_stack], html: { class: "form-stacked" } do |form| %>
-        <%= form.label :name, "Type the stack name:" %>
+        <%= form.label :name, "Type the stack's name:" %>
         <%= form.text_field :name, placeholder: "i.e. Drafts", autofocus: true, class: "1/1" %>
 
         <%= form.label :collaborations do %>
-          Invite other people to work on documents inside this stack
-          <small class="text-micro text-muted">(optional)</small>:
+          Invite other people to work on documents inside this stack:
+          <small class="text-micro text-muted">(optional)</small>
         <% end %>
 
         <%= form.fields_for :collaborations do |collaboration| %>

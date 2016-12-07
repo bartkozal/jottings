@@ -17,8 +17,8 @@ App.cable = ActionCable.createConsumer();
 App.bus = new Vue();
 
 const onLoad = () => {
-  document.body.addEventListener("click", () => {
-    // Fix for modals nested in dropdowns i.e. renaming stack modal
+  document.body.addEventListener("click", (event) => {
+    // Allows to open modals nested in dropdowns
     let isModalVisible = document.querySelectorAll('.modal-backdrop').length > 0;
     if (!isModalVisible) { App.bus.$emit("closeDropdowns"); }
   });

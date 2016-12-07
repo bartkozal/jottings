@@ -5,7 +5,7 @@
     <%= form_for current_user, url: editor_profile_path, method: :patch, html: { class: "form-stacked" } do |form| %>
       <%= form.label :name do %>
         Name
-        <small class="text-muted">(How you will be named for collaborators)</small>
+        <small class="text-muted">(How you will be presented for collaborators)</small>
       <% end %>
       <%= form.text_field :name, class: "1/1" %>
 
