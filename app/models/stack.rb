@@ -7,6 +7,8 @@ class Stack < ApplicationRecord
 
   default_scope { order(name: :desc) }
 
+  accepts_nested_attributes_for :collaborations
+
   acts_as_paranoid
 
   class << self
@@ -18,6 +20,10 @@ class Stack < ApplicationRecord
   def assign_to(user)
     self.owner = user
     self.collaborators << user
+  end
+
+  def root?
+    user.present?
   end
 
   def owner?(user)

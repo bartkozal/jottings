@@ -8,6 +8,8 @@ class Collaboration < ApplicationRecord
 
   acts_as_paranoid
 
+  after_create :notify_by_email, unless: -> { stack.root? }
+
   def email
     user&.email || invite_email
   end
@@ -30,6 +32,14 @@ class Collaboration < ApplicationRecord
   end
 
   private
+
+  def notify_by_email
+    if invite?
+      CollaborationMailer.invite(self).deliver_later
+    else
+      CollaborationMailer.notify(self).deliver_later
+    end
+  end
 
   def normalize_email(email)
     email.to_s.downcase.gsub(/\s+/, "")

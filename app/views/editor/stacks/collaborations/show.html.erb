@@ -59,7 +59,7 @@
       <% end %>
       <li class="padding-2/1-left">
         <%= form_for @collaboration, url: editor_stack_share_path(@stack) do |form| %>
-          <%= form.text_field :email, class: "1/2", placeholder: "Type user's email to invite" %>
+          <%= form.email_field :email, class: "1/2", placeholder: "Type user's email to invite" %>
           <%= form.submit "Invite" %>
         <% end %>
       </li>

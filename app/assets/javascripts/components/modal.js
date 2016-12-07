@@ -1,4 +1,5 @@
 Vue.component("modal", {
+  props: ['width'],
   data() {
     return {
       isVisible: false
@@ -19,6 +20,9 @@ Vue.component("modal", {
       set(newValue) {
         this.$data.isVisible = newValue;
       }
+    },
+    styleAttr() {
+      return `width: ${this.width}px`;
     }
   },
   template: `
@@ -29,7 +33,7 @@ Vue.component("modal", {
       <transition name="transition-fade">
         <div class="has-modal" v-if="isVisible">
           <div class="modal-backdrop" @click="isVisible = false"></div>
-          <div class="modal box">
+          <div class="modal box" :style="styleAttr">
             <slot></slot>
           </div>
         </div>

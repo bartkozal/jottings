@@ -12,11 +12,9 @@ class Editor::Stacks::CollaborationsController < EditorController
 
     if @collaboration.save
       if @collaboration.invite?
-        CollaborationMailer.invite(@collaboration).deliver_later
         redirect_to editor_stack_share_path(@stack),
-          notice: %(#{@collaboration.invite_email} invited to collaborate on "#{@stack}")
+          notice: %(#{@collaboration.invite_email} has been invited to collaborate on "#{@stack}")
       else
-        CollaborationMailer.notify(@collaboration).deliver_later
         redirect_to editor_stack_share_path(@stack),
           flash: { success: "#{@collaboration.user} has been added to the stack" }
       end

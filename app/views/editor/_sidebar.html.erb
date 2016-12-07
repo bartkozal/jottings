@@ -36,29 +36,44 @@
 
 <ul class="list-reset margin-top">
   <li>
-    <modal>
+    <modal width="285">
       <div class="media media-middle media-1/2" slot="modal-trigger">
         <%= icon_tag "ios-compose-outline" %>
         <div class="media-body">New document</div>
       </div>
 
-      <%= form_for [:editor, Document.new], html: { class: "form-inline" } do |form| %>
-        <%= form.text_field :name, placeholder: "Type document name..", autofocus: true %>
+      <%= form_for [:editor, Document.new], html: { class: "form-stacked" } do |form| %>
+        <%= form.label :name, "Type the document name:" %>
+        <%= form.text_field :name, placeholder: "i.e. Blog Post", autofocus: true, class: "margin-1/3-bottom" %>
         <%= form.submit "Create" %>
       <% end %>
     </modal>
   </li>
 
   <li>
-    <modal>
+    <modal width="360">
       <div class="media media-middle media-1/2" slot="modal-trigger">
         <%= icon_tag "ios-box-outline" %>
         <div class="media-body">New stack</div>
       </div>
 
-      <%= form_for [:editor, Stack.new], html: { class: "form-inline" } do |form| %>
-        <%= form.text_field :name, placeholder: "Type stack name..", autofocus: true %>
-        <%= form.submit "Create" %>
+      <%= form_for [:editor, Stack.new], html: { class: "form-stacked" } do |form| %>
+        <%= form.label :name, "Type the stack name:" %>
+        <%= form.text_field :name, placeholder: "i.e. Drafts", autofocus: true, class: "1/1" %>
+
+        <%= form.label :collaborations, "Invite other people to work on documents inside this stack:" %>
+        <%= form.fields_for :collaborations do |collaboration| %>
+          <%= collaboration.email_field :email, placeholder: "Type user's email to invite..", class: "1/1 margin-1/3-bottom" %>
+          <%= collaboration.email_field :email, placeholder: "Type user's email to invite..", class: "1/1 margin-1/3-bottom" %>
+        <% end %>
+
+        <div class="margin-bottom text-right text-micro">
+          <%= link_to "+ Invite more people", "#", class: "text-muted" %>
+        </div>
+
+        <div class="text-center">
+          <%= form.submit "Create", class: "1/2" %>
+        </div>
       <% end %>
     </modal>
   </li>

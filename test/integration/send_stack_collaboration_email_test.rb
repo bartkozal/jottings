@@ -14,7 +14,7 @@ class SendStackCollaborationEmailTest < ActionDispatch::IntegrationTest
     perform_enqueued_jobs do
       click_button "Invite"
     end
-    assert page.has_content? %(#{@new_user_email} invited to collaborate on "#{@stack}")
+    assert page.has_content? %(#{@new_user_email} has been invited to collaborate on "#{@stack}")
     assert page.has_content?("Pending")
     click_link "Sign out"
     open_email @new_user_email
