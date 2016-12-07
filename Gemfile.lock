@@ -62,6 +62,7 @@ GEM
       bcrypt
       email_validator (~> 1.4)
       rails (>= 3.1)
+    cocoon (1.2.6)
     codemirror-rails (5.16.0)
       railties (>= 3.0, < 6.0)
     coderay (1.1.1)
@@ -248,6 +249,7 @@ DEPENDENCIES
   capybara
   capybara-email
   clearance
+  cocoon
   codemirror-rails
   coffee-rails (~> 4.2)
   database_rewinder

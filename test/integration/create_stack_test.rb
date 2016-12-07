@@ -16,4 +16,8 @@ class CreateStackTest < ActionDispatch::IntegrationTest
       assert page.has_content?("Example stack")
     end
   end
+
+  test "creating stack with collaborators" do
+    skip
+  end
 end

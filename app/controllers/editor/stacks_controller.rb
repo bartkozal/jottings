@@ -23,7 +23,7 @@ class Editor::StacksController < EditorController
   private
 
   def stack_params
-    params.require(:stack).permit(:name)
+    params.require(:stack).permit(:name, collaborations_attributes: [:email])
   end
 
   def find_stack

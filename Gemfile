@@ -17,6 +17,7 @@ gem 'clearance'
 gem 'hashids'
 gem 'email_validator'
 gem 'paranoia', '~> 2.2'
+gem 'cocoon'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-hocus-pocus', '0.3.3'

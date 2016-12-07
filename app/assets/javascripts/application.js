@@ -6,6 +6,7 @@
 //= require vue-resource/vue-resource
 //= require vue_csrf_token
 //= require interact
+//= require cocoon
 //= require env
 //= require_tree ./channels
 //= require_tree ./models
