@@ -7,6 +7,5 @@ class DocumentChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    current_user.touch(:last_seen_at)
   end
 end
