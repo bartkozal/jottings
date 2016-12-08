@@ -30,9 +30,13 @@ Vue.component("modal", {
       <a @click="isVisible = true" class="modal-trigger">
         <slot name="modal-trigger"></slot>
       </a>
+
       <transition name="transition-fade">
-        <div class="has-modal" v-if="isVisible">
-          <div class="modal-backdrop" @click="isVisible = false"></div>
+        <div class="modal-backdrop" v-if="isVisible"></div>
+      </transition>
+
+      <transition name="transition-zoom-in">
+        <div class="has-modal" v-if="isVisible" @click="isVisible = false">
           <div class="modal box" :style="styleAttr">
             <slot></slot>
           </div>
