@@ -2,12 +2,7 @@
   <div class="sticky-footer">
     <div class="grid editor">
       <div class="grid-item editor-sidebar">
-        <%= render "sidebar" %>
-      </div>
-
-      <div class="grid-item editor-content">
-        <ul class="list-inline navbar-menu margin-bottom text-right">
-          <li><%= link_to "Help", "#" %></li>
+        <!-- <ul class="list-inline navbar-menu margin-bottom text-right">
           <li>
             <dropdown>
               <a is="dropdown-toggle">
@@ -21,8 +16,24 @@
               </ul>
             </dropdown>
           </li>
-        </ul>
+        </ul> -->
 
+        <div class="media media-middle margin-bottom">
+          <%= link_to root_path do %>
+            <%= gravatar_tag current_user.email, size: 24 %>
+          <% end %>
+          <div class="media-body">
+            <ul class="list-inline navbar-menu text-micro">
+              <li><%= link_to "Settings", editor_profile_path %></li>
+              <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
+            </ul>
+          </div>
+        </div>
+
+        <%= render "sidebar" %>
+      </div>
+
+      <div class="grid-item editor-content">
         <%= yield %>
       </div>
     </div>

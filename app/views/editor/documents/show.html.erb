@@ -1,12 +1,13 @@
-<div class="grid">
-  <div class="grid-item 3/4">
-    <editor placeholder="Start writing here..."
+<div class="grid grid-pair">
+  <div class="grid-item 4/5">
+    <editor placeholder="Start writing markdown here..."
       document="<%= @document.to_param %>"
       shared="<%= @document.has_shared_stack? %>">
   </div>
 
-  <% if @document.has_shared_stack? %>
-    <div class="grid-item 1/4">
+  <div class="grid-item 1/5">
+    <p class="text-muted text-micro"><%= @document %></p>
+    <% if @document.has_shared_stack? %>
       <ul class="list-reset margin-bottom">
         <% @document.collaborators.each do |collaborator| %>
           <li class="margin-1/2-bottom">
@@ -14,6 +15,6 @@
           </li>
         <% end %>
       </ul>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
