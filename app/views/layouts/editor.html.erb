@@ -2,25 +2,9 @@
   <div class="sticky-footer">
     <div class="grid editor">
       <div class="grid-item editor-sidebar">
-        <!-- <ul class="list-inline navbar-menu margin-bottom text-right">
-          <li>
-            <dropdown>
-              <a is="dropdown-toggle">
-                <%= gravatar_tag current_user.email, size: 52 %>
-                <%= icon_tag "arrow-down-b" %>
-              </a>
-
-              <ul is="dropdown-menu" width="150">
-                <li><%= link_to "Settings", editor_profile_path %></li>
-                <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
-              </ul>
-            </dropdown>
-          </li>
-        </ul> -->
-
         <div class="media media-middle margin-bottom">
           <%= link_to root_path do %>
-            <%= gravatar_tag current_user.email, size: 24 %>
+            <%= gravatar_tag current_user.email, size: 30 %>
           <% end %>
           <div class="media-body">
             <ul class="list-inline navbar-menu text-micro">
