@@ -36,7 +36,8 @@ Vue.component("modal", {
       </transition>
 
       <transition name="transition-zoom-in">
-        <div class="has-modal" v-if="isVisible" @click="isVisible = false">
+        <div class="has-modal" v-if="isVisible">
+          <div class="modal-close-trigger" @click="isVisible = false"></div>
           <div class="modal box" :style="styleAttr">
             <slot></slot>
           </div>
