@@ -22,7 +22,7 @@ class SendStackCollaborationEmailTest < ActionDispatch::IntegrationTest
     current_email.click_link %(Click to see and start working on "#{@stack}")
     fill_in "Password", with: Faker::Internet.password
     click_button "Sign up"
-    assert_equal root_path, current_path
+    assert_equal editor_document_path(@stack.documents.last), current_path
   end
 
   test "sending notification email when user exists" do
@@ -36,7 +36,7 @@ class SendStackCollaborationEmailTest < ActionDispatch::IntegrationTest
     open_email @user_b.email
     assert_equal %(You are invited to collaborate on "#{@stack}"), current_email.subject
     current_email.click_link %(Click to see and start working on "#{@stack}")
-    assert_equal root_path, current_path
+    assert_equal editor_document_path(@stack.documents.last), current_path
   end
 
   test "canceling invite" do

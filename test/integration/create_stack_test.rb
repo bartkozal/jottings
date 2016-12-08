@@ -14,6 +14,7 @@ class CreateStackTest < ActionDispatch::IntegrationTest
     end
     within ".editor-sidebar" do
       assert page.has_content?("Example stack")
+      assert page.has_content?("Untitled document")
     end
   end
 

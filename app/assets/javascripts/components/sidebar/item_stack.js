@@ -2,12 +2,14 @@ Vue.component("sidebar-item-stack", {
   props: ['stack'],
   data() {
     return {
-      isOpen: false,
+      isOpen: true,
       isDroppable: false
     };
   },
   created() {
-    this.$data.isOpen = JSON.parse(localStorage.getItem(this.stackKey)) || false;
+    const stackValue = localStorage.getItem(this.stackKey);
+    if (stackValue === null) { return; }
+    this.$data.isOpen = JSON.parse(stackValue);
   },
   mounted() {
     const self = this;

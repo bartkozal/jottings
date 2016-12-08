@@ -7,7 +7,7 @@ class Editor::StacksController < EditorController
     @stack.assign_to(current_user)
     @stack.save
 
-    redirect_to editor_documents_path
+    redirect_to editor_document_path(@stack.documents.last)
   end
 
   def update

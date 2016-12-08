@@ -34,7 +34,7 @@ class TrashTest < ActionDispatch::IntegrationTest
     stack.collaborators << user_b
 
     visit root_path(as: user_a)
-    click_link "Remove"
+    click_link "Remove", match: :first
     click_link "Trash"
     within ".editor-content" do
       assert page.has_content?(stack.name)
@@ -80,7 +80,7 @@ class TrashTest < ActionDispatch::IntegrationTest
     stack = user.stacks.last
 
     visit root_path(as: user)
-    click_link "Remove"
+    click_link "Remove", match: :first
     click_link "Trash"
     click_link "Restore"
 
@@ -94,7 +94,7 @@ class TrashTest < ActionDispatch::IntegrationTest
     stack = user.stacks.last
 
     visit root_path(as: user)
-    click_link "Remove"
+    click_link "Remove", match: :first
     click_link "Trash"
     click_link "Delete Forever"
 

@@ -11,6 +11,8 @@ class Stack < ApplicationRecord
 
   acts_as_paranoid
 
+  after_create :create_document, unless: -> { self.root? }
+
   class << self
     def without_root
       where(user: nil)
@@ -45,5 +47,11 @@ class Stack < ApplicationRecord
 
   def to_param
     MaskedId.encode(:stack, id)
+  end
+
+  private
+
+  def create_document
+    documents.create
   end
 end

@@ -41,8 +41,8 @@ class User < ApplicationRecord
   end
 
   def create_root_stack
-    stack = Stack.create
+    stack = build_root_stack
     stack.assign_to(self)
-    self.root_stack = stack
+    stack.save
   end
 end
