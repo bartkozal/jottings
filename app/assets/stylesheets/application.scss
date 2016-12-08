@@ -5,14 +5,13 @@
 
 $font-weight-headings: 200;
 
-$color-primary: #304352;
 $color-body: #fff;
 $color-ui: #f4f4f4;
-$color-link: $color-primary;
 $color-text-selected: #b4d8fe;
 
-$color-brand: $color-primary;
-$color-btn: $color-primary;
+$color-brand: #4990E2;
+$color-link: $color-brand;
+$color-btn: $color-brand;
 
 $font-family-base: "Open Sans", sans-serif;
 $font-family-editor: "Gentium Basic", serif;
@@ -20,6 +19,7 @@ $font-family-monospace: "Inconsolata", monospace;
 
 $font-size-editor: 1.2rem;
 
+$editor-color-sidebar: #282c34;
 $editor-sidebar-width: 17rem;
 $editor-sidebar-font-size: .9rem;
 

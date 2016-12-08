@@ -11,7 +11,7 @@ $tooltip-arrow-size: 7px;
   padding: $spacing-unit / 3;
   transform: translate(-50%, -115%);
   border-radius: $ui-border-radius;
-  background-color: $color-primary;
+  background-color: $editor-color-sidebar;
   color: $color-body;
   font-size: $font-size-micro;
   text-align: center;
@@ -25,7 +25,7 @@ $tooltip-arrow-size: 7px;
     content: '';
     border-style: solid;
     border-width: $tooltip-arrow-size $tooltip-arrow-size 0;
-    border-color: $color-primary transparent transparent;
+    border-color: $editor-color-sidebar transparent transparent;
   }
 
   p {
