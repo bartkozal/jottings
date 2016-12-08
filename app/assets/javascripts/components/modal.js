@@ -1,9 +1,13 @@
 Vue.component("modal", {
-  props: ['width'],
+  props: ['width', 'openOnload'],
   data() {
     return {
       isVisible: false
     };
+  },
+  created() {
+    if (this.openOnload === undefined) { return; }
+    this.isVisible = JSON.parse(this.openOnload);
   },
   updated() {
     if (this.$data.isVisible) {
