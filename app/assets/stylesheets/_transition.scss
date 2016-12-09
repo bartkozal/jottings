@@ -1,7 +1,7 @@
 @mixin transition($name) {
   .transition-#{$name}-leave-active,
   .transition-#{$name}-enter-active {
-    transition: all $base-transition-duration;
+    transition: all $ui-transition-duration;
   }
 
   .transition-#{$name}-leave-active,

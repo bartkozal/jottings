@@ -31,7 +31,7 @@ $z-index-dropdown: 3;
 $z-index-modal-backdrop: 4;
 $z-index-modal: 5;
 
-$base-transition-duration: .2s;
+$ui-transition-duration: .2s;
 
 @import 'hocus-pocus/hocus-pocus',
         'ionicons/ionicons',
@@ -48,4 +48,5 @@ $base-transition-duration: .2s;
         'sidebar_item',
         'dropzone',
         'tooltip',
-        'box';
+        'box',
+        'fullscreen';

@@ -20,7 +20,7 @@ $el-dropdown-toggle-active: '> .grid:hover > .grid-item > .dropdown > .dropdown-
 
 .sidebar-item-stack-trigger-icon {
   display: inline-block;
-  transition: transform $base-transition-duration;
+  transition: transform $ui-transition-duration;
 
   &.is-active {
     transform: rotate(90deg);
