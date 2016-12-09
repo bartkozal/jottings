@@ -26,7 +26,9 @@ Vue.component("editor", {
         <i class="ion-arrow-shrink" v-if="!isFullscreen"></i>
         <i class="ion-arrow-expand" v-if="isFullscreen"></i>
       </a>
-      <slot></slot>
+      <div class="sticky-footer">
+        <slot></slot>
+      </div>
     </div>
   `
 });

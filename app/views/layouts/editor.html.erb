@@ -1,7 +1,7 @@
 <% content_for :application do %>
-  <div class="sticky-footer" is="editor">
+  <editor>
     <div class="grid editor">
-      <div class="grid-item editor-sidebar" is="sidebar">
+      <sidebar class="grid-item editor-sidebar">
         <div class="media media-middle margin-bottom">
           <%= link_to root_path do %>
             <%= gravatar_tag current_user.email, size: 30 %>
@@ -15,7 +15,7 @@
         </div>
 
         <%= render "sidebar" %>
-      </div>
+      </sidebar>
 
       <div class="grid-item editor-content">
         <%= yield %>
