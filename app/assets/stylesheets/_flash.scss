@@ -1,10 +1,11 @@
 .has-flash {
   position: absolute;
-  top: 0%;
+  top: 0;
   left: 50%;
   width: 40%;
   transform: translateX(-50%);
   opacity: .95;
+  z-index: $z-index-flash;
 }
 
 .flash {
