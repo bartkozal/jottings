@@ -38,7 +38,7 @@
   <li>
     <modal width="300">
       <div class="media media-middle media-1/2" slot="modal-trigger">
-        <%= icon_tag "ios-compose-outline" %>
+        <%= image_tag "icn-new-document" %>
         <div class="media-body">New document</div>
       </div>
 
@@ -53,7 +53,7 @@
   <li>
     <modal width="360" open-onload="<%= open_new_stack_modal? %>">
       <div class="media media-middle media-1/2" slot="modal-trigger">
-        <%= icon_tag "ios-box-outline" %>
+        <%= image_tag "icn-new-stack" %>
         <div class="media-body">New stack</div>
       </div>
 
@@ -86,7 +86,7 @@
 
   <li class="margin-top">
     <%= link_to editor_trash_path, class: "media media-middle media-1/2" do %>
-      <%= icon_tag "ios-trash-outline" %>
+      <%= image_tag "icn-trash" %>
       <div class="media-body">Trash</div>
     <% end %>
   </li>
