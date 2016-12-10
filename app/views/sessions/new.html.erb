@@ -10,4 +10,7 @@
   <%= form.submit "Sign in" %>
 <% end %>
 
-<%= link_to "Forgot password?", new_password_path %>
+<ul class="list-reset">
+  <li><%= link_to "Forgot password?", new_password_path %></li>
+  <li><%= link_to "Don't have an account? Sign up.", sign_up_path %></li>
+</ul>
