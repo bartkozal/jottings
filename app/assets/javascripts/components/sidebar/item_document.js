@@ -2,6 +2,7 @@ Vue.component('sidebar-item-document', {
   props: ['document', 'stack'],
   data() {
     return {
+      isRemoved: false,
       isDragging: false,
       isDragged: false,
       x: 0,
@@ -47,7 +48,7 @@ Vue.component('sidebar-item-document', {
     }
   },
   template: `
-    <li :class="{ 'is-dragging': isDragging }" :style="{ transform: translate }">
+    <li :class="{ 'is-dragging': isDragging }" :style="{ transform: translate }" v-if="!isRemoved">
       <slot></slot>
     </li>
   `

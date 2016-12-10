@@ -17,8 +17,12 @@ Vue.component("sidebar-trash", {
       ondrop(event) {
         const droppedEl = event.relatedTarget.__vue__;
 
+        droppedEl.isRemoved = true;
+
         self.$http.delete(`/editor/documents/${droppedEl.document}`).
-          then((response) => { window.location.href = "/"; });
+          then((response) => {
+            if (!response.ok) { droppedEl.isRemoved = false; }
+          });
 
         self.isDroppable = false;
       }

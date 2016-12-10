@@ -40,8 +40,7 @@ class Editor::DocumentsController < EditorController
       @document.destroy
     end
 
-    redirect_to editor_documents_path,
-      alert: %(Document "#{@document}" has been moved to trash)
+    redirect_to editor_documents_path
   end
 
   private
