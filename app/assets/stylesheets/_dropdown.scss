@@ -10,25 +10,36 @@
   @extend %list-reset;
   position: absolute;
   left: $spacing-unit / -4;
-  margin-top: $spacing-unit / -2;
-  border: 1px solid $color-ui;
+  margin-top: $spacing-unit / -3;
   font-size: $font-size-base;
   text-align: left;
   z-index: $z-index-dropdown;
 
-  li + li {
-    border-top: 1px solid $color-ui;
+  &::after {
+    position: absolute;
+    top: -($ui-arrow-size - 1px);
+    left: $spacing-unit / 1.5;
+    width: 0;
+    height: 0;
+    transform: translateX(-50%);
+    border-width: 0 $ui-arrow-size $ui-arrow-size;
+    border-style: solid;
+    border-color: transparent transparent $color-brand;
+    content: '';
   }
 
   a {
     display: block;
     padding: ($spacing-unit / 4) ($spacing-unit / 2);
-    background-color: $color-white;
-    color: $color-link;
+    background-color: $color-brand;
+    color: $color-white;
 
     &:hover {
-      background-color: $color-brand;
-      color: $color-white;
+      background-color: lighten($color-brand, 10%);
     }
   }
+}
+
+.dropdown-separator {
+  border-top: 1px solid lighten($color-brand, 20%);
 }

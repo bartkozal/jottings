@@ -16,9 +16,12 @@
           <% end %>
         </modal>
       </li>
-      <li><%= link_to "Remove", editor_stack_path(stack), method: :delete, class: "text-negative" %></li>
+
+      <li class="dropdown-separator">
+        <%= link_to "Remove", editor_stack_path(stack), method: :delete %>
+      </li>
     <% else %>
-      <li><%= link_to "Leave", editor_stack_leave_path(stack), method: :post, class: "text-negative" %></li>
+      <li><%= link_to "Leave", editor_stack_leave_path(stack), method: :post %></li>
     <% end %>
   </ul>
 </dropdown>

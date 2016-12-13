@@ -21,6 +21,8 @@
       </modal>
     </li>
 
-    <li><%= link_to "Remove", editor_document_path(document), method: :delete, class: "text-negative" %></li>
+    <li class="dropdown-separator">
+      <%= link_to "Remove", editor_document_path(document), method: :delete %>
+    </li>
   </ul>
 </dropdown>

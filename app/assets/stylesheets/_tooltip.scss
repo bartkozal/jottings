@@ -1,5 +1,3 @@
-$tooltip-arrow-size: 7px;
-
 .has-tooltip {
   position: relative;
 }
@@ -18,14 +16,14 @@ $tooltip-arrow-size: 7px;
 
   &::after {
     position: absolute;
-    bottom: -($tooltip-arrow-size - 1);
+    bottom: -($ui-arrow-size - 1px);
     width: 0;
     height: 0;
     transform: translateX(-50%);
-    content: '';
+    border-width: $ui-arrow-size $ui-arrow-size 0;
     border-style: solid;
-    border-width: $tooltip-arrow-size $tooltip-arrow-size 0;
     border-color: $editor-sidebar-color transparent transparent;
+    content: '';
   }
 
   p {
