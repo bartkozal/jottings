@@ -1,22 +1,35 @@
 <% content_for :application do %>
-  <div class="container">
-    <div class="navbar">
-      <div class="grid grid-pair grid-middle">
-        <div class="grid-item 1/2">
-          <ul class="list-inline navbar-menu">
-            <li><%= link_to "Jottings", root_path %></li>
-            <li><%= link_to "Pricing", page_path(page: "pricing") %></li>
-          </ul>
-        </div>
+  <div class="sticky-footer">
+    <div class="container">
+      <div class="navbar">
+        <div class="grid grid-pair grid-middle">
+          <div class="grid-item 1/2">
+            <ul class="navbar-menu">
+              <li><%= link_to image_tag("img-logo"), root_path, class: "navbar-brand" %></li>
+              <li><%= link_to "Jottings", root_path %></li>
+              <li><%= link_to "Pricing", page_path(page: "pricing") %></li>
+            </ul>
+          </div>
 
-        <div class="grid-item 1/2">
-          <%= link_to "Try now for free", sign_up_path, class: "btn btn-brand" %>
-          <%= link_to "or sign in", sign_in_path, class: "margin-1/3-left" %>
+          <div class="grid-item 1/2">
+            <ul class="navbar-menu">
+              <li><%= link_to "Try now for free", sign_up_path, class: "btn btn-brand" %></li>
+              <li><%= link_to "or sign in", sign_in_path %></li>
+            </ul>
+          </div>
         </div>
       </div>
+
+      <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
 
-    <%= content_for?(:content) ? yield(:content) : yield %>
+    <div class="footer">
+      <ul class="list-inline padding-vertical">
+        <li><%= link_to "Terms of service", page_path(page: "terms-of-service") %></li>
+        <li class="margin-horizontal"><%= link_to "Privacy policy", page_path(page: "privacy-policy") %></li>
+        <li><%= link_to "Contact us", page_path(page: "contact") %></li>
+      </ul>
+    </div>
   </div>
 <% end %>
 

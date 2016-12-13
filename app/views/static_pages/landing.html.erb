@@ -1,7 +1,23 @@
 <div class="text-center">
-  <h1 class="margin-4/1-top margin-2/1-bottom">
+  <h1 class="margin-4/1-top margin-2/1-bottom text-light">
     Real-time collaboration in Markdown
   </h1>
 
-  <%= image_tag "http://placehold.it/640x320?text=:-)" %>
+  <%= image_tag "http://placehold.it/800x400?text=:-)", class: "img-responsive" %>
+
+  <div class="box box-brand full-width">
+    <%= link_to "Start writing right now", sign_up_path, class: "btn btn-outline btn-white" %>
+  </div>
+</div>
+
+<div class="grid grid-center margin-2/1-bottom">
+  <div class="grid-item 3/4">
+    <div class="media media-center">
+      <%= image_tag "http://placehold.it/150x100?text=J" %>
+
+      <div class="media-body">
+        <p><%= Faker::Hipster.sentences(2).join %></p>
+      </div>
+    </div>
+  </div>
 </div>

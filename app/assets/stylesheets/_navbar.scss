@@ -4,8 +4,23 @@
   text-align: right;
 }
 
+.navbar-brand {
+  margin-right: $spacing-unit / 2;
+}
+
 .navbar-menu {
+  @extend %list-inline;
+
   > li + li {
-    margin-left: $spacing-unit / 2;
+    margin-left: $spacing-unit / -3;
+  }
+
+  a:not(.btn):not(.navbar-brand) {
+    padding: ($spacing-unit / 3) ($spacing-unit / 2);
+
+    &:hover {
+      border-radius: $ui-border-radius;
+      background-color: rgba($color-ui, .5);
+    }
   }
 }

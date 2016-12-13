@@ -1,0 +1,11 @@
+@media (max-width: $grid-container - 1) {
+  .container {
+    width: 100%;
+  }
+}
+
+@media (min-width: $grid-container) {
+  .container {
+    width: $grid-container;
+  }
+}

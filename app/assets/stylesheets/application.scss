@@ -50,4 +50,9 @@ $ui-transition-duration: .2s;
         'dropzone',
         'tooltip',
         'box',
-        'fullscreen';
+        'fullscreen',
+        'full-width',
+        'footer',
+        'container';
+
+@include btn('white', $color-white);
