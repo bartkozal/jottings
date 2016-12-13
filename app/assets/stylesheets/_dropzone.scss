@@ -2,7 +2,7 @@
   min-height: $spacing-unit;
 
   &.is-droppable {
-    background-color: darken($editor-color-sidebar, 10%);
+    background-color: darken($editor-sidebar-color, 10%);
   }
 }
 
