@@ -6,7 +6,11 @@
           <div class="grid-item 1/2">
             <ul class="navbar-menu">
               <li><%= link_to image_tag("img-logo"), root_path, class: "navbar-brand" %></li>
-              <li><%= link_to "Jottings", root_path %></li>
+              <li>
+                <%= link_to root_path do %>
+                  Jottings <sup class="text-muted">Beta</sup>
+                <% end %>
+              </li>
               <li><%= link_to "Pricing", page_path(page: "pricing") %></li>
             </ul>
           </div>
