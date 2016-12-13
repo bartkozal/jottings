@@ -17,6 +17,7 @@
 
   a:not(.btn):not(.navbar-brand) {
     padding: ($spacing-unit / 3) ($spacing-unit / 2);
+    transition: background-color $ui-transition-duration;
 
     &:hover {
       border-radius: $ui-border-radius;
