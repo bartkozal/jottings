@@ -1,17 +1,25 @@
+$dropzone-outline: 10px;
+$dropzone-color: darken($editor-sidebar-color, 10%);
+
 .dropzone {
   min-height: $spacing-unit;
 
   &.is-droppable {
-    background-color: darken($editor-sidebar-color, 10%);
-    box-shadow: -10px 0 0 darken($editor-sidebar-color, 10%),
-                 10px 0 0 darken($editor-sidebar-color, 10%);
+    background-color: $dropzone-color;
+    box-shadow: -$dropzone-outline 0 0 $dropzone-color,
+                 $dropzone-outline 0 0 $dropzone-color;
   }
 }
 
 .dropzone-empty {
   margin-bottom: $spacing-unit;
   padding: $spacing-unit / 2;
-  border: 1px dashed $color-white;
+  border: 1px dashed rgba($color-white, .25);
+  color: rgba($color-white, .5);
   text-align: center;
-  opacity: .5;
+
+  &.is-droppable {
+    outline: $dropzone-outline solid $dropzone-color;
+    box-shadow: 0;
+  }
 }
