@@ -3,6 +3,8 @@
 
   &.is-droppable {
     background-color: darken($editor-sidebar-color, 10%);
+    box-shadow: -10px 0 0 darken($editor-sidebar-color, 10%),
+                 10px 0 0 darken($editor-sidebar-color, 10%);
   }
 }
 

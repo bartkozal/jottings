@@ -1,4 +1,5 @@
 $el-dropdown-toggle-active: '> .grid:hover > .grid-item > .dropdown > .dropdown-toggle';
+$sidebar-item-height: $spacing-unit * 1.4;
 
 %sidebar-item {
   .dropdown-toggle {
@@ -12,6 +13,10 @@ $el-dropdown-toggle-active: '> .grid:hover > .grid-item > .dropdown > .dropdown-
 
 .sidebar-item-stack {
   @extend %sidebar-item;
+
+  > .grid {
+    height: $sidebar-item-height;
+  }
 
   > .grid > .grid-item > .media {
     cursor: pointer;
@@ -30,12 +35,8 @@ $el-dropdown-toggle-active: '> .grid:hover > .grid-item > .dropdown > .dropdown-
 .sidebar-item-document {
   @extend %sidebar-item;
 
-  .sidebar-item-stack + & {
-    margin-top: $spacing-unit / 4;
-  }
-
-  & + & {
-    margin-top: $spacing-unit / 2;
+  > .grid {
+    height: $sidebar-item-height;
   }
 
   &.is-dragging {

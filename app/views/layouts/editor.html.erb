@@ -2,17 +2,17 @@
   <editor>
     <div class="grid editor">
       <sidebar class="grid-item editor-sidebar">
-        <div class="media media-middle margin-bottom">
-          <%= link_to root_path do %>
-            <%= gravatar_tag current_user.email, size: 30 %>
-          <% end %>
-          <div class="media-body">
-            <ul class="list-inline text-micro">
-              <li class="margin-1/2-right"><%= link_to "Settings", editor_profile_path %></li>
-              <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
-            </ul>
-          </div>
-        </div>
+        <ul class="list-inline text-micro margin-bottom">
+          <li class="margin-1/3-right">
+            <%= link_to root_path do %>
+              <%= gravatar_tag current_user.email, size: 30 %>
+            <% end %>
+          </li>
+          <li class="margin-1/3-right">
+            <%= link_to "Settings", editor_profile_path %>
+          </li>
+          <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
+        </ul>
 
         <%= render "sidebar" %>
       </sidebar>

@@ -9,16 +9,15 @@
 }
 
 .fullscreen-toggle {
-  position: absolute;
-  left: $editor-sidebar-width;
-  padding: $spacing-unit / 2;
-  transform: translate(-100%);
-  color: $color-white;
-  font-size: $font-size-h4;
+  display: inline-block;
+  margin-right: 10px;
+  color: $editor-sidebar-color;
+  font-size: $font-size-h5;
   cursor: pointer;
-  opacity: .3;
+  opacity: .2;
+  transition: opacity $ui-transition-duration;
 
-  .fullscreen & {
-    color: $color-text;
+  &:hover {
+    opacity: .8;
   }
 }

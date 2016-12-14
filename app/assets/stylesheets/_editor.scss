@@ -26,6 +26,19 @@
     font-size: $font-size-base;
   }
 
+  [class^="ion-document-text"] {
+    padding-right: 1px;
+    padding-left: 2px;
+  }
+
+  [class^="ion-trash-a"] {
+    padding-left: 1px;
+  }
+
+  [class^="ion-ios-arrow-right"] {
+    padding-left: 2px;
+  }
+
   [class^="ion-person-stalker"] {
     margin-left: $spacing-unit / 4;
     font-size: $font-size-base;

@@ -1,18 +1,13 @@
-Vue.component("editor", {
+Vue.component('fullscreen-toggle', {
   data() {
     return {
       isFullscreen: false
     };
   },
   created() {
-    const self = this;
     const fullscreenValue = localStorage.getItem("fullscreen");
     if (fullscreenValue === null) { return; }
     this.$data.isFullscreen = JSON.parse(fullscreenValue);
-
-    App.bus.$on("changeFullscreen", (newValue) => {
-      self.isFullscreen = newValue;
-    });
   },
   computed: {
     isFullscreen: {
@@ -21,15 +16,13 @@ Vue.component("editor", {
       },
       set(newValue) {
         this.$data.isFullscreen = newValue;
-        localStorage.setItem("fullscreen", newValue);
+        App.bus.$emit("changeFullscreen", newValue);
       }
     }
   },
   template: `
-    <div :class="{ 'fullscreen': isFullscreen }">
-      <div class="sticky-footer">
-        <slot></slot>
-      </div>
-    </div>
+    <a class="fullscreen-toggle" @click="isFullscreen = !isFullscreen">
+      <slot></slot>
+    </a>
   `
 });

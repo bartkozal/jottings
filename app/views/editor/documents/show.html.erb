@@ -6,9 +6,8 @@
   </div>
 
   <div class="grid-item 1/5 editor-collaborators">
-    <p class="text-muted text-micro"><%= @document %></p>
     <% if @document.has_shared_stack? %>
-      <ul class="list-reset margin-bottom">
+      <ul class="list-reset no-margin-bottom">
         <% @document.collaborators.each do |collaborator| %>
           <li class="margin-1/2-bottom">
             <%= gravatar_tag collaborator.email, size: 40 %>
@@ -16,5 +15,9 @@
         <% end %>
       </ul>
     <% end %>
+
+    <fullscreen-toggle>
+      <i class="ion-easel"></i>
+    </fullscreen-toggle>
   </div>
 </div>

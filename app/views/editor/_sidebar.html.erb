@@ -18,7 +18,7 @@
 
 <h3>Documents</h3>
 
-<ul class="list-reset margin-1/2-bottom">
+<ul class="list-reset no-margin-bottom">
   <% current_user.stacks.without_root.each do |stack| %>
     <li class="sidebar-item-stack dropzone" is="sidebar-item-stack" stack="<%= stack.to_param %>">
       <%= render "editor/stacks/sidebar_item", stack: stack, documents: stack.documents %>
@@ -26,7 +26,7 @@
   <% end %>
 </ul>
 
-<ul class="list-reset margin-1/2-bottom dropzone" is="sidebar-item-root-stack">
+<ul class="list-reset no-margin-bottom dropzone" is="sidebar-item-root-stack">
   <% current_user.root_stack.documents.each do |document| %>
     <li class="sidebar-item-document" is="sidebar-item-document" document="<%= document.to_param %>">
       <%= render "editor/documents/sidebar_item", document: document %>
@@ -38,7 +38,7 @@
   <li>
     <modal width="300">
       <div class="media media-middle media-1/2" slot="modal-trigger">
-        <%= icon_tag "ios-compose-outline" %>
+        <%= icon_tag "document-text" %>
         <div class="media-body">New document</div>
       </div>
 
@@ -53,7 +53,7 @@
   <li>
     <modal width="360" open-onload="<%= open_new_stack_modal? %>">
       <div class="media media-middle media-1/2" slot="modal-trigger">
-        <%= icon_tag "ios-box-outline" %>
+        <%= icon_tag "folder" %>
         <div class="media-body">New stack</div>
       </div>
 
@@ -84,9 +84,9 @@
     </modal>
   </li>
 
-  <li class="margin-top dropzone" is="sidebar-trash">
+  <li class="dropzone margin-top" is="sidebar-trash">
     <%= link_to editor_trash_path, class: "media media-middle media-1/2" do %>
-      <%= icon_tag "ios-trash-outline" %>
+      <%= icon_tag "trash-a" %>
       <div class="media-body">Trash</div>
     <% end %>
   </li>
