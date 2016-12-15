@@ -1,0 +1,19 @@
+<dl>
+  <dt style="font-weight: bold;">From</dt>
+  <dd><%= @feedback %></dd>
+
+  <br>
+
+  <dt style="font-weight: bold;">Answers</dt>
+  <dd>
+    <ul style="list-style: none; padding-left: 0;">
+      <% @feedback.answers.map do |question, answer| %>
+        <li><%= question.titleize %>: <%= answer == "1" ? "yes" : "no" %></li>
+      <% end %>
+    </ul>
+  </dd>
+
+
+  <dt style="font-weight: bold;">Comment</dt>
+  <dd><%= @feedback.comment %></dd>
+</dl>

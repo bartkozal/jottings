@@ -1,3 +1,10 @@
 ::placeholder {
   color: $color-grey;
 }
+
+.form-poll {
+  [type="checkbox"] {
+    bottom: 3px;
+    margin-right: $spacing-unit / 4;
+  }
+}
