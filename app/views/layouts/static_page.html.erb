@@ -27,12 +27,8 @@
       <%= content_for?(:content) ? yield(:content) : yield %>
     </div>
 
-    <div class="footer">
-      <ul class="list-inline padding-vertical">
-        <li><%= link_to "Terms of service", page_path(page: "terms-of-service") %></li>
-        <li class="margin-horizontal"><%= link_to "Privacy policy", page_path(page: "privacy-policy") %></li>
-        <li><%= link_to "Contact us", page_path(page: "contact") %></li>
-      </ul>
+    <div class="footer padding-vertical">
+      <%= link_to "&copy; 2016 Bartłomiej Kozal &amp; Maciej Kozal".html_safe, page_path(page: "contact") %>
     </div>
   </div>
 <% end %>
