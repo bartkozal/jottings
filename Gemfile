@@ -48,3 +48,7 @@ group :development do
   gem 'rb-readline'
   gem 'foreman'
 end
+
+group :production do
+  gem 'redis'
+end
