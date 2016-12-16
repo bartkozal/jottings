@@ -26,6 +26,11 @@ class MarkdownEditor {
   connect() {
     const socket = new ReconnectingWebSocket(App.env.SHAREDB_URL);
     const connection = new ShareDB.Connection(socket);
+
+    socket.onopen = (event) => { App.bus.$emit("changeTextEditorVisibility", true); };
+    socket.onclose = (event) => { App.bus.$emit("changeTextEditorVisibility", false); };
+    socket.onerror = (event) => { App.bus.$emit("changeTextEditorVisibility", false); };
+
     return connection;
   }
 

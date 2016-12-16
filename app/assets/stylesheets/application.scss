@@ -1,5 +1,6 @@
 //= require hocus-pocus
 //= require ionicons
+//= require spinkit
 //= require codemirror
 //= require_self
 
@@ -36,7 +37,6 @@ $ui-arrow-size: 7px;
 $ui-transition-duration: .2s;
 
 @import 'hocus-pocus/hocus-pocus',
-        'ionicons/ionicons',
         'navbar',
         'editor',
         'flash',
@@ -54,6 +54,7 @@ $ui-transition-duration: .2s;
         'fullscreen',
         'full-width',
         'footer',
-        'container';
+        'container',
+        'spinkit';
 
 @include btn('white', $color-white);

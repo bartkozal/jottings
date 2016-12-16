@@ -25,6 +25,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-vue-resource', '1.0.3'
   gem 'rails-assets-ionicons', '2.0.1'
   gem 'rails-assets-interact', '1.2.6'
+  gem 'rails-assets-spinkit', '1.2.5'
 end
 
 group :development, :test do

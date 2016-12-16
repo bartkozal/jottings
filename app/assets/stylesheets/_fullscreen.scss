@@ -11,11 +11,11 @@
 .fullscreen-toggle {
   display: inline-block;
   margin-right: 10px;
+  transition: opacity $ui-transition-duration;
   color: $editor-sidebar-color;
   font-size: $font-size-h5;
   cursor: pointer;
   opacity: .2;
-  transition: opacity $ui-transition-duration;
 
   &:hover {
     opacity: .8;
