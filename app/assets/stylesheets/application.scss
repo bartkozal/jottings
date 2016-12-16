@@ -36,6 +36,8 @@ $z-index-modal: 5;
 $ui-arrow-size: 7px;
 $ui-transition-duration: .2s;
 
+[v-cloak] { display: none; }
+
 @import 'hocus-pocus/hocus-pocus',
         'navbar',
         'editor',
