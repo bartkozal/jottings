@@ -7,6 +7,7 @@
 //= require ot-text
 //= require sharedb-client
 //= require sharedb-codemirror
+//= require reconnecting-websocket
 
 class MarkdownEditor {
   constructor(opts) {
@@ -23,7 +24,7 @@ class MarkdownEditor {
   }
 
   connect() {
-    const socket = new WebSocket(App.env.SHAREDB_URL);
+    const socket = new ReconnectingWebSocket(App.env.SHAREDB_URL);
     const connection = new ShareDB.Connection(socket);
     return connection;
   }
