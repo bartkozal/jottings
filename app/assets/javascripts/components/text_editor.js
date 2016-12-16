@@ -24,7 +24,7 @@ Vue.component('text-editor', {
     }
   },
   template: `
-    <div>
+    <div v-cloak>
       <div class="sk-spinner sk-spinner-pulse" v-if="!isVisible"></div>
       <div v-show="isVisible">
         <textarea ref="textarea" :placeholder="placeholder">

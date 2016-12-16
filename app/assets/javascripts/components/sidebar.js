@@ -1,6 +1,6 @@
 Vue.component("sidebar", {
   template: `
-    <div>
+    <div v-cloak>
       <slot></slot>
     </div>
   `
