@@ -12,7 +12,8 @@ Vue.component("modal", {
   updated() {
     if (this.$data.isVisible) {
       Vue.nextTick(() => {
-        this.$el.querySelector("[autofocus]").focus();
+        const autofocusEl = this.$el.querySelector("[autofocus]");
+        if (autofocusEl !== null) { autofocusEl.focus(); }
       });
     }
   },

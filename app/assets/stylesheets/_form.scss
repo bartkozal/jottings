@@ -8,3 +8,15 @@
     margin-right: $spacing-unit / 4;
   }
 }
+
+button,
+[type="submit"] {
+  &.btn-negative {
+    border-bottom-color: darken($color-negative, 25%);
+    background-color: $color-negative;
+
+    &:hover {
+      background-color: lighten($color-negative, 5%);
+    }
+  }
+}

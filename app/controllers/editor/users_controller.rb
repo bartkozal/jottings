@@ -17,7 +17,14 @@ class Editor::UsersController < EditorController
       redirect_to editor_profile_path,
         alert: "You can't remove the account until you pass the ownership of shared stacks."
     else
-      current_user.destroy
+      feedback = Feedback.new(feedback_params)
+      feedback.user = current_user
+
+      User.transaction do
+        feedback.save
+        current_user.destroy
+      end
+
       redirect_to root_path, notice: "Your account has been removed"
     end
   end
@@ -26,6 +33,10 @@ class Editor::UsersController < EditorController
 
   def user_params
     params.require(:user).permit(:email, :password, :name)
+  end
+
+  def feedback_params
+    params.require(:feedback).permit({answers: [:apps, :sync, :editor]}, :comment)
   end
 
   def skip_password_validation

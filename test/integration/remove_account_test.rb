@@ -11,7 +11,7 @@ class RemoveAccountTest < ActionDispatch::IntegrationTest
   test "removing account" do
     visit root_path(as: @user_a)
     click_link "Settings"
-    click_link "Remove account"
+    click_button "I know, remove my account"
     assert page.has_content?("Your account has been removed")
     assert User.find_by(id: @user_a.id).blank?
     assert_empty Collaboration.where(user: @user_a)
@@ -22,12 +22,12 @@ class RemoveAccountTest < ActionDispatch::IntegrationTest
     @stack.collaborators << @user_b
     visit root_path(as: @user_a)
     click_link "Settings"
-    click_link "Remove account"
+    click_button "I know, remove my account"
     assert page.has_content?("You can't remove the account until you pass the ownership of shared stacks.")
     assert User.find(@user_a.id).present?
 
     @stack.update(owner: @user_b)
-    click_link "Remove account"
+    click_button "I know, remove my account"
     assert page.has_content?("Your account has been removed")
     assert User.find_by(id: @user_a.id).blank?
     assert_empty Stack.where(owner: @user_a)

@@ -18,8 +18,30 @@
       <%= form.submit "Update" %>
     <% end %>
 
-    <div class="text-right text-small">
-      <%= link_to "Remove account", editor_profile_path, method: :delete, class: "text-negative" %>
+    <div class="text-right">
+      <modal width="400">
+        <a class="text-small text-negative" slot="modal-trigger">
+          Remove account
+        </a>
+
+        <div class="text-left text-small">
+          <p>
+            Would you consider to keep your account if one of these features exist?
+          </p>
+
+          <%= form_for Feedback.new, url: editor_profile_path, method: :delete, html: { class: "form-stacked form-poll" } do |form| %>
+            <%= render "static_pages/feedback_form_fields", form: form %>
+
+            <p class="margin-bottom text-negative">
+              This action is permanent and will remove your all documents and stacks.
+            </p>
+
+            <div class="text-center">
+              <%= form.submit "I know, remove my account", class: "btn-negative" %>
+            </div>
+          <% end %>
+        </div>
+      </modal>
     </div>
   </div>
 </div>

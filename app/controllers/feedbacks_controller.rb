@@ -1,8 +1,8 @@
 class FeedbacksController < ApplicationController
   def create
-    @feedback = Feedback.new(feedback_params)
-    @feedback.ip = request.remote_ip
-    @feedback.save
+    feedback = Feedback.new(feedback_params)
+    feedback.ip = request.remote_ip
+    feedback.save
     redirect_to page_path(page: "pricing"), flash: {success: "We got your feedback. Thank you!"}
   end
 
