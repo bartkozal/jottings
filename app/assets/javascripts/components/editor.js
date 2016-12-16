@@ -7,12 +7,14 @@ Vue.component("editor", {
   created() {
     const self = this;
     const fullscreenValue = localStorage.getItem("fullscreen");
-    if (fullscreenValue === null) { return; }
-    this.$data.isFullscreen = JSON.parse(fullscreenValue);
 
     App.bus.$on("changeFullscreen", (newValue) => {
       self.isFullscreen = newValue;
     });
+
+    if (fullscreenValue !== null) {
+      self.isFullscreen = JSON.parse(fullscreenValue);
+    }
   },
   computed: {
     isFullscreen: {
