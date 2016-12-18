@@ -7,7 +7,7 @@ class CreateStackTest < ActionDispatch::IntegrationTest
 
   test "creating stack" do
     visit root_path(as: @user)
-    assert page.has_content?("New stack")
+    assert page.has_content?("New shared stack")
     within "#new_stack" do
       fill_in "stack_name", with: "Example stack"
       click_button "Create"
@@ -30,7 +30,7 @@ class CreateStackTest < ActionDispatch::IntegrationTest
     within ".editor-sidebar" do
       assert page.has_content?("Example stack")
     end
-    click_link "Collaborators"
+    click_link "Sharing"
     assert page.has_content?("test@example.com")
   end
 end

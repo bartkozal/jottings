@@ -29,8 +29,8 @@
                           </sup>
 
                           <p>
-                            Every collaborator can view, edit, add and remove documents in the stack.
-                            Only owner can remove and manage access to the stack.
+                            Every collaborator can view, edit, add and remove documents.
+                            Only owner can remove and manage the stack's access.
                           </p>
                         </tooltip>
                       </li>
@@ -59,7 +59,7 @@
       <% end %>
       <li class="padding-2/1-left">
         <%= form_for @collaboration, url: editor_stack_share_path(@stack) do |form| %>
-          <%= form.email_field :email, class: "1/2", placeholder: "Type user's email to invite" %>
+          <%= form.email_field :email, class: "1/2", placeholder: "Type the email of person to invite" %>
           <%= form.submit "Invite" %>
         <% end %>
       </li>

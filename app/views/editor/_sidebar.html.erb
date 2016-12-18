@@ -54,15 +54,15 @@
     <modal width="360" open-onload="<%= open_new_stack_modal? %>">
       <div class="media media-middle media-1/2" slot="modal-trigger">
         <%= icon_tag "folder" %>
-        <div class="media-body">New stack</div>
+        <div class="media-body">New shared stack</div>
       </div>
 
       <%= form_for [:editor, @new_stack], html: { class: "form-stacked" } do |form| %>
-        <%= form.label :name, "Type the stack's name:" %>
+        <%= form.label :name, "Type the shared stack's name:" %>
         <%= form.text_field :name, placeholder: "i.e. Drafts", autofocus: true, class: "1/1" %>
 
         <%= form.label :collaborations do %>
-          Invite other people to work on documents inside this stack:
+          Invite people to work on documents inside this stack:
           <small class="text-micro text-muted">(optional)</small>
         <% end %>
 

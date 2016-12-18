@@ -5,7 +5,7 @@
     <%= form_for current_user, url: editor_profile_path, method: :patch, html: { class: "form-stacked" } do |form| %>
       <%= form.label :name do %>
         Name
-        <small class="text-muted">(How you will be presented for collaborators)</small>
+        <small class="text-muted">(How you will be named to collaborators)</small>
       <% end %>
       <%= form.text_field :name, class: "1/1", placeholder: "i.e. Lisa Smith" %>
 
@@ -26,14 +26,14 @@
 
         <div class="text-left text-small">
           <p>
-            Would you consider to keep your account if one of these features exist?
+            Would you consider keeping your account if one of these features exist?
           </p>
 
           <%= form_for Feedback.new, url: editor_profile_path, method: :delete, html: { class: "form-stacked form-poll" } do |form| %>
             <%= render "static_pages/feedback_form_fields", form: form %>
 
             <p class="margin-bottom text-negative">
-              This action is permanent and will remove your all documents and stacks.
+              This action is permanent and will remove all your documents and shared stacks.
             </p>
 
             <div class="text-center">
