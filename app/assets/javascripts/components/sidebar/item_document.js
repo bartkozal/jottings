@@ -12,7 +12,8 @@ Vue.component('sidebar-item-document', {
   mounted() {
     const self = this;
     interact(self.$el, {
-      styleCursor: false
+      styleCursor: false,
+      ignoreFrom: '.dropdown'
     }).draggable({
       autoScroll: true,
       onstart() {
