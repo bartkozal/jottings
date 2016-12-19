@@ -6,6 +6,10 @@
   </div>
 
   <div class="grid-item 1/5 editor-collaborators">
+    <fullscreen-toggle class="margin-1/2-bottom">
+      <i class="ion-easel"></i>
+    </fullscreen-toggle>
+
     <% if @document.has_shared_stack? %>
       <ul class="list-reset no-margin-bottom">
         <% @document.collaborators.each do |collaborator| %>
@@ -15,9 +19,5 @@
         <% end %>
       </ul>
     <% end %>
-
-    <fullscreen-toggle>
-      <i class="ion-easel"></i>
-    </fullscreen-toggle>
   </div>
 </div>
