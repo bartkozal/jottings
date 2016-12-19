@@ -7,7 +7,7 @@ class Editor::Stacks::OwnershipsController < EditorController
     @stack.owner = @user
     @stack.save
     redirect_to root_path,
-      notice: %(#{@user} is a new owner of "#{@stack}")
+      notice: %(#{@user} is the new owner of "#{@stack}")
   end
 
   private
