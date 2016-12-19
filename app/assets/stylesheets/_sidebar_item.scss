@@ -16,10 +16,10 @@ $sidebar-item-height: $spacing-unit * 1.4;
 
   > .grid {
     height: $sidebar-item-height;
-  }
 
-  > .grid > .grid-item > .media {
-    cursor: pointer;
+    > .grid-item > .media {
+      cursor: pointer;
+    }
   }
 }
 
@@ -47,5 +47,9 @@ $sidebar-item-height: $spacing-unit * 1.4;
     #{$el-dropdown-toggle-active} {
       visibility: hidden;
     }
+  }
+
+  .is-active {
+    color: $color-cautionary;
   }
 }
