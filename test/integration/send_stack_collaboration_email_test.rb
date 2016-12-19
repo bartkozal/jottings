@@ -3,7 +3,7 @@ require "test_helper"
 class SendStackCollaborationEmailTest < ActionDispatch::IntegrationTest
   setup do
     @user_a = create(:user, has_stack: true)
-    @stack = @user_a.stacks.last
+    @stack = @user_a.stacks.first
     @new_user_email = Faker::Internet.email
   end
 

@@ -30,7 +30,7 @@ class TrashTest < ActionDispatch::IntegrationTest
   test "seeing stack in trash only by the owner" do
     user_a = create(:user, has_stack: true)
     user_b = create(:user)
-    stack = user_a.stacks.last
+    stack = user_a.stacks.first
     stack.collaborators << user_b
 
     visit root_path(as: user_a)
@@ -77,7 +77,7 @@ class TrashTest < ActionDispatch::IntegrationTest
 
   test "restoring removed stack" do
     user = create(:user, has_stack: true)
-    stack = user.stacks.last
+    stack = user.stacks.first
 
     visit root_path(as: user)
     click_link "Remove", match: :first
@@ -91,7 +91,7 @@ class TrashTest < ActionDispatch::IntegrationTest
 
   test "removing stack permanently" do
     user = create(:user, has_stack: true)
-    stack = user.stacks.last
+    stack = user.stacks.first
 
     visit root_path(as: user)
     click_link "Remove", match: :first
@@ -105,8 +105,8 @@ class TrashTest < ActionDispatch::IntegrationTest
 
   test "empting trash" do
     user = create(:user, has_document: true, has_stack: true)
-    stack = user.stacks.last
-    document = user.documents.last
+    stack = user.stacks.first
+    document = user.documents.first
 
     visit root_path(as: user)
     click_link "Remove", match: :first

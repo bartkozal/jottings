@@ -4,7 +4,7 @@ class ShareStackTest < ActionDispatch::IntegrationTest
   setup do
     @user_a = create(:user)
     @user_b = create(:user, has_stack: true)
-    @stack = @user_b.stacks.last
+    @stack = @user_b.stacks.first
   end
 
   test "sharing stacks" do
@@ -27,7 +27,7 @@ class ShareStackTest < ActionDispatch::IntegrationTest
     click_button "Invite"
     click_link "Make Owner"
     refute page.has_link?("Share")
-    assert_equal @user_a, @user_b.stacks.last.owner
+    assert_equal @user_a, @user_b.stacks.first.owner
   end
 
   test "accessing document from the shared stacks" do

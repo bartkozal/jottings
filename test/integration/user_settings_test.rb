@@ -12,10 +12,12 @@ class UserSettingsTest < ActionDispatch::IntegrationTest
   test "updating name and email" do
     visit root_path(as: @user)
     click_link "Settings"
-    fill_in "Name", with: @new_name
-    fill_in "E-mail", with: @new_email
-    fill_in "Password", with: ""
-    click_button "Update"
+    within ".editor-content" do
+      fill_in "Name", with: @new_name
+      fill_in "E-mail", with: @new_email
+      fill_in "Password", with: ""
+      click_button "Update"
+    end
     assert_equal @new_name, User.last.name
     assert_equal @new_email, User.last.email
     click_link "Sign out"

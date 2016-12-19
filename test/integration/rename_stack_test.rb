@@ -3,7 +3,7 @@ require "test_helper"
 class RenameStackTest < ActionDispatch::IntegrationTest
   setup do
     @user = create(:user, has_stack: true)
-    @stack = @user.stacks.last
+    @stack = @user.stacks.first
   end
 
   test "renaming stack" do

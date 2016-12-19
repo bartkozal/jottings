@@ -5,7 +5,7 @@ class RemoveAccountTest < ActionDispatch::IntegrationTest
     @user_a = create(:user, has_bookmark: true, has_stack: true)
     @user_b = create(:user)
     @document = @user_a.documents.last
-    @stack = @user_a.stacks.last
+    @stack = @user_a.stacks.first
   end
 
   test "removing account" do

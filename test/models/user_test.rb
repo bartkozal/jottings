@@ -11,14 +11,14 @@ class UserTest < ActiveSupport::TestCase
   test "#own_shared_stacks?" do
     user_a = create(:user, has_stack: true)
     user_b = create(:user)
-    stack = user_a.stacks.last
+    stack = user_a.stacks.first
 
     refute user_a.own_shared_stacks?
 
     stack.collaborators << user_b
     assert user_a.own_shared_stacks?
 
-    user_a.stacks.last.update(owner: user_b)
+    user_a.stacks.first.update(owner: user_b)
     refute user_a.own_shared_stacks?
   end
 end

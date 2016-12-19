@@ -4,7 +4,7 @@ class LeaveStackTest < ActionDispatch::IntegrationTest
   setup do
     @user_a = create(:user)
     @user_b = create(:user, has_stack: true)
-    @stack = @user_b.stacks.last
+    @stack = @user_b.stacks.first
     @stack.collaborators << @user_a
   end
 
