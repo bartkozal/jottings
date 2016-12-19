@@ -2,7 +2,7 @@ class Document < ApplicationRecord
   belongs_to :stack
   has_many :bookmarks
 
-  default_scope { order(name: :desc) }
+  default_scope { order(name: :asc) }
 
   delegate :collaborators, to: :stack
 

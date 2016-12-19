@@ -5,7 +5,7 @@ class Stack < ApplicationRecord
   belongs_to :owner, class_name: "User"
   belongs_to :user, inverse_of: :root_stack, optional: true
 
-  default_scope { order(name: :desc) }
+  default_scope { order(name: :asc) }
 
   accepts_nested_attributes_for :collaborations, reject_if: :all_blank
 
