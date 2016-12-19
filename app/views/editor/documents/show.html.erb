@@ -13,7 +13,7 @@
     <% if @document.has_shared_stack? %>
       <ul class="list-reset no-margin-bottom">
         <% @document.collaborators.each do |collaborator| %>
-          <li class="margin-1/2-bottom">
+          <li class="margin-1/2-bottom" data-cable-user="<%= collaborator.email %>">
             <%= gravatar_tag collaborator.email, size: 40 %>
           </li>
         <% end %>
