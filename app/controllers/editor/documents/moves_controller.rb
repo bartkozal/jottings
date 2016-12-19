@@ -1,8 +1,6 @@
 class Editor::Documents::MovesController < EditorController
   before_action :find_document
   before_action :find_stack, only: :create
-  before_action :require_move_ability
-  before_action :require_no_collaborators, only: :create
 
   def create
     @document.stack = @stack
@@ -26,13 +24,5 @@ class Editor::Documents::MovesController < EditorController
   def find_stack
     decoded_id = MaskedId.decode(:stack, params[:id])
     @stack = current_user.stacks.find(decoded_id)
-  end
-
-  def require_move_ability
-    raise ApplicationController::NotAuthorized unless @document.can_move?(current_user)
-  end
-
-  def require_no_collaborators
-    raise ApplicationController::NotAuthorized if @document.has_shared_stack?
   end
 end
