@@ -50,3 +50,22 @@
   flex-grow: 1;
   width: map-get($rwd-map, 'regular');
 }
+
+.editor-collaborators {
+  .is-online {
+    position: relative;
+
+    &::after {
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 12px;
+      height: 12px;
+      border: 2px solid $color-white;
+      border-radius: 50%;
+      background-color: lighten($color-positive, 20%);
+      content: '';
+    }
+  }
+}
