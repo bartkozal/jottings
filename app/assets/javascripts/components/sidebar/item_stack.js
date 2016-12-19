@@ -50,7 +50,9 @@ Vue.component("sidebar-item-stack", {
   template: `
     <li :class="{ 'is-open': isOpen, 'is-droppable': isDroppable }">
       <slot></slot>
-      <slot name="sidebar-item-stack-list" v-if="isOpen"></slot>
+      <transition name="transition-sidebar-item-stack">
+        <slot name="sidebar-item-stack-list" v-if="isOpen"></slot>
+      </transition>
     </li>
   `
 });

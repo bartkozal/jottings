@@ -24,6 +24,11 @@
   opacity: 0;
 }
 
+@include transition('sidebar-item-stack') {
+  transform: translateY(-$spacing-unit);
+  opacity: 0;
+}
+
 @include transition('tooltip') {
   transform: translate(-50%, -105%) !important;
   opacity: 0;
