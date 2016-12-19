@@ -52,4 +52,5 @@ end
 
 group :production do
   gem 'redis'
+  gem 'sidekiq'
 end
