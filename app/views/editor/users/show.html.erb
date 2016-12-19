@@ -25,12 +25,28 @@
         </a>
 
         <div class="text-left text-small">
-          <p>
-            Would you consider keeping your account if one of these features exist?
+          <p class="text-lead">
+            Why do you want to remove the account?
           </p>
 
           <%= form_for Feedback.new, url: editor_profile_path, method: :delete, html: { class: "form-stacked form-poll" } do |form| %>
-            <%= render "static_pages/feedback_form_fields", form: form %>
+            <%= label_tag nil, class: "margin-1/3-bottom" do %>
+              <%= hidden_field_tag "feedback[answers][apps]", 0 %>
+              <%= check_box_tag "feedback[answers][apps]" %> No mobile/desktop app
+            <% end %>
+
+            <%= label_tag nil, class: "margin-1/3-bottom" do %>
+              <%= hidden_field_tag "feedback[answers][sync]", 0 %>
+              <%= check_box_tag "feedback[answers][sync]" %> No syncing with external services like Google Drive, Dropbox etc.
+            <% end %>
+
+            <%= label_tag nil do %>
+              <%= hidden_field_tag "feedback[answers][editor]", 0 %>
+              <%= check_box_tag "feedback[answers][editor]" %> Text editor is too simple. I miss options like autoformatting todos, attaching files etc.
+            <% end %>
+
+            <%= form.label :comment, "Any other reasons?" %>
+            <%= form.text_area :comment, class: "1/1", rows: 4 %>
 
             <p class="margin-bottom text-negative">
               This action is permanent and will remove all your documents and shared stacks.
