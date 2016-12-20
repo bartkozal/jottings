@@ -24,8 +24,8 @@ class Editor::Stacks::CollaborationsController < EditorController
   end
 
   def destroy
-    @collaboration = @stack.collaborations.find_by(invite_email: params[:email])
-    @collaboration.destroy
+    @collaboration = @stack.collaborations.find { |c| c.email == params[:email] }
+    @collaboration.really_destroy!
 
     if @collaboration.invite?
       redirect_to editor_stack_share_path(@stack),
