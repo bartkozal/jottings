@@ -20,6 +20,8 @@ Rails.application.routes.draw do
         resource :restore, only: [:create, :destroy]
       end
     end
+
+    get "/:page" => "static_pages#show", page: :page, as: :page
   end
 
   constraints Clearance::Constraints::SignedIn.new do

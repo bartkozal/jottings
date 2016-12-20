@@ -1,0 +1,27 @@
+<p>
+  Do you have any problem or request? Feel free to contact us on
+  <%= link_to "@_bkzl", "//twitter.com/_bkzl" %>, <%= link_to "@_mac", "//twitter.com/_mac" %>
+  or <%= mail_to "hello@jottings.co" %>.
+</p>
+
+<ul class="list-inline text-center margin-bottom">
+  <li>
+    <%= link_to "//twitter.com/_bkzl" do %>
+      <%= image_tag "img-bart.png", width: 60, class: "img-circle block margin-1/2-bottom" %>
+    <% end %>
+
+    <small class="text-muted">Bart</small>
+  </li>
+
+  <li>
+    <%= link_to "//twitter.com/_mac" do %>
+      <%= image_tag "img-mac.png", width: 60, class: "img-circle block margin-1/2-bottom" %>
+    <% end %>
+
+    <small class="text-muted">Mac</small>
+  </li>
+</ul>
+
+<p>
+  <a href="http://lostbananas.com/">See our other projects</a>. <a href="https://medium.com/lost-bananas/">Read our blog</a>.
+</p>

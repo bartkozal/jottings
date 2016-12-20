@@ -3,7 +3,7 @@ class FeedbacksController < ApplicationController
     feedback = Feedback.new(feedback_params)
     feedback.ip = request.remote_ip
     feedback.save
-    redirect_to page_path(page: "pricing"), flash: {success: "We got your feedback. Thank you!"}
+    redirect_back fallback_location: page_path(page: "pricing"), flash: {success: "We got your feedback. Thank you!"}
   end
 
   private
