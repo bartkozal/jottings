@@ -3,6 +3,6 @@ class CollaborationMailer < ApplicationMailer
     @collaboration = collaboration
 
     mail to: @collaboration.invite_email,
-         subject: %(You are invited to collaborate on "#{@collaboration.stack}")
+         subject: %(#{@collaboration.stack.owner} invited you to work on Markdown documents with Jottings)
   end
 end

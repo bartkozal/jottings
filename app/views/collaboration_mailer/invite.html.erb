@@ -1,8 +1,11 @@
 <p>
-  Hi,
+  Hello,
 </p>
 
 <p>
-  <%= link_to %(Click to see and start working on "#{@collaboration.stack}"),
-    sign_up_url(invite: @collaboration.invite_email) %>
+  <%= @collaboration.stack.owner %> invited you to work on Markdown documents.
+</p>
+
+<p class="text-center padding-vertical">
+  <%= link_to %(Join and start writing), sign_up_url(invite: @collaboration.invite_email), class:"btn" %>
 </p>

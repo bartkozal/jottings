@@ -75,6 +75,8 @@ GEM
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
     connection_pool (2.2.1)
+    css_parser (1.4.7)
+      addressable
     database_rewinder (0.6.5)
     debug_inspector (0.0.2)
     em-websocket (0.5.1)
@@ -114,6 +116,7 @@ GEM
       guard-compat (~> 1.0)
       multi_json (~> 1.8)
     hashids (1.0.2)
+    htmlentities (4.3.4)
     http_parser.rb (0.6.0)
     i18n (0.7.0)
     jbuilder (2.6.0)
@@ -150,6 +153,12 @@ GEM
     paranoia (2.2.0)
       activerecord (>= 4.0, < 5.1)
     pg (0.19.0)
+    premailer (1.8.7)
+      css_parser (>= 1.4.5)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.9.5)
+      actionmailer (>= 3, < 6)
+      premailer (~> 1.7, >= 1.7.9)
     pry (0.10.4)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -274,6 +283,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   paranoia (~> 2.2)
   pg (~> 0.18)
+  premailer-rails
   puma (~> 3.0)
   rack-livereload
   rails (~> 5.0.0, >= 5.0.0.1)

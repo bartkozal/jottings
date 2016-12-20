@@ -3,11 +3,78 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-      /* Email styles need to be inline */
+      body {
+        background-color: #f4f4f4;
+      }
+
+      table {
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        width: 100%;
+      }
+
+      p {
+        font-family: sans-serif;
+        font-size: 16px;
+        line-height: 1.4;
+      }
+
+      .content {
+        background-color: #fff;
+        padding: 10px 20px;
+        max-width: 500px;
+        margin: 10px auto;
+      }
+
+      .footer {
+        text-align: right;
+        max-width: 530px;
+        margin: 0 auto;
+      }
+
+      .footer a {
+        font-family: sans-serif;
+        font-size: 14px;
+        color: #aaa;
+        text-decoration: none;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .btn {
+        text-decoration: none;
+        background-color: #4990e2;
+        color: #fff;
+        padding: 15px 20px;
+        font-size: 16px;
+      }
+
+      .padding-vertical {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
     </style>
   </head>
 
   <body>
-    <%= yield %>
+    <table>
+      <tr>
+        <td>
+          <div class="content">
+            <p class="text-center">
+              <%= image_tag("img-logo.svg", class: "logo", alt: "Logo") %>
+            </p>
+
+            <%= yield %>
+          </div>
+
+          <div class="footer">
+            <%= link_to "jottings.co", root_url %>
+          </div>
+        </td>
+      </tr>
+    </table>
   </body>
 </html>

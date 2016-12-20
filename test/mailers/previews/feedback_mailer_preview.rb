@@ -1,4 +1,4 @@
-# Preview all emails at http://localhost:3000/rails/mailers/collaboration_mailer
+# Preview all emails at http://localhost:3000/rails/mailers/feedback_mailer
 class FeedbackMailerPreview < ActionMailer::Preview
   def notify
     feedback = Feedback.new(

@@ -1,4 +1,7 @@
-Hi,
+Hello,
 
-<%= link_to %(Click to see and start working on "#{@collaboration.stack}"),
-  sign_up_url(invite: @collaboration.invite_email) %>
+<%= @collaboration.stack.owner %> invited you to work on Markdown documents.
+
+Join and start writing: <%= sign_up_url(invite: @collaboration.invite_email) %>
+
+- jottings.co
