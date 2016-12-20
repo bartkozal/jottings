@@ -8,7 +8,7 @@ class Collaboration < ApplicationRecord
 
   acts_as_paranoid
 
-  after_create :notify_by_email, unless: -> { stack.root? }
+  after_create :invite_by_email, if: -> { invite? && !stack.root? }
 
   def email
     user&.email || invite_email
@@ -33,12 +33,8 @@ class Collaboration < ApplicationRecord
 
   private
 
-  def notify_by_email
-    if invite?
-      CollaborationMailer.invite(self).deliver_later
-    else
-      CollaborationMailer.notify(self).deliver_later
-    end
+  def invite_by_email
+    CollaborationMailer.invite(self).deliver_later
   end
 
   def normalize_email(email)

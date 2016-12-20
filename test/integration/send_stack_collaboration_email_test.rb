@@ -25,7 +25,7 @@ class SendStackCollaborationEmailTest < ActionDispatch::IntegrationTest
     assert_equal editor_document_path(@stack.documents.last), current_path
   end
 
-  test "sending notification email when user exists" do
+  test "don't send invitation email when user exists" do
     @user_b = create(:user)
     visit root_path(as: @user_a)
     click_link "Sharing"
@@ -34,9 +34,8 @@ class SendStackCollaborationEmailTest < ActionDispatch::IntegrationTest
       click_button "Invite"
     end
     open_email @user_b.email
-    assert_equal %(You are invited to collaborate on "#{@stack}"), current_email.subject
-    current_email.click_link %(Click to see and start working on "#{@stack}")
-    assert_equal editor_document_path(@stack.documents.last), current_path
+    assert_nil current_email
+    assert_equal editor_stack_share_path(@user_a.stacks.first), current_path
   end
 
   test "canceling invite" do
