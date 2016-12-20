@@ -15,7 +15,7 @@ $sidebar-item-height: $spacing-unit * 1.4;
   @extend %sidebar-item;
 
   > .grid {
-    height: $sidebar-item-height;
+    min-height: $sidebar-item-height;
 
     > .grid-item > .media {
       cursor: pointer;
@@ -36,7 +36,7 @@ $sidebar-item-height: $spacing-unit * 1.4;
   @extend %sidebar-item;
 
   > .grid {
-    height: $sidebar-item-height;
+    min-height: $sidebar-item-height;
   }
 
   &.is-dragging {
