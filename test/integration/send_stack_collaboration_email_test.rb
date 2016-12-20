@@ -18,8 +18,8 @@ class SendStackCollaborationEmailTest < ActionDispatch::IntegrationTest
     assert page.has_content?("Pending")
     click_link "Sign out"
     open_email @new_user_email
-    assert_equal %(You are invited to collaborate on "#{@stack}"), current_email.subject
-    current_email.click_link %(Click to see and start working on "#{@stack}")
+    assert_equal %(#{@stack.owner} invited you to work on Markdown documents with Jottings), current_email.subject
+    current_email.click_link %(Join and start writing)
     fill_in "Password", with: Faker::Internet.password
     click_button "Sign up"
     assert_equal editor_document_path(@stack.documents.last), current_path
