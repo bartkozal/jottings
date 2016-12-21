@@ -37,6 +37,7 @@ $ui-arrow-size: 7px;
 $ui-transition-duration: .2s;
 
 [v-cloak] { display: none; }
+body { overflow-x: hidden; }
 
 @import 'hocus-pocus/hocus-pocus',
         'navbar',
