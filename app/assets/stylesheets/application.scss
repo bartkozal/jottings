@@ -7,7 +7,7 @@
 $font-weight-headings: 200;
 
 $color-body: #fff;
-$color-ui: #f4f4f4;
+$color-ui: #f0f0f0;
 $color-text-selected: #b4d8fe;
 
 $color-brand: #4990e2;
@@ -57,6 +57,7 @@ $ui-transition-duration: .2s;
         'full-width',
         'footer',
         'container',
-        'spinkit';
+        'spinkit',
+        'video';
 
 @include btn('white', $color-white);

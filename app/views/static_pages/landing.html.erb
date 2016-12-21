@@ -1,12 +1,13 @@
 <div class="text-center">
-  <h1 class="margin-4/1-top margin-2/1-bottom text-light">
+  <h1 class="margin-3/1-top margin-2/1-bottom text-light">
     Real-time collaboration in Markdown
   </h1>
 
-  <%= image_tag "//placehold.it/800x400?text=:-)", class: "img-responsive" %>
+  <%= video_tag "intro.mp4", poster: "img-intro-poster.png",
+    autoplay: true, loop: true, class: "video" %>
 
   <div class="box box-brand full-width">
-    <%= link_to "Start writing right away", sign_up_path, class: "btn btn-outline btn-white" %>
+    <%= link_to "Start writing right now", sign_up_path, class: "btn btn-outline btn-white" %>
   </div>
 </div>
 
