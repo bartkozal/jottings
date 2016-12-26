@@ -24,6 +24,10 @@ Rails.application.routes.draw do
     get "/:page" => "static_pages#show", page: :page, as: :page
   end
 
+  namespace :admin do
+    resource :dashboard, only: [:show]
+  end
+
   constraints Clearance::Constraints::SignedIn.new do
     root to: "editor/documents#index"
   end

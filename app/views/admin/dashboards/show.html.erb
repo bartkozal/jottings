@@ -1,0 +1,39 @@
+<div class="container margin-top">
+  <div class="grid grid-pair">
+    <div class="grid-item 4/5">
+      <% @feedback_comments&.each do |feedback| %>
+        <div class="margin-bottom">
+          <div>
+            <span class="text-lead"><%= feedback %></span>
+            <span class="text-muted text-small"><%= time_ago_in_words(feedback.created_at) %> ago</span>
+          </div>
+
+          <%= feedback.comment %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="grid-item 1/5">
+      <ul class="list-inline margin-bottom">
+        <li>
+          <div class="text-muted text-small">Users</div>
+          <div class="text-lead"><%= User.count %></div>
+        </li>
+
+        <li class="margin-left">
+          <div class="text-muted text-small">Documents</div>
+          <div class="text-lead"><%= Document.count %></div>
+        </li>
+      </ul>
+
+      <ul class="list-reset">
+        <% @feedback_answers&.each do |answer, count| %>
+          <li>
+            <span class="text-muted text-small"><%= answer.titleize %> - </span>
+            <%= count %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
