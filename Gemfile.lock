@@ -237,8 +237,6 @@ GEM
       connection_pool (~> 2.2, >= 2.2.0)
       rack-protection (>= 1.5.0)
       redis (~> 3.2, >= 3.2.1)
-    skylight (1.0.1)
-      activesupport (>= 3.0.0)
     slop (3.6.0)
     spring (2.0.0)
       activesupport (>= 4.2)
@@ -317,7 +315,6 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   selenium-webdriver
   sidekiq
-  skylight
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

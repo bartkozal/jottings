@@ -54,5 +54,4 @@ group :production do
   gem 'redis'
   gem 'sidekiq'
   gem 'mailgun_rails'
-  gem 'skylight'
 end

@@ -1,7 +1,5 @@
 # Jottings
 
-[![CircleCI](https://circleci.com/gh/bkzl/jottings-mvp.svg?style=svg&circle-token=ca1f409c3d363c3d4fd221151af529183329d8f6)](https://circleci.com/gh/bkzl/jottings-mvp)
-
 Dependencies:
 
 - Ruby
