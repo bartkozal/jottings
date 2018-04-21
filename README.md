@@ -1,5 +1,7 @@
 # Jottings
 
+![intro](https://github.com/bkzl/jottings/raw/master/app/assets/images/img-readme.gif)
+
 Dependencies:
 
 - Ruby
@@ -7,15 +9,13 @@ Dependencies:
 - PostgreSQL
 - Redis
 - MongoDB
-- ChromeDriver
 
 ## Setup
 
-1. Clone jottings-sharedb first
-2. Clone this repository
-3. Run `bundle install`
-4. Run `rails db:setup`
-5. Run `rails t` to ensure that tests pass
+1. Set up [jottings-sharedb](https://github.com/bkzl/jottings-sharedb)
+2. Run `bundle install`
+3. Run `rails db:setup`
+4. Run `rails t`
 
 ## Development
 
