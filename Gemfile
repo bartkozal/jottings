@@ -37,6 +37,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'database_rewinder'
   gem 'capybara-email'
+  gem 'minitest', '5.10.1'
 end
 
 group :development do

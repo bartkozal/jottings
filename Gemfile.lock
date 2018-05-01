@@ -155,7 +155,7 @@ GEM
     mime-types-data (3.2016.0521)
     mini_mime (1.0.0)
     mini_portile2 (2.3.0)
-    minitest (5.11.3)
+    minitest (5.10.1)
     multi_json (1.12.1)
     nenv (0.3.0)
     netrc (0.11.0)
@@ -305,6 +305,7 @@ DEPENDENCIES
   launchy
   listen (~> 3.0.5)
   mailgun_rails
+  minitest (= 5.10.1)
   paranoia (~> 2.2)
   pg (~> 0.18)
   premailer-rails
