@@ -1,4 +1,4 @@
-# Jottings [![Build Status](https://semaphoreci.com/api/v1/bkzl/jottings/branches/master/shields_badge.svg)](https://semaphoreci.com/bkzl/jottings)
+# Jottings
 
 ![intro](https://github.com/bkzl/jottings/raw/master/app/assets/images/img-readme.gif)
 
